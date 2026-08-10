@@ -1,0 +1,35 @@
+{
+  "descriptionHash": "423EF44F7969C9F9019E8D2FB5E5B2308B08A30C2D40BA5CEE48EB6B3DCC7FC5F18709B96EB7E75E013F96B6B7869D879EA2299D6FDA5C8003A651707902CB08",
+  "descriptionLocation": "../../openapi.fixed.json",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.34.1",
+  "clientClassName": "GroqOpenApiClient",
+  "typeAccessModifier": "Public",
+  "clientNamespaceName": "Soenneker.Groq.OpenApiClient",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": true,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
+}
