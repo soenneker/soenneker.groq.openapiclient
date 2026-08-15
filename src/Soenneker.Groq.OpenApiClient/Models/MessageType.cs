@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The object type, which is always &quot;model&quot;.</summary>
+    /// <summary>The type of the message input. Always set to `message`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ModelValueObject
+    public enum MessageType
     {
-        [EnumMember(Value = "model")]
+        [EnumMember(Value = "message")]
         #pragma warning disable CS1591
-        Model,
+        Message,
         #pragma warning restore CS1591
     }
 }

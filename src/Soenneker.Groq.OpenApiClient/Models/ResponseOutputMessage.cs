@@ -31,12 +31,12 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The role of the output message. Always `assistant`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputMessageRole? Role { get; set; }
+        /// <summary>The role of the messages author, in this case `assistant`.</summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.AssistantRole? Role { get; set; }
         /// <summary>The status of the message.</summary>
         public global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputMessageStatus? Status { get; set; }
-        /// <summary>The type of the output message. Always `message`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputMessageType? Type { get; set; }
+        /// <summary>The type of the message input. Always set to `message`.</summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.MessageType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputMessage"/> and sets the default values.
         /// </summary>
@@ -64,9 +64,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputContent>(global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputContent.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputMessageRole>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.AssistantRole>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputMessageStatus>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputMessageType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.MessageType>(); } },
             };
         }
         /// <summary>
@@ -78,9 +78,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputContent>("content", Content);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputMessageRole>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.AssistantRole>("role", Role);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputMessageStatus>("status", Status);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputMessageType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.MessageType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

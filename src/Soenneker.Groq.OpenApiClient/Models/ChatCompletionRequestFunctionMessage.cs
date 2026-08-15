@@ -30,7 +30,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The role of the messages author, in this case `function`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestFunctionMessageRole? Role { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.FunctionRole? Role { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestFunctionMessageRole>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionRole>(); } },
             };
         }
         /// <summary>
@@ -63,7 +63,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestFunctionMessageRole>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionRole>("role", Role);
         }
     }
 }

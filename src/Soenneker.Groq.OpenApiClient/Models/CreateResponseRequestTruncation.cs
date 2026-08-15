@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>&quot;Context truncation strategy. Supported values: `auto` or `disabled`.&quot;</summary>
+    /// <summary>Context truncation strategy. Supported values: `auto` or `disabled`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CreateResponseRequestTruncation
     {

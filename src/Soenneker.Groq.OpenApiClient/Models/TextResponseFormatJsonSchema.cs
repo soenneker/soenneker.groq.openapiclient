@@ -42,7 +42,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>Whether to enable strict schema adherence when generating the output.</summary>
         public bool? Strict { get; set; }
         /// <summary>The type of response format being defined. Always `json_schema`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.TextResponseFormatJsonSchemaType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.JsonSchemaType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.TextResponseFormatJsonSchema"/> and sets the default values.
         /// </summary>
@@ -73,7 +73,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.TextResponseFormatJsonSchemaSchemaProperty>(global::Soenneker.Groq.OpenApiClient.Models.TextResponseFormatJsonSchemaSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "strict", n => { Strict = n.GetBoolValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.TextResponseFormatJsonSchemaType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.JsonSchemaType>(); } },
             };
         }
         /// <summary>
@@ -87,7 +87,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.TextResponseFormatJsonSchemaSchemaProperty>("schema", Schema);
             writer.WriteBoolValue("strict", Strict);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.TextResponseFormatJsonSchemaType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.JsonSchemaType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

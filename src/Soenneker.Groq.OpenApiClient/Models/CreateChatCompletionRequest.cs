@@ -32,7 +32,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocument> Documents { get; set; }
 #endif
-        /// <summary>&quot;Deprecated: Use search_settings.exclude_domains instead.A list of domains to exclude from the search results when the model uses a web search tool.&quot;</summary>
+        /// <summary>Deprecated: Use search_settings.exclude_domains instead.A list of domains to exclude from the search results when the model uses a web search tool.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,7 +43,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #endif
         /// <summary>This is not yet supported by any of our models. Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model&apos;s likelihood to repeat the same line verbatim.</summary>
         public double? FrequencyPenalty { get; set; }
-        /// <summary>&quot;Deprecated in favor of `tool_choice`.Controls which (if any) function is called by the model.`none` means the model will not call a function and instead generates a message.`auto` means the model can pick between generating a message or calling a function.Specifying a particular function via `{\&quot;name\&quot;: \&quot;my_function\&quot;}` forces the model to call that function.`none` is the default when no functions are present. `auto` is the default if functions are present.&quot;</summary>
+        /// <summary>Deprecated in favor of `tool_choice`.Controls which (if any) function is called by the model.`none` means the model will not call a function and instead generates a message.`auto` means the model can pick between generating a message or calling a function.Specifying a particular function via `{&quot;name&quot;: &quot;my_function&quot;}` forces the model to call that function.`none` is the default when no functions are present. `auto` is the default if functions are present.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,7 +61,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions> Functions { get; set; }
 #endif
-        /// <summary>&quot;Deprecated: Use search_settings.include_domains instead.A list of domains to include in the search results when the model uses a web search tool.&quot;</summary>
+        /// <summary>Deprecated: Use search_settings.include_domains instead.A list of domains to include in the search results when the model uses a web search tool.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -121,7 +121,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningEffort? ReasoningEffort { get; set; }
         /// <summary>Specifies how to output reasoning tokensThis field is mutually exclusive with `include_reasoning`.</summary>
         public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningFormat? ReasoningFormat { get; set; }
-        /// <summary>&quot;An object specifying the format that the model must output. Setting to `{ \&quot;type\&quot;: \&quot;json_schema\&quot;, \&quot;json_schema\&quot;: {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. `json_schema` response format is only available on [supported models](https://console.groq.com/docs/structured-outputs#supported-models). Setting to `{ \&quot;type\&quot;: \&quot;json_object\&quot; }` enables the older JSON mode, which ensures the message the model generates is valid JSON. Using `json_schema` is preferred for models that support it.&quot;</summary>
+        /// <summary>An object specifying the format that the model must output. Setting to `{ &quot;type&quot;: &quot;json_schema&quot;, &quot;json_schema&quot;: {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. `json_schema` response format is only available on [supported models](https://console.groq.com/docs/structured-outputs#supported-models). Setting to `{ &quot;type&quot;: &quot;json_object&quot; }` enables the older JSON mode, which ensures the message the model generates is valid JSON. Using `json_schema` is preferred for models that support it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat? ResponseFormat { get; set; }
@@ -151,11 +151,11 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #endif
         /// <summary>This parameter is not currently supported.</summary>
         public bool? Store { get; set; }
-        /// <summary>&quot;If set, partial message deltas will be sent. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example code](/docs/text-chat#streaming-a-chat-completion).&quot;</summary>
+        /// <summary>If set, partial message deltas will be sent. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example code](/docs/text-chat#streaming-a-chat-completion).</summary>
         public bool? Stream { get; set; }
         /// <summary>What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.</summary>
         public double? Temperature { get; set; }
-        /// <summary>&quot;Controls which (if any) tool is called by the model.`none` means the model will not call any tool and instead generates a message.`auto` means the model can pick between generating a message or calling one or more tools.`required` means the model must call one or more tools.Specifying a particular tool via `{\&quot;type\&quot;: \&quot;function\&quot;, \&quot;function\&quot;: {\&quot;name\&quot;: \&quot;my_function\&quot;}}` forces the model to call that tool.`none` is the default when no tools are present. `auto` is the default if tools are present.&quot;</summary>
+        /// <summary>Controls which (if any) tool is called by the model.`none` means the model will not call any tool and instead generates a message.`auto` means the model can pick between generating a message or calling one or more tools.`required` means the model must call one or more tools.Specifying a particular tool via `{&quot;type&quot;: &quot;function&quot;, &quot;function&quot;: {&quot;name&quot;: &quot;my_function&quot;}}` forces the model to call that tool.`none` is the default when no tools are present. `auto` is the default if tools are present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption? ToolChoice { get; set; }

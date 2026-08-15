@@ -3,14 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
+    /// <summary>The role of the messages author, in this case `assistant`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum ListModelsResponseObject
-    #pragma warning restore CS1591
+    public enum AssistantRole
     {
-        [EnumMember(Value = "list")]
+        [EnumMember(Value = "assistant")]
         #pragma warning disable CS1591
-        List,
+        Assistant,
         #pragma warning restore CS1591
     }
 }

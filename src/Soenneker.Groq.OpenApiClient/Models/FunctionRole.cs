@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The endpoint to be used for all requests in the batch. Currently `/v1/chat/completions` is supported.</summary>
+    /// <summary>The role of the messages author, in this case `function`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum CreateBatchRequestEndpoint
+    public enum FunctionRole
     {
-        [EnumMember(Value = "/v1/chat/completions")]
+        [EnumMember(Value = "function")]
         #pragma warning disable CS1591
-        V1ChatCompletions,
+        Function,
         #pragma warning restore CS1591
     }
 }

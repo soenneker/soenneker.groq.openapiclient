@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The type of response format being defined. Always `json_object`.</summary>
+    /// <summary>The intended purpose of the uploaded file.Use &quot;batch&quot; for [Batch API](/docs/api-reference#batches).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ResponseFormatJsonObjectType
+    public enum BatchPurpose
     {
-        [EnumMember(Value = "json_object")]
+        [EnumMember(Value = "batch")]
         #pragma warning disable CS1591
-        JsonObject,
+        Batch,
         #pragma warning restore CS1591
     }
 }

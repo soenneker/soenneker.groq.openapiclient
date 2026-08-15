@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The type of the annotation. Always `file_citation`.</summary>
+    /// <summary>The object type, which is always `chat.completion`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ResponseFileCitationType
+    public enum ChatCompletionObject
     {
-        [EnumMember(Value = "file_citation")]
+        [EnumMember(Value = "chat.completion")]
         #pragma warning disable CS1591
-        FileCitation,
+        ChatCompletion,
         #pragma warning restore CS1591
     }
 }

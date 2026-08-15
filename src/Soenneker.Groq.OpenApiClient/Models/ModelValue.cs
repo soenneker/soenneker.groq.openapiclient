@@ -26,7 +26,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The object type, which is always &quot;model&quot;.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ModelValueObject? Object { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.ModelObject? Object { get; set; }
         /// <summary>The organization that owns the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,7 +62,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 { "created", n => { Created = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ModelValueObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ModelObject>(); } },
                 { "owned_by", n => { OwnedBy = n.GetStringValue(); } },
             };
         }
@@ -75,7 +75,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("created", Created);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ModelValueObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ModelObject>("object", Object);
             writer.WriteStringValue("owned_by", OwnedBy);
             writer.WriteAdditionalData(AdditionalData);
         }

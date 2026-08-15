@@ -21,8 +21,8 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public string Text { get; set; }
 #endif
-        /// <summary>Identifies this document source as inline text.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceTextType? Type { get; set; }
+        /// <summary>The type of the content part.</summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.TextType? Type { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceTextType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.TextType>(); } },
             };
         }
         /// <summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("text", Text);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceTextType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.TextType>("type", Type);
         }
     }
 }

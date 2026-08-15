@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The type of response format being defined. Always `json_schema`.</summary>
+    /// <summary>The type of the function call. Always `function_call`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ResponseFormatJsonSchemaType
+    public enum FunctionCallType
     {
-        [EnumMember(Value = "json_schema")]
+        [EnumMember(Value = "function_call")]
         #pragma warning disable CS1591
-        JsonSchema,
+        FunctionCall,
         #pragma warning restore CS1591
     }
 }

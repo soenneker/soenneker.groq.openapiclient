@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The type of the tool. Currently, only `function` is supported.</summary>
+    /// <summary>The endpoint to be used for all requests in the batch. Currently `/v1/chat/completions` is supported.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ChatCompletionMessageToolCallType
+    public enum V1ChatCompletionsEndpoint
     {
-        [EnumMember(Value = "function")]
+        [EnumMember(Value = "/v1/chat/completions")]
         #pragma warning disable CS1591
-        Function,
+        V1ChatCompletions,
         #pragma warning restore CS1591
     }
 }

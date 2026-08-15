@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The type of the tool. Currently, only `function` is supported.</summary>
+    /// <summary>The type of the annotation. Always `file_citation`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ChatCompletionNamedToolChoiceType
+    public enum FileCitationType
     {
-        [EnumMember(Value = "function")]
+        [EnumMember(Value = "file_citation")]
         #pragma warning disable CS1591
-        Function,
+        FileCitation,
         #pragma warning restore CS1591
     }
 }

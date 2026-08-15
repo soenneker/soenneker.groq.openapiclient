@@ -21,7 +21,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestToolMessageContent Content { get; set; }
 #endif
         /// <summary>The role of the messages author, in this case `tool`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestToolMessageRole? Role { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.ToolRole? Role { get; set; }
         /// <summary>Tool call that this message is responding to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,7 +49,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestToolMessageContent>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestToolMessageContent.CreateFromDiscriminatorValue); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestToolMessageRole>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ToolRole>(); } },
                 { "tool_call_id", n => { ToolCallId = n.GetStringValue(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestToolMessageContent>("content", Content);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestToolMessageRole>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ToolRole>("role", Role);
             writer.WriteStringValue("tool_call_id", ToolCallId);
         }
     }

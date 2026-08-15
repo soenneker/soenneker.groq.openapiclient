@@ -32,7 +32,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public List<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputReasoningSummaryItemProperty> Summary { get; set; }
 #endif
         /// <summary>The type of the reasoning output. Always `reasoning`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputReasoningType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.ReasoningType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputReasoning"/> and sets the default values.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "summary", n => { Summary = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputReasoningSummaryItemProperty>(global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputReasoningSummaryItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputReasoningType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ReasoningType>(); } },
             };
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputReasoningSummaryItemProperty>("summary", Summary);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputReasoningType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ReasoningType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

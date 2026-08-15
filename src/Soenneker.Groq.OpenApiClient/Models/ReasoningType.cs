@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The object type, which is always &quot;list&quot;.</summary>
+    /// <summary>The type of the reasoning output. Always `reasoning`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum CreateEmbeddingResponseObject
+    public enum ReasoningType
     {
-        [EnumMember(Value = "list")]
+        [EnumMember(Value = "reasoning")]
         #pragma warning disable CS1591
-        List,
+        Reasoning,
         #pragma warning restore CS1591
     }
 }

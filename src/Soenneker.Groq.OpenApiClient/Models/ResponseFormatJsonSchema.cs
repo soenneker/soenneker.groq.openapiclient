@@ -24,7 +24,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema JsonSchema { get; set; }
 #endif
         /// <summary>The type of response format being defined. Always `json_schema`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatJsonSchemaType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.JsonSchemaType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatJsonSchema"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema>(global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatJsonSchemaType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.JsonSchemaType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema>("json_schema", JsonSchema);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatJsonSchemaType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.JsonSchemaType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

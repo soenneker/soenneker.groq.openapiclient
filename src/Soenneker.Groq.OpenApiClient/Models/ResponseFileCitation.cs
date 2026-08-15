@@ -26,7 +26,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>The index of the citation in the text.</summary>
         public int? Index { get; set; }
         /// <summary>The type of the annotation. Always `file_citation`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseFileCitationType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.FileCitationType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseFileCitation"/> and sets the default values.
         /// </summary>
@@ -54,7 +54,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 { "file_id", n => { FileId = n.GetStringValue(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseFileCitationType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FileCitationType>(); } },
             };
         }
         /// <summary>
@@ -66,7 +66,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("file_id", FileId);
             writer.WriteIntValue("index", Index);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseFileCitationType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FileCitationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

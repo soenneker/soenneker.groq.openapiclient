@@ -23,7 +23,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public string CompletionWindow { get; set; }
 #endif
         /// <summary>The endpoint to be used for all requests in the batch. Currently `/v1/chat/completions` is supported.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateBatchRequestEndpoint? Endpoint { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.V1ChatCompletionsEndpoint? Endpoint { get; set; }
         /// <summary>The ID of an uploaded file that contains requests for the new batch.See [upload file](/docs/api-reference#files-upload) for how to upload a file.Your input file must be formatted as a [JSONL file](/docs/batch), and must be uploaded with the purpose `batch`. The file can be up to 100 MB in size.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,7 +66,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "completion_window", n => { CompletionWindow = n.GetStringValue(); } },
-                { "endpoint", n => { Endpoint = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateBatchRequestEndpoint>(); } },
+                { "endpoint", n => { Endpoint = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.V1ChatCompletionsEndpoint>(); } },
                 { "input_file_id", n => { InputFileId = n.GetStringValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateBatchRequestMetadata>(global::Soenneker.Groq.OpenApiClient.Models.CreateBatchRequestMetadata.CreateFromDiscriminatorValue); } },
             };
@@ -79,7 +79,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("completion_window", CompletionWindow);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateBatchRequestEndpoint>("endpoint", Endpoint);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.V1ChatCompletionsEndpoint>("endpoint", Endpoint);
             writer.WriteStringValue("input_file_id", InputFileId);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateBatchRequestMetadata>("metadata", Metadata);
             writer.WriteAdditionalData(AdditionalData);

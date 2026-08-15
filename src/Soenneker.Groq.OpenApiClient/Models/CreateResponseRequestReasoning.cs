@@ -15,7 +15,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Level of reasoning effort. Supported values: `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.&quot;</summary>
+        /// <summary>Level of reasoning effort. Supported values: `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.</summary>
         public global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestReasoningEffort? Effort { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestReasoning"/> and sets the default values.

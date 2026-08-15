@@ -31,7 +31,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The type of the tool. Currently, only `function` is supported.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionMessageToolCallType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.FunctionType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionMessageToolCall"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 { "function", n => { Function = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionMessageToolCallFunction>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionMessageToolCallFunction.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionMessageToolCallType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionType>(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionMessageToolCallFunction>("function", Function);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionMessageToolCallType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

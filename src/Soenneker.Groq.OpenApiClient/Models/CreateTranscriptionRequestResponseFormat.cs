@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>&quot;The format of the transcript output, in one of these options: `json`, `text`, or `verbose_json`.&quot;</summary>
+    /// <summary>The format of the transcript output, in one of these options: `json`, `text`, or `verbose_json`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CreateTranscriptionRequestResponseFormat
     {

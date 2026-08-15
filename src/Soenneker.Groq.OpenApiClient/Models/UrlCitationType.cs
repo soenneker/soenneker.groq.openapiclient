@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The type of response format being defined. Always `text`.</summary>
+    /// <summary>The type of the annotation. Always `url_citation`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ResponseFormatTextType
+    public enum UrlCitationType
     {
-        [EnumMember(Value = "text")]
+        [EnumMember(Value = "url_citation")]
         #pragma warning disable CS1591
-        Text,
+        UrlCitation,
         #pragma warning restore CS1591
     }
 }

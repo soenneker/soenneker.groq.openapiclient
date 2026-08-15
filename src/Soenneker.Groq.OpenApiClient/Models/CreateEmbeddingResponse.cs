@@ -30,8 +30,8 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>The object type, which is always &quot;list&quot;.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateEmbeddingResponseObject? Object { get; set; }
+        /// <summary>The object property</summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.ListObject? Object { get; set; }
         /// <summary>The usage information for the request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +67,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.Embedding>(global::Soenneker.Groq.OpenApiClient.Models.Embedding.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateEmbeddingResponseObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ListObject>(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateEmbeddingResponseUsage>(global::Soenneker.Groq.OpenApiClient.Models.CreateEmbeddingResponseUsage.CreateFromDiscriminatorValue); } },
             };
         }
@@ -80,7 +80,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.Embedding>("data", Data);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateEmbeddingResponseObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ListObject>("object", Object);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateEmbeddingResponseUsage>("usage", Usage);
             writer.WriteAdditionalData(AdditionalData);
         }

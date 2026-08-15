@@ -37,11 +37,15 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption();
             if("ChatCompletionNamedToolChoice".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionNamedToolChoice = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionNamedToolChoice();
+            }
+            else if("ChatCompletionToolChoiceOptionWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.ChatCompletionToolChoiceOptionWrapper = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionWrapper();
             }
             return result;
         }

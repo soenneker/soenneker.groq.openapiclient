@@ -3,13 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>Identifies this document source as JSON data.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ChatCompletionDocumentSourceJsonType
+    #pragma warning disable CS1591
+    public enum ListObject
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "json")]
+        [EnumMember(Value = "list")]
         #pragma warning disable CS1591
-        Json,
+        List,
         #pragma warning restore CS1591
     }
 }

@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The role of the messages author, in this case `tool`.</summary>
+    /// <summary>The type of the tool. Currently, only `function` is supported.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ChatCompletionRequestToolMessageRole
+    public enum FunctionType
     {
-        [EnumMember(Value = "tool")]
+        [EnumMember(Value = "function")]
         #pragma warning disable CS1591
-        Tool,
+        Function,
         #pragma warning restore CS1591
     }
 }

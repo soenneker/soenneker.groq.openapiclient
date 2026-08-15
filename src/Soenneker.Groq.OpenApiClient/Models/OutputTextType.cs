@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The role of the messages author, in this case `assistant`.</summary>
+    /// <summary>The type of the output text. Always `output_text`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ChatCompletionRequestAssistantMessageRole
+    public enum OutputTextType
     {
-        [EnumMember(Value = "assistant")]
+        [EnumMember(Value = "output_text")]
         #pragma warning disable CS1591
-        Assistant,
+        OutputText,
         #pragma warning restore CS1591
     }
 }

@@ -50,7 +50,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>The object type, which is always `chat.completion`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseObject? Object { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject? Object { get; set; }
         /// <summary>The service tier used for the request.</summary>
         public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier? ServiceTier { get; set; }
         /// <summary>This fingerprint represents the backend configuration that the model runs with.Can be used in conjunction with the `seed` request parameter to understand when backend changes have been made that might impact determinism.</summary>
@@ -115,7 +115,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "mcp_list_tools", n => { McpListTools = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject>(); } },
                 { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier>(); } },
                 { "system_fingerprint", n => { SystemFingerprint = n.GetStringValue(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage>(global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage.CreateFromDiscriminatorValue); } },
@@ -135,7 +135,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem>("mcp_list_tools", McpListTools);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject>("object", Object);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier>("service_tier", ServiceTier);
             writer.WriteStringValue("system_fingerprint", SystemFingerprint);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage>("usage", Usage);

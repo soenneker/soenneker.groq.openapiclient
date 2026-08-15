@@ -22,7 +22,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceJsonDataProperty Data { get; set; }
 #endif
         /// <summary>Identifies this document source as JSON data.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceJsonType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.JsonType? Type { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceJsonDataProperty>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceJsonDataProperty.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceJsonType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.JsonType>(); } },
             };
         }
         /// <summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceJsonDataProperty>("data", Data);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceJsonType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.JsonType>("type", Type);
         }
     }
 }

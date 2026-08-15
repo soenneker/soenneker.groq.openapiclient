@@ -23,7 +23,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public List<global::Soenneker.Groq.OpenApiClient.Models.ModelValue> Data { get; set; }
 #endif
         /// <summary>The object property</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ListModelsResponseObject? Object { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.ListObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ListModelsResponse"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ModelValue>(global::Soenneker.Groq.OpenApiClient.Models.ModelValue.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ListModelsResponseObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ListObject>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ModelValue>("data", Data);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ListModelsResponseObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ListObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

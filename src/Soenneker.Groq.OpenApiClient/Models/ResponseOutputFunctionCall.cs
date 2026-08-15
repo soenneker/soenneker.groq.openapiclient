@@ -50,7 +50,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>The status of the function call.</summary>
         public global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputFunctionCallStatus? Status { get; set; }
         /// <summary>The type of the function call. Always `function_call`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputFunctionCallType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.FunctionCallType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputFunctionCall"/> and sets the default values.
         /// </summary>
@@ -81,7 +81,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputFunctionCallStatus>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputFunctionCallType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionCallType>(); } },
             };
         }
         /// <summary>
@@ -96,7 +96,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputFunctionCallStatus>("status", Status);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputFunctionCallType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionCallType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

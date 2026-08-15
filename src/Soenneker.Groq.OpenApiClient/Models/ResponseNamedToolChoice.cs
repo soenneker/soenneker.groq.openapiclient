@@ -24,7 +24,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoiceFunction Function { get; set; }
 #endif
         /// <summary>The type of the tool. Currently, only `function` is supported.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoiceType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.FunctionType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoice"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "function", n => { Function = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoiceFunction>(global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoiceFunction.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoiceType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoiceFunction>("function", Function);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoiceType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

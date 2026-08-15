@@ -58,11 +58,11 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #endif
         /// <summary>Specifies the latency tier to use for processing the request.</summary>
         public global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestServiceTier? ServiceTier { get; set; }
-        /// <summary>&quot;Response storage flag. Note: Currently only supports false or null values.&quot;</summary>
+        /// <summary>Response storage flag. Note: Currently only supports false or null values.</summary>
         public bool? Store { get; set; }
         /// <summary>Enable streaming mode to receive response data as server-sent events.</summary>
         public bool? Stream { get; set; }
-        /// <summary>&quot;Controls randomness in the response generation. Range: 0 to 2. Lower values produce more deterministic outputs, higher values increase variety and creativity.&quot;</summary>
+        /// <summary>Controls randomness in the response generation. Range: 0 to 2. Lower values produce more deterministic outputs, higher values increase variety and creativity.</summary>
         public double? Temperature { get; set; }
         /// <summary>Response format configuration. Supports plain text or structured JSON output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,7 +72,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestText Text { get; set; }
 #endif
-        /// <summary>&quot;Controls which (if any) tool is called by the model.`none` means the model will not call any tool and instead generates a message.`auto` means the model can pick between generating a message or calling one or more tools.`required` means the model must call one or more tools.Specifying a particular tool via `{\&quot;type\&quot;: \&quot;function\&quot;, \&quot;function\&quot;: {\&quot;name\&quot;: \&quot;my_function\&quot;}}` forces the model to call that tool.`none` is the default when no tools are present. `auto` is the default if tools are present.&quot;</summary>
+        /// <summary>Controls which (if any) tool is called by the model.`none` means the model will not call any tool and instead generates a message.`auto` means the model can pick between generating a message or calling one or more tools.`required` means the model must call one or more tools.Specifying a particular tool via `{&quot;type&quot;: &quot;function&quot;, &quot;function&quot;: {&quot;name&quot;: &quot;my_function&quot;}}` forces the model to call that tool.`none` is the default when no tools are present. `auto` is the default if tools are present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOption? ToolChoice { get; set; }
@@ -88,9 +88,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public List<global::Soenneker.Groq.OpenApiClient.Models.ResponseTool> Tools { get; set; }
 #endif
-        /// <summary>&quot;Nucleus sampling parameter that controls the cumulative probability cutoff. Range: 0 to 1. A value of 0.1 restricts sampling to tokens within the top 10% probability mass.&quot;</summary>
+        /// <summary>Nucleus sampling parameter that controls the cumulative probability cutoff. Range: 0 to 1. A value of 0.1 restricts sampling to tokens within the top 10% probability mass.</summary>
         public double? TopP { get; set; }
-        /// <summary>&quot;Context truncation strategy. Supported values: `auto` or `disabled`.&quot;</summary>
+        /// <summary>Context truncation strategy. Supported values: `auto` or `disabled`.</summary>
         public global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestTruncation? Truncation { get; set; }
         /// <summary>Optional identifier for tracking end-user requests. Useful for usage monitoring and compliance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

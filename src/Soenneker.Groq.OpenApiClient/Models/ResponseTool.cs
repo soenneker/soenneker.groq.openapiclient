@@ -41,7 +41,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>Whether to enable strict schema adherence when generating the function call.</summary>
         public bool? Strict { get; set; }
         /// <summary>The type of the tool. Currently, only `function` is supported.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseToolType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.FunctionType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseTool"/> and sets the default values.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseToolParameters>(global::Soenneker.Groq.OpenApiClient.Models.ResponseToolParameters.CreateFromDiscriminatorValue); } },
                 { "strict", n => { Strict = n.GetBoolValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseToolType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionType>(); } },
             };
         }
         /// <summary>
@@ -85,7 +85,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseToolParameters>("parameters", Parameters);
             writer.WriteBoolValue("strict", Strict);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseToolType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

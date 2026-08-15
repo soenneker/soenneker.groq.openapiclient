@@ -3,13 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The type of the reasoning output. Always `reasoning`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ResponseOutputReasoningType
+    #pragma warning disable CS1591
+    public enum NomicEmbedTextV15Value
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "reasoning")]
+        [EnumMember(Value = "nomic-embed-text-v1_5")]
         #pragma warning disable CS1591
-        Reasoning,
+        NomicEmbedTextV15,
         #pragma warning restore CS1591
     }
 }

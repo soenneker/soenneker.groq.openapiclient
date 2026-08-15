@@ -24,8 +24,8 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The object property</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.DeleteFileResponseObject? Object { get; set; }
+        /// <summary>The object type, which is always `file`.</summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.FileObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.DeleteFileResponse"/> and sets the default values.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.DeleteFileResponseObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FileObject>(); } },
             };
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.DeleteFileResponseObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FileObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

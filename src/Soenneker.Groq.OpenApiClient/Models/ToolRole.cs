@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The type of response format being defined. Always `json_schema`.</summary>
+    /// <summary>The role of the messages author, in this case `tool`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum TextResponseFormatJsonSchemaType
+    public enum ToolRole
     {
-        [EnumMember(Value = "json_schema")]
+        [EnumMember(Value = "tool")]
         #pragma warning disable CS1591
-        JsonSchema,
+        Tool,
         #pragma warning restore CS1591
     }
 }

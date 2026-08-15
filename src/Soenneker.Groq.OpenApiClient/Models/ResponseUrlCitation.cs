@@ -28,7 +28,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public string Title { get; set; }
 #endif
         /// <summary>The type of the annotation. Always `url_citation`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseUrlCitationType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.UrlCitationType? Type { get; set; }
         /// <summary>The URL of the web resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +65,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "end_index", n => { EndIndex = n.GetIntValue(); } },
                 { "start_index", n => { StartIndex = n.GetIntValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseUrlCitationType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.UrlCitationType>(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -79,7 +79,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteIntValue("end_index", EndIndex);
             writer.WriteIntValue("start_index", StartIndex);
             writer.WriteStringValue("title", Title);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseUrlCitationType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.UrlCitationType>("type", Type);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

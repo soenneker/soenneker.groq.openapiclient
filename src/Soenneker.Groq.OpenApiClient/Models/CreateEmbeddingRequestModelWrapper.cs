@@ -15,7 +15,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The value property</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateEmbeddingRequestModelWrapperValue? Value { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.NomicEmbedTextV15Value? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateEmbeddingRequestModelWrapper"/> and sets the default values.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateEmbeddingRequestModelWrapperValue>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.NomicEmbedTextV15Value>(); } },
             };
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateEmbeddingRequestModelWrapperValue>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.NomicEmbedTextV15Value>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>Identifies this document source as inline text.</summary>
+    /// <summary>The role of the messages author, in this case `user`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ChatCompletionDocumentSourceTextType
+    public enum UserRole
     {
-        [EnumMember(Value = "text")]
+        [EnumMember(Value = "user")]
         #pragma warning disable CS1591
-        Text,
+        User,
         #pragma warning restore CS1591
     }
 }
