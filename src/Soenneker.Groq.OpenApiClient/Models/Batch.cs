@@ -83,10 +83,10 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>Set of key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.BatchMetadata? Metadata { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.BatchMetadata Metadata { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The object type, which is always `batch`.</summary>
         public global::Soenneker.Groq.OpenApiClient.Models.BatchObject? Object { get; set; }
@@ -148,7 +148,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "in_progress_at", n => { InProgressAt = n.GetIntValue(); } },
                 { "input_file_id", n => { InputFileId = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.BatchMetadata>(global::Soenneker.Groq.OpenApiClient.Models.BatchMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty>(global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.BatchObject>(); } },
                 { "output_file_id", n => { OutputFileId = n.GetStringValue(); } },
                 { "request_counts", n => { RequestCounts = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts>(global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts.CreateFromDiscriminatorValue); } },
@@ -177,7 +177,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteIntValue("in_progress_at", InProgressAt);
             writer.WriteStringValue("input_file_id", InputFileId);
-            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.BatchMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty>("metadata", Metadata);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.BatchObject>("object", Object);
             writer.WriteStringValue("output_file_id", OutputFileId);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts>("request_counts", RequestCounts);

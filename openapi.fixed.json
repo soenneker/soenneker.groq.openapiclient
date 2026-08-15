@@ -1173,7 +1173,7 @@
             "$ref": "#/components/schemas/BatchRequestCounts"
           },
           "metadata": {
-            "$ref": "#/components/schemas/BatchMetadata"
+            "$ref": "#/components/schemas/BatchMetadataProperty"
           }
         }
       },
@@ -1923,7 +1923,7 @@
             "nullable": true
           },
           "logit_bias": {
-            "$ref": "#/components/schemas/CreateChatCompletionRequestLogitBias"
+            "$ref": "#/components/schemas/CreateChatCompletionRequestLogitBiasProperty"
           },
           "logprobs": {
             "type": "boolean",
@@ -2048,7 +2048,7 @@
             "deprecated": true
           },
           "metadata": {
-            "$ref": "#/components/schemas/CreateChatCompletionRequestMetadata"
+            "$ref": "#/components/schemas/CreateChatCompletionRequestMetadataProperty"
           },
           "store": {
             "type": "boolean",
@@ -3099,7 +3099,7 @@
             "$ref": "#/components/schemas/CreateResponseRequestReasoning"
           },
           "metadata": {
-            "$ref": "#/components/schemas/CreateResponseRequestMetadata"
+            "$ref": "#/components/schemas/CreateResponseRequestMetadataProperty"
           },
           "parallel_tool_calls": {
             "type": "boolean",
@@ -3565,7 +3565,7 @@
             "$ref": "#/components/schemas/CreateResponseResponseTruncation"
           },
           "metadata": {
-            "$ref": "#/components/schemas/CreateResponseResponseMetadata"
+            "$ref": "#/components/schemas/CreateResponseResponseMetadataProperty"
           },
           "temperature": {
             "type": "number",
@@ -5577,6 +5577,10 @@
         "type": "string",
         "format": "binary"
       },
+      "BatchMetadataProperty": {
+        "type": "object",
+        "description": "Set of key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format.\n"
+      },
       "ChatCompletionDocumentSourceJsonDataProperty": {
         "type": "object",
         "description": "The JSON payload associated with the document."
@@ -5589,6 +5593,27 @@
         "type": "object",
         "description": "Function parameters defined as a JSON Schema object. Refer to https://json-schema.org/understanding-json-schema/ for schema documentation."
       },
+      "CreateChatCompletionRequestLogitBiasProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer"
+        },
+        "description": "This is not yet supported by any of our models.\nModify the likelihood of specified tokens appearing in the completion.\n"
+      },
+      "CreateChatCompletionRequestMetadataProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "This parameter is not currently supported.\n"
+      },
+      "CreateResponseRequestMetadataProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Custom key-value pairs for storing additional information. Maximum of 16 pairs.\n"
+      },
       "ResponseToolParameters": {
         "type": "object",
         "description": "Function parameters defined as a JSON Schema object. Refer to https://json-schema.org/understanding-json-schema/ for schema documentation."
@@ -5596,6 +5621,13 @@
       "TextResponseFormatJsonSchemaSchemaProperty": {
         "type": "object",
         "description": "The schema for the response format, described as a JSON Schema object.\n"
+      },
+      "CreateResponseResponseMetadataProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Metadata attached to the response."
       },
       "ResponseOutputReasoningSummaryItemProperty": {
         "type": "object"

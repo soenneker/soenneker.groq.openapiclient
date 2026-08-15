@@ -58,10 +58,10 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>Metadata attached to the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseMetadata? Metadata { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseMetadata Metadata { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The model used for the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -188,7 +188,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "max_output_tokens", n => { MaxOutputTokens = n.GetIntValue(); } },
                 { "max_tool_calls", n => { MaxToolCalls = n.GetIntValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseMetadata>(global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseMetadataProperty>(global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseObject>(); } },
                 { "output", n => { Output = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputItem>(global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -224,7 +224,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteIntValue("max_output_tokens", MaxOutputTokens);
             writer.WriteIntValue("max_tool_calls", MaxToolCalls);
-            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("model", Model);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateResponseResponseObject>("object", Object);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputItem>("output", Output);

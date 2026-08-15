@@ -75,10 +75,10 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>This is not yet supported by any of our models.Modify the likelihood of specified tokens appearing in the completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBias? LogitBias { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty? LogitBias { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBias LogitBias { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty LogitBias { get; set; }
 #endif
         /// <summary>This is not yet supported by any of our models.Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the `content` of `message`.</summary>
         public bool? Logprobs { get; set; }
@@ -98,10 +98,10 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>This parameter is not currently supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadata? Metadata { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadata Metadata { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>ID of the model to use. For details on which models are compatible with the Chat API, see available [models](https://console.groq.com/docs/models)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -226,12 +226,12 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "functions", n => { Functions = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "include_domains", n => { IncludeDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "include_reasoning", n => { IncludeReasoning = n.GetBoolValue(); } },
-                { "logit_bias", n => { LogitBias = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBias>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBias.CreateFromDiscriminatorValue); } },
+                { "logit_bias", n => { LogitBias = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty.CreateFromDiscriminatorValue); } },
                 { "logprobs", n => { Logprobs = n.GetBoolValue(); } },
                 { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadata>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestModel>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestModel.CreateFromDiscriminatorValue); } },
                 { "n", n => { N = n.GetIntValue(); } },
                 { "parallel_tool_calls", n => { ParallelToolCalls = n.GetBoolValue(); } },
@@ -270,12 +270,12 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions>("functions", Functions);
             writer.WriteCollectionOfPrimitiveValues<string>("include_domains", IncludeDomains);
             writer.WriteBoolValue("include_reasoning", IncludeReasoning);
-            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBias>("logit_bias", LogitBias);
+            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty>("logit_bias", LogitBias);
             writer.WriteBoolValue("logprobs", Logprobs);
             writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage>("messages", Messages);
-            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty>("metadata", Metadata);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestModel>("model", Model);
             writer.WriteIntValue("n", N);
             writer.WriteBoolValue("parallel_tool_calls", ParallelToolCalls);

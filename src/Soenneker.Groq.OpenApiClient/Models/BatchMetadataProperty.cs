@@ -11,26 +11,26 @@ namespace Soenneker.Groq.OpenApiClient.Models
     /// Set of key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class BatchMetadata : IAdditionalDataHolder, IParsable
+    public partial class BatchMetadataProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.BatchMetadata"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty"/> and sets the default values.
         /// </summary>
-        public BatchMetadata()
+        public BatchMetadataProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Models.BatchMetadata"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Groq.OpenApiClient.Models.BatchMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.BatchMetadata();
+            return new global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty();
         }
         /// <summary>
         /// The deserialization information for the current model

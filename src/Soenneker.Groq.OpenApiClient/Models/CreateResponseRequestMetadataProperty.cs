@@ -11,26 +11,26 @@ namespace Soenneker.Groq.OpenApiClient.Models
     /// Custom key-value pairs for storing additional information. Maximum of 16 pairs.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CreateResponseRequestMetadata : IAdditionalDataHolder, IParsable
+    public partial class CreateResponseRequestMetadataProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestMetadata"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestMetadataProperty"/> and sets the default values.
         /// </summary>
-        public CreateResponseRequestMetadata()
+        public CreateResponseRequestMetadataProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestMetadata"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestMetadataProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestMetadataProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestMetadata();
+            return new global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestMetadataProperty();
         }
         /// <summary>
         /// The deserialization information for the current model
