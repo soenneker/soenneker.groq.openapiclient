@@ -47,6 +47,6 @@ foreach (var model in result?.Data ?? [])
 
 Endpoints follow Kiota's request-builder hierarchy. For example, chat completions are available at `client.Openai.V1.Chat.Completions`, while fine-tuning operations are under `client.V1.Fine_tunings`.
 
-For dependency-injection setup and managed HTTP-client reuse, use `Soenneker.Groq.OpenApiClientUtil`, which composes this generated client with `Soenneker.Groq.HttpClients`.
+For application registration and managed HTTP-client reuse, use `Soenneker.Groq.OpenApiClientUtil`, which composes this generated client with `Soenneker.Groq.HttpClients`.
 
 This repository contains generated source. Add application-specific behavior in separate partial-class files or wrapper services because regeneration can replace generated files.
