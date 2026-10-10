@@ -2,7 +2,7 @@
   "descriptionHash": "C84FA791A0E259CCE95CC787A9CC3A2A80687BD60C4B6E26779B13C234586494212AFED98872E00A4F6E780418E9332785A16A7E91BCF4F611A968256E9E7218",
   "descriptionLocation": "../../openapi.fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.35.0",
+  "kiotaVersion": "1.36.0",
   "clientClassName": "GroqOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Groq.OpenApiClient",
