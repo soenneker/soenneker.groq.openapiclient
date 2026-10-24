@@ -67,19 +67,19 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 result.ChatCompletionRequestAssistantMessage = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestAssistantMessage();
             }
-            else if("ChatCompletionRequestFunctionMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("function".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionRequestFunctionMessage = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestFunctionMessage();
             }
-            else if("ChatCompletionRequestSystemMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("developer".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionRequestSystemMessage = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestSystemMessage();
             }
-            else if("ChatCompletionRequestToolMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("tool".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionRequestToolMessage = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestToolMessage();
             }
-            else if("ChatCompletionRequestUserMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("user".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionRequestUserMessage = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestUserMessage();
             }

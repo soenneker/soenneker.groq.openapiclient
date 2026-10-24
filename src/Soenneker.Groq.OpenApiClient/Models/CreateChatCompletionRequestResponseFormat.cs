@@ -45,17 +45,17 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat();
-            if("ResponseFormatJsonObject".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("json_object".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ResponseFormatJsonObject = new global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatJsonObject();
             }
-            else if("ResponseFormatJsonSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("json_schema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ResponseFormatJsonSchema = new global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatJsonSchema();
             }
-            else if("ResponseFormatText".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ResponseFormatText = new global::Soenneker.Groq.OpenApiClient.Models.ResponseFormatText();
             }

@@ -5,7 +5,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
 {
     /// <summary>The type of the tool. `function`, `browser_search`, and `code_interpreter` are supported.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ChatCompletionToolTypeWrapperValue
+    public enum ChatCompletionToolTypeAnyOf1
     {
         [EnumMember(Value = "function")]
         #pragma warning disable CS1591

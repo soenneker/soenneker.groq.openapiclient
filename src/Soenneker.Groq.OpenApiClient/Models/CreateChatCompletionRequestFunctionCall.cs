@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctionCallOption"/>, <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctionCallOption"/>, <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallOneOf1"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateChatCompletionRequestFunctionCall : IComposedTypeWrapper, IParsable
@@ -21,14 +21,8 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctionCallOption ChatCompletionFunctionCallOption { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallWrapper? CreateChatCompletionRequestFunctionCallWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallWrapper CreateChatCompletionRequestFunctionCallWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallOneOf1"/></summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallOneOf1? CreateChatCompletionRequestFunctionCallOneOf1 { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -43,9 +37,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 result.ChatCompletionFunctionCallOption = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctionCallOption();
             }
-            else if("CreateChatCompletionRequestFunctionCallWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallOneOf1>() is global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallOneOf1 createChatCompletionRequestFunctionCallOneOf1Value)
             {
-                result.CreateChatCompletionRequestFunctionCallWrapper = new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallWrapper();
+                result.CreateChatCompletionRequestFunctionCallOneOf1 = createChatCompletionRequestFunctionCallOneOf1Value;
             }
             return result;
         }
@@ -58,10 +52,6 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ChatCompletionFunctionCallOption != null)
             {
                 return ChatCompletionFunctionCallOption.GetFieldDeserializers();
-            }
-            else if(CreateChatCompletionRequestFunctionCallWrapper != null)
-            {
-                return CreateChatCompletionRequestFunctionCallWrapper.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -76,9 +66,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctionCallOption>(null, ChatCompletionFunctionCallOption);
             }
-            else if(CreateChatCompletionRequestFunctionCallWrapper != null)
+            else if(CreateChatCompletionRequestFunctionCallOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallWrapper>(null, CreateChatCompletionRequestFunctionCallWrapper);
+                writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallOneOf1>(null, CreateChatCompletionRequestFunctionCallOneOf1);
             }
         }
     }

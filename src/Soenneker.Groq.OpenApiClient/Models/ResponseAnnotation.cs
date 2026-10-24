@@ -43,7 +43,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 result.ResponseFileCitation = new global::Soenneker.Groq.OpenApiClient.Models.ResponseFileCitation();
             }
-            else if("ResponseUrlCitation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("url_citation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ResponseUrlCitation = new global::Soenneker.Groq.OpenApiClient.Models.ResponseUrlCitation();
             }

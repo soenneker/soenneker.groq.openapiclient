@@ -8,26 +8,20 @@ using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeBranch2"/>, <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeAnyOf1"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatCompletionToolType : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeBranch2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeAnyOf1"/></summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeAnyOf1? ChatCompletionToolTypeAnyOf1 { get; set; }
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeBranch2? ChatCompletionToolTypeBranch2 { get; set; }
+        public string? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeBranch2 ChatCompletionToolTypeBranch2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeWrapper? ChatCompletionToolTypeWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeWrapper ChatCompletionToolTypeWrapper { get; set; }
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,8 +32,14 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolType();
-            result.ChatCompletionToolTypeBranch2 = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeBranch2();
-            result.ChatCompletionToolTypeWrapper = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeWrapper();
+            if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeAnyOf1>() is global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeAnyOf1 chatCompletionToolTypeAnyOf1Value)
+            {
+                result.ChatCompletionToolTypeAnyOf1 = chatCompletionToolTypeAnyOf1Value;
+            }
             return result;
         }
         /// <summary>
@@ -48,10 +48,6 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ChatCompletionToolTypeBranch2 != null || ChatCompletionToolTypeWrapper != null)
-            {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatCompletionToolTypeBranch2, ChatCompletionToolTypeWrapper);
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -61,7 +57,14 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeBranch2>(null, ChatCompletionToolTypeBranch2, ChatCompletionToolTypeWrapper);
+            if(String != null)
+            {
+                writer.WriteStringValue(null, String);
+            }
+            else if(ChatCompletionToolTypeAnyOf1 != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolTypeAnyOf1>(null, ChatCompletionToolTypeAnyOf1);
+            }
         }
     }
 }

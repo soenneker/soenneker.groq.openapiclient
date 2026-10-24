@@ -17,10 +17,10 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>Additional metadata for the tool.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItemToolsItemAnnotations? Annotations { get; set; }
+        public UntypedNode? Annotations { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItemToolsItemAnnotations Annotations { get; set; }
+        public UntypedNode Annotations { get; set; }
 #endif
         /// <summary>Description of what the tool does.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,7 +71,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "annotations", n => { Annotations = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItemToolsItemAnnotations>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItemToolsItemAnnotations.CreateFromDiscriminatorValue); } },
+                { "annotations", n => { Annotations = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "input_schema", n => { InputSchema = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItemToolsItemInputSchemaProperty>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItemToolsItemInputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -84,7 +84,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItemToolsItemAnnotations>("annotations", Annotations);
+            writer.WriteObjectValue<UntypedNode>("annotations", Annotations);
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItemToolsItemInputSchemaProperty>("input_schema", InputSchema);
             writer.WriteStringValue("name", Name);

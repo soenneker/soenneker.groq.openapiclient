@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionNamedToolChoice"/>, <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionNamedToolChoice"/>, <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionOneOf1"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatCompletionToolChoiceOption : IComposedTypeWrapper, IParsable
@@ -21,14 +21,8 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionNamedToolChoice ChatCompletionNamedToolChoice { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionWrapper? ChatCompletionToolChoiceOptionWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionWrapper ChatCompletionToolChoiceOptionWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionOneOf1"/></summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionOneOf1? ChatCompletionToolChoiceOptionOneOf1 { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -43,9 +37,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 result.ChatCompletionNamedToolChoice = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionNamedToolChoice();
             }
-            else if("ChatCompletionToolChoiceOptionWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionOneOf1>() is global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionOneOf1 chatCompletionToolChoiceOptionOneOf1Value)
             {
-                result.ChatCompletionToolChoiceOptionWrapper = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionWrapper();
+                result.ChatCompletionToolChoiceOptionOneOf1 = chatCompletionToolChoiceOptionOneOf1Value;
             }
             return result;
         }
@@ -58,10 +52,6 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ChatCompletionNamedToolChoice != null)
             {
                 return ChatCompletionNamedToolChoice.GetFieldDeserializers();
-            }
-            else if(ChatCompletionToolChoiceOptionWrapper != null)
-            {
-                return ChatCompletionToolChoiceOptionWrapper.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -76,9 +66,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionNamedToolChoice>(null, ChatCompletionNamedToolChoice);
             }
-            else if(ChatCompletionToolChoiceOptionWrapper != null)
+            else if(ChatCompletionToolChoiceOptionOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionWrapper>(null, ChatCompletionToolChoiceOptionWrapper);
+                writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOptionOneOf1>(null, ChatCompletionToolChoiceOptionOneOf1);
             }
         }
     }

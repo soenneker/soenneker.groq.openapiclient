@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoice"/>, <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoice"/>, <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionOneOf1"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ResponseToolChoiceOption : IComposedTypeWrapper, IParsable
@@ -21,14 +21,8 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoice ResponseNamedToolChoice { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionWrapper? ResponseToolChoiceOptionWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionWrapper ResponseToolChoiceOptionWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionOneOf1"/></summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionOneOf1? ResponseToolChoiceOptionOneOf1 { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -43,9 +37,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 result.ResponseNamedToolChoice = new global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoice();
             }
-            else if("ResponseToolChoiceOptionWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionOneOf1>() is global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionOneOf1 responseToolChoiceOptionOneOf1Value)
             {
-                result.ResponseToolChoiceOptionWrapper = new global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionWrapper();
+                result.ResponseToolChoiceOptionOneOf1 = responseToolChoiceOptionOneOf1Value;
             }
             return result;
         }
@@ -58,10 +52,6 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ResponseNamedToolChoice != null)
             {
                 return ResponseNamedToolChoice.GetFieldDeserializers();
-            }
-            else if(ResponseToolChoiceOptionWrapper != null)
-            {
-                return ResponseToolChoiceOptionWrapper.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -76,9 +66,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseNamedToolChoice>(null, ResponseNamedToolChoice);
             }
-            else if(ResponseToolChoiceOptionWrapper != null)
+            else if(ResponseToolChoiceOptionOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionWrapper>(null, ResponseToolChoiceOptionWrapper);
+                writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ResponseToolChoiceOptionOneOf1>(null, ResponseToolChoiceOptionOneOf1);
             }
         }
     }

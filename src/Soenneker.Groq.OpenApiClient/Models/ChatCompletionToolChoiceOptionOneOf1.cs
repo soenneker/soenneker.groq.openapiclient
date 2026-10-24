@@ -3,9 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>`none` means the model will not call a function and instead generates a message. `auto` means the model can pick between generating a message or calling a function.</summary>
+    /// <summary>`none` means the model will not call any tool and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum CreateChatCompletionRequestFunctionCallWrapperValue
+    public enum ChatCompletionToolChoiceOptionOneOf1
     {
         [EnumMember(Value = "none")]
         #pragma warning disable CS1591

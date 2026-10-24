@@ -39,11 +39,11 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSource();
-            if("ChatCompletionDocumentSourceJson".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("json".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionDocumentSourceJson = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceJson();
             }
-            else if("ChatCompletionDocumentSourceText".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionDocumentSourceText = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceText();
             }

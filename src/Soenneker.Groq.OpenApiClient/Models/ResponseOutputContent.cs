@@ -38,8 +38,14 @@ namespace Soenneker.Groq.OpenApiClient.Models
 #else
         public string Text { get; set; }
 #endif
-        /// <summary>The type of the output text. Always `output_text`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.OutputTextType? Type { get; set; }
+        /// <summary>The type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ResponseOutputContent"/> and sets the default values.
         /// </summary>
@@ -68,7 +74,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "annotations", n => { Annotations = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ResponseAnnotation>(global::Soenneker.Groq.OpenApiClient.Models.ResponseAnnotation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "logprobs", n => { Logprobs = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.OutputTextType>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -81,7 +87,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ResponseAnnotation>("annotations", Annotations);
             writer.WriteCollectionOfPrimitiveValues<string>("logprobs", Logprobs);
             writer.WriteStringValue("text", Text);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.OutputTextType>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
