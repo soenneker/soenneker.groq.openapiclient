@@ -51,7 +51,7 @@ namespace Soenneker.Groq.OpenApiClient.Openai.V1.Reranking
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.RerankingResponse>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.RerankingResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.RerankingResponse>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.RerankingResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Given a query and a list of documents, returns the documents ranked by their relevance to the query.The documents are scored and sorted in descending order of relevance.

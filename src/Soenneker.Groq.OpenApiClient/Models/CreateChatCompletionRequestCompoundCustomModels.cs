@@ -11,24 +11,39 @@ namespace Soenneker.Groq.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateChatCompletionRequestCompoundCustomModels : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("answering_model") is null) { _explicitNullValueAnsweringModel = default!; _explicitNullProperties?.Remove("answering_model"); }
+            else if (parseNode.GetChildNode("answering_model") is { } nullNodeAnsweringModel && nullNodeAnsweringModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnsweringModel = null;
+            if (parseNode.GetChildNode("reasoning_model") is null) { _explicitNullValueReasoningModel = default!; _explicitNullProperties?.Remove("reasoning_model"); }
+            else if (parseNode.GetChildNode("reasoning_model") is { } nullNodeReasoningModel && nullNodeReasoningModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningModel = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Custom model to use for answering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AnsweringModel { get; set; }
+        public string? AnsweringModel { get => _explicitNullValueAnsweringModel; set { _explicitNullValueAnsweringModel = value; AdditionalData?.Remove("answering_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("answering_model"); else _explicitNullProperties?.Remove("answering_model"); } }
+        private string? _explicitNullValueAnsweringModel = default!;
 #nullable restore
 #else
-        public string AnsweringModel { get; set; }
+        public string AnsweringModel { get => _explicitNullValueAnsweringModel; set { _explicitNullValueAnsweringModel = value; AdditionalData?.Remove("answering_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("answering_model"); else _explicitNullProperties?.Remove("answering_model"); } }
+        private string _explicitNullValueAnsweringModel = default!;
 #endif
         /// <summary>Custom model to use for reasoning.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReasoningModel { get; set; }
+        public string? ReasoningModel { get => _explicitNullValueReasoningModel; set { _explicitNullValueReasoningModel = value; AdditionalData?.Remove("reasoning_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_model"); else _explicitNullProperties?.Remove("reasoning_model"); } }
+        private string? _explicitNullValueReasoningModel = default!;
 #nullable restore
 #else
-        public string ReasoningModel { get; set; }
+        public string ReasoningModel { get => _explicitNullValueReasoningModel; set { _explicitNullValueReasoningModel = value; AdditionalData?.Remove("reasoning_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_model"); else _explicitNullProperties?.Remove("reasoning_model"); } }
+        private string _explicitNullValueReasoningModel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomModels"/> and sets the default values.
@@ -45,7 +60,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomModels CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomModels();
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomModels(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +85,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("answering_model", AnsweringModel);
             writer.WriteStringValue("reasoning_model", ReasoningModel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

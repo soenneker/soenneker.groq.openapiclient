@@ -55,7 +55,7 @@ namespace Soenneker.Groq.OpenApiClient.Openai.V1.Files.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.DeleteFileResponse>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.DeleteFileResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.DeleteFileResponse>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.DeleteFileResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns information about a file.
@@ -73,7 +73,7 @@ namespace Soenneker.Groq.OpenApiClient.Openai.V1.Files.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.FileObject1>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.FileObject1.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.FileObject1>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.FileObject1.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a file.

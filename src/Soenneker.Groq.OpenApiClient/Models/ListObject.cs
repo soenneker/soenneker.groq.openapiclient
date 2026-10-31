@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
+    /// <summary>The object type, which is always &quot;list&quot;.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum ListObject
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "list")]
         #pragma warning disable CS1591

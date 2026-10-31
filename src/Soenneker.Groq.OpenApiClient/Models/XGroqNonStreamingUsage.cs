@@ -12,13 +12,26 @@ namespace Soenneker.Groq.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class XGroqNonStreamingUsage : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dram_cached_tokens") is null) { _explicitNullValueDramCachedTokens = default!; _explicitNullProperties?.Remove("dram_cached_tokens"); }
+            else if (parseNode.GetChildNode("dram_cached_tokens") is { } nullNodeDramCachedTokens && nullNodeDramCachedTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DramCachedTokens = null;
+            if (parseNode.GetChildNode("sram_cached_tokens") is null) { _explicitNullValueSramCachedTokens = default!; _explicitNullProperties?.Remove("sram_cached_tokens"); }
+            else if (parseNode.GetChildNode("sram_cached_tokens") is { } nullNodeSramCachedTokens && nullNodeSramCachedTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SramCachedTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of tokens served from DRAM cache.</summary>
-        public int? DramCachedTokens { get; set; }
+        public int? DramCachedTokens { get => _explicitNullValueDramCachedTokens; set { _explicitNullValueDramCachedTokens = value; AdditionalData?.Remove("dram_cached_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dram_cached_tokens"); else _explicitNullProperties?.Remove("dram_cached_tokens"); } }
+        private int? _explicitNullValueDramCachedTokens = default!;
         /// <summary>Number of tokens served from SRAM cache.</summary>
-        public int? SramCachedTokens { get; set; }
+        public int? SramCachedTokens { get => _explicitNullValueSramCachedTokens; set { _explicitNullValueSramCachedTokens = value; AdditionalData?.Remove("sram_cached_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sram_cached_tokens"); else _explicitNullProperties?.Remove("sram_cached_tokens"); } }
+        private int? _explicitNullValueSramCachedTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreamingUsage"/> and sets the default values.
         /// </summary>
@@ -34,7 +47,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreamingUsage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreamingUsage();
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreamingUsage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,6 +72,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("dram_cached_tokens", DramCachedTokens);
             writer.WriteIntValue("sram_cached_tokens", SramCachedTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

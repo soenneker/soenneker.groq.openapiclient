@@ -19,7 +19,7 @@ namespace Soenneker.Groq.OpenApiClient.Openai.V1.ModelsRequests
     public partial class ModelsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Groq.OpenApiClient.openai.v1.modelsRequests.item collection</summary>
-        /// <param name="position">The model to get</param>
+        /// <param name="position">The model to delete</param>
         /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Openai.V1.ModelsRequests.Item.WithModelItemRequestBuilder"/></returns>
         public global::Soenneker.Groq.OpenApiClient.Openai.V1.ModelsRequests.Item.WithModelItemRequestBuilder this[string position]
         {
@@ -62,7 +62,7 @@ namespace Soenneker.Groq.OpenApiClient.Openai.V1.ModelsRequests
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.ListModelsResponse>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.ListModelsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.ListModelsResponse>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.ListModelsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// get all available models

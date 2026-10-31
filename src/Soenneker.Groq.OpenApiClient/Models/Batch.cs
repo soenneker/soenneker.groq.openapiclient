@@ -11,103 +11,179 @@ namespace Soenneker.Groq.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Batch : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cancelled_at") is null) { _explicitNullValueCancelledAt = default!; _explicitNullProperties?.Remove("cancelled_at"); }
+            else if (parseNode.GetChildNode("cancelled_at") is { } nullNodeCancelledAt && nullNodeCancelledAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CancelledAt = null;
+            if (parseNode.GetChildNode("cancelling_at") is null) { _explicitNullValueCancellingAt = default!; _explicitNullProperties?.Remove("cancelling_at"); }
+            else if (parseNode.GetChildNode("cancelling_at") is { } nullNodeCancellingAt && nullNodeCancellingAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CancellingAt = null;
+            if (parseNode.GetChildNode("completed_at") is null) { _explicitNullValueCompletedAt = default!; _explicitNullProperties?.Remove("completed_at"); }
+            else if (parseNode.GetChildNode("completed_at") is { } nullNodeCompletedAt && nullNodeCompletedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletedAt = null;
+            if (parseNode.GetChildNode("completion_window") is null) { _explicitNullValueCompletionWindow = default!; _explicitNullProperties?.Remove("completion_window"); }
+            else if (parseNode.GetChildNode("completion_window") is { } nullNodeCompletionWindow && nullNodeCompletionWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletionWindow = null;
+            if (parseNode.GetChildNode("created_at") is null) { _explicitNullValueCreatedAt = default!; _explicitNullProperties?.Remove("created_at"); }
+            else if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("endpoint") is null) { _explicitNullValueEndpoint = default!; _explicitNullProperties?.Remove("endpoint"); }
+            else if (parseNode.GetChildNode("endpoint") is { } nullNodeEndpoint && nullNodeEndpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Endpoint = null;
+            if (parseNode.GetChildNode("error_file_id") is null) { _explicitNullValueErrorFileId = default!; _explicitNullProperties?.Remove("error_file_id"); }
+            else if (parseNode.GetChildNode("error_file_id") is { } nullNodeErrorFileId && nullNodeErrorFileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorFileId = null;
+            if (parseNode.GetChildNode("errors") is null) { _explicitNullValueErrors = default!; _explicitNullProperties?.Remove("errors"); }
+            else if (parseNode.GetChildNode("errors") is { } nullNodeErrors && nullNodeErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Errors = null;
+            if (parseNode.GetChildNode("expired_at") is null) { _explicitNullValueExpiredAt = default!; _explicitNullProperties?.Remove("expired_at"); }
+            else if (parseNode.GetChildNode("expired_at") is { } nullNodeExpiredAt && nullNodeExpiredAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiredAt = null;
+            if (parseNode.GetChildNode("expires_at") is null) { _explicitNullValueExpiresAt = default!; _explicitNullProperties?.Remove("expires_at"); }
+            else if (parseNode.GetChildNode("expires_at") is { } nullNodeExpiresAt && nullNodeExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresAt = null;
+            if (parseNode.GetChildNode("failed_at") is null) { _explicitNullValueFailedAt = default!; _explicitNullProperties?.Remove("failed_at"); }
+            else if (parseNode.GetChildNode("failed_at") is { } nullNodeFailedAt && nullNodeFailedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedAt = null;
+            if (parseNode.GetChildNode("finalizing_at") is null) { _explicitNullValueFinalizingAt = default!; _explicitNullProperties?.Remove("finalizing_at"); }
+            else if (parseNode.GetChildNode("finalizing_at") is { } nullNodeFinalizingAt && nullNodeFinalizingAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinalizingAt = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("in_progress_at") is null) { _explicitNullValueInProgressAt = default!; _explicitNullProperties?.Remove("in_progress_at"); }
+            else if (parseNode.GetChildNode("in_progress_at") is { } nullNodeInProgressAt && nullNodeInProgressAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InProgressAt = null;
+            if (parseNode.GetChildNode("input_file_id") is null) { _explicitNullValueInputFileId = default!; _explicitNullProperties?.Remove("input_file_id"); }
+            else if (parseNode.GetChildNode("input_file_id") is { } nullNodeInputFileId && nullNodeInputFileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputFileId = null;
+            if (parseNode.GetChildNode("metadata") is null) { _explicitNullValueMetadata = default!; _explicitNullProperties?.Remove("metadata"); }
+            else if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("object") is null) { _explicitNullValueObject = default!; _explicitNullProperties?.Remove("object"); }
+            else if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
+            if (parseNode.GetChildNode("output_file_id") is null) { _explicitNullValueOutputFileId = default!; _explicitNullProperties?.Remove("output_file_id"); }
+            else if (parseNode.GetChildNode("output_file_id") is { } nullNodeOutputFileId && nullNodeOutputFileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputFileId = null;
+            if (parseNode.GetChildNode("request_counts") is null) { _explicitNullValueRequestCounts = default!; _explicitNullProperties?.Remove("request_counts"); }
+            else if (parseNode.GetChildNode("request_counts") is { } nullNodeRequestCounts && nullNodeRequestCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestCounts = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The Unix timestamp (in seconds) for when the batch was cancelled.</summary>
-        public int? CancelledAt { get; set; }
+        public int? CancelledAt { get => _explicitNullValueCancelledAt; set { _explicitNullValueCancelledAt = value; AdditionalData?.Remove("cancelled_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cancelled_at"); else _explicitNullProperties?.Remove("cancelled_at"); } }
+        private int? _explicitNullValueCancelledAt = default!;
         /// <summary>The Unix timestamp (in seconds) for when the batch started cancelling.</summary>
-        public int? CancellingAt { get; set; }
+        public int? CancellingAt { get => _explicitNullValueCancellingAt; set { _explicitNullValueCancellingAt = value; AdditionalData?.Remove("cancelling_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cancelling_at"); else _explicitNullProperties?.Remove("cancelling_at"); } }
+        private int? _explicitNullValueCancellingAt = default!;
         /// <summary>The Unix timestamp (in seconds) for when the batch was completed.</summary>
-        public int? CompletedAt { get; set; }
+        public int? CompletedAt { get => _explicitNullValueCompletedAt; set { _explicitNullValueCompletedAt = value; AdditionalData?.Remove("completed_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completed_at"); else _explicitNullProperties?.Remove("completed_at"); } }
+        private int? _explicitNullValueCompletedAt = default!;
         /// <summary>The time frame within which the batch should be processed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CompletionWindow { get; set; }
+        public string? CompletionWindow { get => _explicitNullValueCompletionWindow; set { _explicitNullValueCompletionWindow = value; AdditionalData?.Remove("completion_window"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_window"); else _explicitNullProperties?.Remove("completion_window"); } }
+        private string? _explicitNullValueCompletionWindow = default!;
 #nullable restore
 #else
-        public string CompletionWindow { get; set; }
+        public string CompletionWindow { get => _explicitNullValueCompletionWindow; set { _explicitNullValueCompletionWindow = value; AdditionalData?.Remove("completion_window"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_window"); else _explicitNullProperties?.Remove("completion_window"); } }
+        private string _explicitNullValueCompletionWindow = default!;
 #endif
         /// <summary>The Unix timestamp (in seconds) for when the batch was created.</summary>
-        public int? CreatedAt { get; set; }
+        public int? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; AdditionalData?.Remove("created_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private int? _explicitNullValueCreatedAt = default!;
         /// <summary>The API endpoint used by the batch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Endpoint { get; set; }
+        public string? Endpoint { get => _explicitNullValueEndpoint; set { _explicitNullValueEndpoint = value; AdditionalData?.Remove("endpoint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint"); else _explicitNullProperties?.Remove("endpoint"); } }
+        private string? _explicitNullValueEndpoint = default!;
 #nullable restore
 #else
-        public string Endpoint { get; set; }
+        public string Endpoint { get => _explicitNullValueEndpoint; set { _explicitNullValueEndpoint = value; AdditionalData?.Remove("endpoint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint"); else _explicitNullProperties?.Remove("endpoint"); } }
+        private string _explicitNullValueEndpoint = default!;
 #endif
         /// <summary>The ID of the file containing the outputs of requests with errors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ErrorFileId { get; set; }
+        public string? ErrorFileId { get => _explicitNullValueErrorFileId; set { _explicitNullValueErrorFileId = value; AdditionalData?.Remove("error_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_file_id"); else _explicitNullProperties?.Remove("error_file_id"); } }
+        private string? _explicitNullValueErrorFileId = default!;
 #nullable restore
 #else
-        public string ErrorFileId { get; set; }
+        public string ErrorFileId { get => _explicitNullValueErrorFileId; set { _explicitNullValueErrorFileId = value; AdditionalData?.Remove("error_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_file_id"); else _explicitNullProperties?.Remove("error_file_id"); } }
+        private string _explicitNullValueErrorFileId = default!;
 #endif
         /// <summary>The errors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.BatchErrors? Errors { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.BatchErrors? Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; AdditionalData?.Remove("errors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.BatchErrors? _explicitNullValueErrors = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.BatchErrors Errors { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.BatchErrors Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; AdditionalData?.Remove("errors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.BatchErrors _explicitNullValueErrors = default!;
 #endif
         /// <summary>The Unix timestamp (in seconds) for when the batch expired.</summary>
-        public int? ExpiredAt { get; set; }
+        public int? ExpiredAt { get => _explicitNullValueExpiredAt; set { _explicitNullValueExpiredAt = value; AdditionalData?.Remove("expired_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expired_at"); else _explicitNullProperties?.Remove("expired_at"); } }
+        private int? _explicitNullValueExpiredAt = default!;
         /// <summary>The Unix timestamp (in seconds) for when the batch will expire.</summary>
-        public int? ExpiresAt { get; set; }
+        public int? ExpiresAt { get => _explicitNullValueExpiresAt; set { _explicitNullValueExpiresAt = value; AdditionalData?.Remove("expires_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_at"); else _explicitNullProperties?.Remove("expires_at"); } }
+        private int? _explicitNullValueExpiresAt = default!;
         /// <summary>The Unix timestamp (in seconds) for when the batch failed.</summary>
-        public int? FailedAt { get; set; }
+        public int? FailedAt { get => _explicitNullValueFailedAt; set { _explicitNullValueFailedAt = value; AdditionalData?.Remove("failed_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_at"); else _explicitNullProperties?.Remove("failed_at"); } }
+        private int? _explicitNullValueFailedAt = default!;
         /// <summary>The Unix timestamp (in seconds) for when the batch started finalizing.</summary>
-        public int? FinalizingAt { get; set; }
+        public int? FinalizingAt { get => _explicitNullValueFinalizingAt; set { _explicitNullValueFinalizingAt = value; AdditionalData?.Remove("finalizing_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finalizing_at"); else _explicitNullProperties?.Remove("finalizing_at"); } }
+        private int? _explicitNullValueFinalizingAt = default!;
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The Unix timestamp (in seconds) for when the batch started processing.</summary>
-        public int? InProgressAt { get; set; }
+        public int? InProgressAt { get => _explicitNullValueInProgressAt; set { _explicitNullValueInProgressAt = value; AdditionalData?.Remove("in_progress_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("in_progress_at"); else _explicitNullProperties?.Remove("in_progress_at"); } }
+        private int? _explicitNullValueInProgressAt = default!;
         /// <summary>The ID of the input file for the batch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputFileId { get; set; }
+        public string? InputFileId { get => _explicitNullValueInputFileId; set { _explicitNullValueInputFileId = value; AdditionalData?.Remove("input_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_file_id"); else _explicitNullProperties?.Remove("input_file_id"); } }
+        private string? _explicitNullValueInputFileId = default!;
 #nullable restore
 #else
-        public string InputFileId { get; set; }
+        public string InputFileId { get => _explicitNullValueInputFileId; set { _explicitNullValueInputFileId = value; AdditionalData?.Remove("input_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_file_id"); else _explicitNullProperties?.Remove("input_file_id"); } }
+        private string _explicitNullValueInputFileId = default!;
 #endif
         /// <summary>Set of key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty? Metadata { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; AdditionalData?.Remove("metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty Metadata { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; AdditionalData?.Remove("metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty _explicitNullValueMetadata = default!;
 #endif
         /// <summary>The object type, which is always `batch`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.BatchObject? Object { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.BatchObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; AdditionalData?.Remove("object"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.BatchObject? _explicitNullValueObject = default!;
         /// <summary>The ID of the file containing the outputs of successfully executed requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OutputFileId { get; set; }
+        public string? OutputFileId { get => _explicitNullValueOutputFileId; set { _explicitNullValueOutputFileId = value; AdditionalData?.Remove("output_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_file_id"); else _explicitNullProperties?.Remove("output_file_id"); } }
+        private string? _explicitNullValueOutputFileId = default!;
 #nullable restore
 #else
-        public string OutputFileId { get; set; }
+        public string OutputFileId { get => _explicitNullValueOutputFileId; set { _explicitNullValueOutputFileId = value; AdditionalData?.Remove("output_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_file_id"); else _explicitNullProperties?.Remove("output_file_id"); } }
+        private string _explicitNullValueOutputFileId = default!;
 #endif
         /// <summary>The request counts for different statuses within the batch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts? RequestCounts { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts? RequestCounts { get => _explicitNullValueRequestCounts; set { _explicitNullValueRequestCounts = value; AdditionalData?.Remove("request_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_counts"); else _explicitNullProperties?.Remove("request_counts"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts? _explicitNullValueRequestCounts = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts RequestCounts { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts RequestCounts { get => _explicitNullValueRequestCounts; set { _explicitNullValueRequestCounts = value; AdditionalData?.Remove("request_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_counts"); else _explicitNullProperties?.Remove("request_counts"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts _explicitNullValueRequestCounts = default!;
 #endif
         /// <summary>The current status of the batch.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.BatchStatus? Status { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.BatchStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.BatchStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.Batch"/> and sets the default values.
         /// </summary>
@@ -123,7 +199,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.Batch CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.Batch();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.Batch(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -149,10 +225,10 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "in_progress_at", n => { InProgressAt = n.GetIntValue(); } },
                 { "input_file_id", n => { InputFileId = n.GetStringValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty>(global::Soenneker.Groq.OpenApiClient.Models.BatchMetadataProperty.CreateFromDiscriminatorValue); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.BatchObject>(); } },
+                { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.BatchObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
                 { "output_file_id", n => { OutputFileId = n.GetStringValue(); } },
                 { "request_counts", n => { RequestCounts = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts>(global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.BatchStatus>(); } },
+                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.BatchStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
         }
         /// <summary>
@@ -182,6 +258,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteStringValue("output_file_id", OutputFileId);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.BatchRequestCounts>("request_counts", RequestCounts);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.BatchStatus>("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

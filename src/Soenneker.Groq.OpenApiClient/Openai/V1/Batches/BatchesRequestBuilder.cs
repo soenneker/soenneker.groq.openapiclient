@@ -62,7 +62,7 @@ namespace Soenneker.Groq.OpenApiClient.Openai.V1.Batches
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.ListBatchesResponse>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.ListBatchesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.ListBatchesResponse>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.ListBatchesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates and executes a batch from an uploaded file of requests. [Learn more](/docs/batch).
@@ -82,7 +82,7 @@ namespace Soenneker.Groq.OpenApiClient.Openai.V1.Batches
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.Batch>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.Batch.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Groq.OpenApiClient.Models.Batch>(requestInfo, global::Soenneker.Groq.OpenApiClient.Models.Batch.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List your organization&apos;s batches.

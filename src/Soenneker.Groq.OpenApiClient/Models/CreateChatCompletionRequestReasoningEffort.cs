@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>qwen3 models support the following valuesSet to &apos;none&apos; to disable reasoning.Set to &apos;default&apos; or null to let Qwen reason.openai/gpt-oss-20b and openai/gpt-oss-120b support &apos;low&apos;, &apos;medium&apos;, or &apos;high&apos;.&apos;medium&apos; is the default value.</summary>
+    /// <summary>qwen3 models support `none` to disable reasoning and `default` or nullto use the model default.qwen/qwen3.8-27b additionally supports `low`, `medium`, and `high`.Its default is `none`; `high` selects the model&apos;s native `xhigh` mode.openai/gpt-oss-20b and openai/gpt-oss-120b support &apos;low&apos;, &apos;medium&apos;, or &apos;high&apos;.&apos;medium&apos; is the default value.Values outside a model&apos;s supported set are rejected with a 400.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CreateChatCompletionRequestReasoningEffort
     {
@@ -14,6 +14,10 @@ namespace Soenneker.Groq.OpenApiClient.Models
         [EnumMember(Value = "default")]
         #pragma warning disable CS1591
         DefaultValue,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "minimal")]
+        #pragma warning disable CS1591
+        Minimal,
         #pragma warning restore CS1591
         [EnumMember(Value = "low")]
         #pragma warning disable CS1591
@@ -26,6 +30,14 @@ namespace Soenneker.Groq.OpenApiClient.Models
         [EnumMember(Value = "high")]
         #pragma warning disable CS1591
         High,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "xhigh")]
+        #pragma warning disable CS1591
+        Xhigh,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "max")]
+        #pragma warning disable CS1591
+        Max,
         #pragma warning restore CS1591
     }
 }

@@ -12,7 +12,12 @@ namespace Soenneker.Groq.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateChatCompletionRequestFunctionCall : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctionCallOption"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,13 +40,21 @@ namespace Soenneker.Groq.OpenApiClient.Models
             var result = new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCall();
             if("ChatCompletionFunctionCallOption".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ChatCompletionFunctionCallOption = new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctionCallOption();
+                
             }
-            else if(parseNode.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallOneOf1>() is global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallOneOf1 createChatCompletionRequestFunctionCallOneOf1Value)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString unionEnumValue0 && ("none".Equals(unionEnumValue0.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "auto".Equals(unionEnumValue0.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "required".Equals(unionEnumValue0.GetValue(), global::System.StringComparison.OrdinalIgnoreCase)) && parseNode.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallOneOf1>() is global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCallOneOf1 createChatCompletionRequestFunctionCallOneOf1Value)
             {
                 result.CreateChatCompletionRequestFunctionCallOneOf1 = createChatCompletionRequestFunctionCallOneOf1Value;
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("name") && (!shapeMembers1.ContainsKey("name") || (((shapeMembers1["name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.ChatCompletionFunctionCallOption == null && result.CreateChatCompletionRequestFunctionCallOneOf1 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.ChatCompletionFunctionCallOption = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctionCallOption(), parseNode);
+            if (result.ChatCompletionFunctionCallOption == null && result.CreateChatCompletionRequestFunctionCallOneOf1 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,6 +62,8 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(ChatCompletionFunctionCallOption != null)
             {
                 return ChatCompletionFunctionCallOption.GetFieldDeserializers();
@@ -61,9 +76,17 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ChatCompletionFunctionCallOption == null && CreateChatCompletionRequestFunctionCallOneOf1 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            int selectedUnionBranches = 0;
+            if (ChatCompletionFunctionCallOption != null) selectedUnionBranches++;
+            if (CreateChatCompletionRequestFunctionCallOneOf1 != null) selectedUnionBranches++;
+            if (ChatCompletionFunctionCallOption != null && selectedUnionBranches == 1) { if (ChatCompletionFunctionCallOption is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatCompletionFunctionCallOption); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(ChatCompletionFunctionCallOption != null)
             {
+                if (ChatCompletionFunctionCallOption is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctionCallOption>(null, ChatCompletionFunctionCallOption);
             }
             else if(CreateChatCompletionRequestFunctionCallOneOf1 != null)

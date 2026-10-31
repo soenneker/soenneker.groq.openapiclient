@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The service tier used for the request.</summary>
+    /// <summary>The service tier used for the request. Deployments running in strict OpenAI compatibility report Groq-specific tiers as `default`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CreateChatCompletionResponseServiceTier
     {
@@ -22,6 +22,10 @@ namespace Soenneker.Groq.OpenApiClient.Models
         [EnumMember(Value = "performance")]
         #pragma warning disable CS1591
         Performance,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "default")]
+        #pragma warning disable CS1591
+        DefaultValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464")]
         #pragma warning disable CS1591

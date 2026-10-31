@@ -11,38 +11,61 @@ namespace Soenneker.Groq.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CodeExecutionResult : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("chart") is null) { _explicitNullValueChart = default!; _explicitNullProperties?.Remove("chart"); }
+            else if (parseNode.GetChildNode("chart") is { } nullNodeChart && nullNodeChart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Chart = null;
+            if (parseNode.GetChildNode("charts") is null) { _explicitNullValueCharts = default!; _explicitNullProperties?.Remove("charts"); }
+            else if (parseNode.GetChildNode("charts") is { } nullNodeCharts && nullNodeCharts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Charts = null;
+            if (parseNode.GetChildNode("png") is null) { _explicitNullValuePng = default!; _explicitNullProperties?.Remove("png"); }
+            else if (parseNode.GetChildNode("png") is { } nullNodePng && nullNodePng.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Png = null;
+            if (parseNode.GetChildNode("text") is null) { _explicitNullValueText = default!; _explicitNullProperties?.Remove("text"); }
+            else if (parseNode.GetChildNode("text") is { } nullNodeText && nullNodeText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Text = null;
+        }
+
         /// <summary>The chart property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.Chart? Chart { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.Chart? Chart { get => _explicitNullValueChart; set { _explicitNullValueChart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chart"); else _explicitNullProperties?.Remove("chart"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.Chart? _explicitNullValueChart = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.Chart Chart { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.Chart Chart { get => _explicitNullValueChart; set { _explicitNullValueChart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chart"); else _explicitNullProperties?.Remove("chart"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.Chart _explicitNullValueChart = default!;
 #endif
         /// <summary>Array of charts from a superchart</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Groq.OpenApiClient.Models.Chart>? Charts { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.Chart>? Charts { get => _explicitNullValueCharts; set { _explicitNullValueCharts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("charts"); else _explicitNullProperties?.Remove("charts"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.Chart>? _explicitNullValueCharts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Groq.OpenApiClient.Models.Chart> Charts { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.Chart> Charts { get => _explicitNullValueCharts; set { _explicitNullValueCharts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("charts"); else _explicitNullProperties?.Remove("charts"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.Chart> _explicitNullValueCharts = default!;
 #endif
         /// <summary>Base64 encoded PNG image output from code execution</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Png { get; set; }
+        public string? Png { get => _explicitNullValuePng; set { _explicitNullValuePng = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("png"); else _explicitNullProperties?.Remove("png"); } }
+        private string? _explicitNullValuePng = default!;
 #nullable restore
 #else
-        public string Png { get; set; }
+        public string Png { get => _explicitNullValuePng; set { _explicitNullValuePng = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("png"); else _explicitNullProperties?.Remove("png"); } }
+        private string _explicitNullValuePng = default!;
 #endif
         /// <summary>The text version of the code execution result</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Text { get; set; }
+        public string? Text { get => _explicitNullValueText; set { _explicitNullValueText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
+        private string? _explicitNullValueText = default!;
 #nullable restore
 #else
-        public string Text { get; set; }
+        public string Text { get => _explicitNullValueText; set { _explicitNullValueText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
+        private string _explicitNullValueText = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -52,7 +75,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.CodeExecutionResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.CodeExecutionResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.CodeExecutionResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,7 +101,8 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.Chart>("chart", Chart);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.Chart>("charts", Charts);
             writer.WriteStringValue("png", Png);
-            writer.WriteStringValue("text", Text);
+            writer.WriteStringValue("text", Text);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

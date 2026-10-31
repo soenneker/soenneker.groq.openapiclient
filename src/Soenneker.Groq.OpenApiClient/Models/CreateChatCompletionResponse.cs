@@ -12,78 +12,126 @@ namespace Soenneker.Groq.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateChatCompletionResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("choices") is null) { _explicitNullValueChoices = default!; _explicitNullProperties?.Remove("choices"); }
+            else if (parseNode.GetChildNode("choices") is { } nullNodeChoices && nullNodeChoices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Choices = null;
+            if (parseNode.GetChildNode("created") is null) { _explicitNullValueCreated = default!; _explicitNullProperties?.Remove("created"); }
+            else if (parseNode.GetChildNode("created") is { } nullNodeCreated && nullNodeCreated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Created = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("mcp_list_tools") is null) { _explicitNullValueMcpListTools = default!; _explicitNullProperties?.Remove("mcp_list_tools"); }
+            else if (parseNode.GetChildNode("mcp_list_tools") is { } nullNodeMcpListTools && nullNodeMcpListTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpListTools = null;
+            if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
+            else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("object") is null) { _explicitNullValueObject = default!; _explicitNullProperties?.Remove("object"); }
+            else if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
+            if (parseNode.GetChildNode("service_tier") is null) { _explicitNullValueServiceTier = default!; _explicitNullProperties?.Remove("service_tier"); }
+            else if (parseNode.GetChildNode("service_tier") is { } nullNodeServiceTier && nullNodeServiceTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceTier = null;
+            if (parseNode.GetChildNode("system_fingerprint") is null) { _explicitNullValueSystemFingerprint = default!; _explicitNullProperties?.Remove("system_fingerprint"); }
+            else if (parseNode.GetChildNode("system_fingerprint") is { } nullNodeSystemFingerprint && nullNodeSystemFingerprint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SystemFingerprint = null;
+            if (parseNode.GetChildNode("usage") is null) { _explicitNullValueUsage = default!; _explicitNullProperties?.Remove("usage"); }
+            else if (parseNode.GetChildNode("usage") is { } nullNodeUsage && nullNodeUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Usage = null;
+            if (parseNode.GetChildNode("usage_breakdown") is null) { _explicitNullValueUsageBreakdown = default!; _explicitNullProperties?.Remove("usage_breakdown"); }
+            else if (parseNode.GetChildNode("usage_breakdown") is { } nullNodeUsageBreakdown && nullNodeUsageBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageBreakdown = null;
+            if (parseNode.GetChildNode("x_groq") is null) { _explicitNullValueXGroq = default!; _explicitNullProperties?.Remove("x_groq"); }
+            else if (parseNode.GetChildNode("x_groq") is { } nullNodeXGroq && nullNodeXGroq.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XGroq = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A list of chat completion choices. Can be more than one if `n` is greater than 1.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseChoicesItem>? Choices { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseChoicesItem>? Choices { get => _explicitNullValueChoices; set { _explicitNullValueChoices = value; AdditionalData?.Remove("choices"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choices"); else _explicitNullProperties?.Remove("choices"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseChoicesItem>? _explicitNullValueChoices = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseChoicesItem> Choices { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseChoicesItem> Choices { get => _explicitNullValueChoices; set { _explicitNullValueChoices = value; AdditionalData?.Remove("choices"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choices"); else _explicitNullProperties?.Remove("choices"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseChoicesItem> _explicitNullValueChoices = default!;
 #endif
         /// <summary>The Unix timestamp (in seconds) of when the chat completion was created.</summary>
-        public int? Created { get; set; }
+        public int? Created { get => _explicitNullValueCreated; set { _explicitNullValueCreated = value; AdditionalData?.Remove("created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created"); else _explicitNullProperties?.Remove("created"); } }
+        private int? _explicitNullValueCreated = default!;
         /// <summary>A unique identifier for the chat completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>List of discovered MCP tools from connected servers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem>? McpListTools { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem>? McpListTools { get => _explicitNullValueMcpListTools; set { _explicitNullValueMcpListTools = value; AdditionalData?.Remove("mcp_list_tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_list_tools"); else _explicitNullProperties?.Remove("mcp_list_tools"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem>? _explicitNullValueMcpListTools = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem> McpListTools { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem> McpListTools { get => _explicitNullValueMcpListTools; set { _explicitNullValueMcpListTools = value; AdditionalData?.Remove("mcp_list_tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_list_tools"); else _explicitNullProperties?.Remove("mcp_list_tools"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem> _explicitNullValueMcpListTools = default!;
 #endif
         /// <summary>The model used for the chat completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>The object type, which is always `chat.completion`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject? Object { get; set; }
-        /// <summary>The service tier used for the request.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier? ServiceTier { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; AdditionalData?.Remove("object"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject? _explicitNullValueObject = default!;
+        /// <summary>The service tier used for the request. Deployments running in strict OpenAI compatibility report Groq-specific tiers as `default`.</summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier? _explicitNullValueServiceTier = default!;
         /// <summary>This fingerprint represents the backend configuration that the model runs with.Can be used in conjunction with the `seed` request parameter to understand when backend changes have been made that might impact determinism.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SystemFingerprint { get; set; }
+        public string? SystemFingerprint { get => _explicitNullValueSystemFingerprint; set { _explicitNullValueSystemFingerprint = value; AdditionalData?.Remove("system_fingerprint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_fingerprint"); else _explicitNullProperties?.Remove("system_fingerprint"); } }
+        private string? _explicitNullValueSystemFingerprint = default!;
 #nullable restore
 #else
-        public string SystemFingerprint { get; set; }
+        public string SystemFingerprint { get => _explicitNullValueSystemFingerprint; set { _explicitNullValueSystemFingerprint = value; AdditionalData?.Remove("system_fingerprint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_fingerprint"); else _explicitNullProperties?.Remove("system_fingerprint"); } }
+        private string _explicitNullValueSystemFingerprint = default!;
 #endif
         /// <summary>Usage statistics for the completion request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage? Usage { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage? Usage { get => _explicitNullValueUsage; set { _explicitNullValueUsage = value; AdditionalData?.Remove("usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage"); else _explicitNullProperties?.Remove("usage"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage? _explicitNullValueUsage = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage Usage { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage Usage { get => _explicitNullValueUsage; set { _explicitNullValueUsage = value; AdditionalData?.Remove("usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage"); else _explicitNullProperties?.Remove("usage"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage _explicitNullValueUsage = default!;
 #endif
         /// <summary>Detailed usage breakdown by model when multiple models are used in the request for compound AI systems.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown? UsageBreakdown { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown? UsageBreakdown { get => _explicitNullValueUsageBreakdown; set { _explicitNullValueUsageBreakdown = value; AdditionalData?.Remove("usage_breakdown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_breakdown"); else _explicitNullProperties?.Remove("usage_breakdown"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown? _explicitNullValueUsageBreakdown = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown UsageBreakdown { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown UsageBreakdown { get => _explicitNullValueUsageBreakdown; set { _explicitNullValueUsageBreakdown = value; AdditionalData?.Remove("usage_breakdown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_breakdown"); else _explicitNullProperties?.Remove("usage_breakdown"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown _explicitNullValueUsageBreakdown = default!;
 #endif
         /// <summary>Groq-specific metadata for non-streaming chat completion responses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreaming? XGroq { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreaming? XGroq { get => _explicitNullValueXGroq; set { _explicitNullValueXGroq = value; AdditionalData?.Remove("x_groq"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_groq"); else _explicitNullProperties?.Remove("x_groq"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreaming? _explicitNullValueXGroq = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreaming XGroq { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreaming XGroq { get => _explicitNullValueXGroq; set { _explicitNullValueXGroq = value; AdditionalData?.Remove("x_groq"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_groq"); else _explicitNullProperties?.Remove("x_groq"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreaming _explicitNullValueXGroq = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponse"/> and sets the default values.
@@ -100,7 +148,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -115,8 +163,8 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "mcp_list_tools", n => { McpListTools = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject>(); } },
-                { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier>(); } },
+                { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
+                { "service_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueServiceTier = default; _explicitNullProperties?.Remove("service_tier"); AdditionalData["service_tier"] = unknown; } else { ServiceTier = parsed; AdditionalData.Remove("service_tier"); } } },
                 { "system_fingerprint", n => { SystemFingerprint = n.GetStringValue(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage>(global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage.CreateFromDiscriminatorValue); } },
                 { "usage_breakdown", n => { UsageBreakdown = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown.CreateFromDiscriminatorValue); } },
@@ -141,6 +189,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage>("usage", Usage);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown>("usage_breakdown", UsageBreakdown);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreaming>("x_groq", XGroq);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

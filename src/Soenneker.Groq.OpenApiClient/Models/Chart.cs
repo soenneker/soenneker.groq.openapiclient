@@ -11,106 +11,164 @@ namespace Soenneker.Groq.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Chart : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("elements") is null) { _explicitNullValueElements = default!; _explicitNullProperties?.Remove("elements"); }
+            else if (parseNode.GetChildNode("elements") is { } nullNodeElements && nullNodeElements.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Elements = null;
+            if (parseNode.GetChildNode("title") is null) { _explicitNullValueTitle = default!; _explicitNullProperties?.Remove("title"); }
+            else if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("x_label") is null) { _explicitNullValueXLabel = default!; _explicitNullProperties?.Remove("x_label"); }
+            else if (parseNode.GetChildNode("x_label") is { } nullNodeXLabel && nullNodeXLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XLabel = null;
+            if (parseNode.GetChildNode("x_scale") is null) { _explicitNullValueXScale = default!; _explicitNullProperties?.Remove("x_scale"); }
+            else if (parseNode.GetChildNode("x_scale") is { } nullNodeXScale && nullNodeXScale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XScale = null;
+            if (parseNode.GetChildNode("x_tick_labels") is null) { _explicitNullValueXTickLabels = default!; _explicitNullProperties?.Remove("x_tick_labels"); }
+            else if (parseNode.GetChildNode("x_tick_labels") is { } nullNodeXTickLabels && nullNodeXTickLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XTickLabels = null;
+            if (parseNode.GetChildNode("x_ticks") is null) { _explicitNullValueXTicks = default!; _explicitNullProperties?.Remove("x_ticks"); }
+            else if (parseNode.GetChildNode("x_ticks") is { } nullNodeXTicks && nullNodeXTicks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XTicks = null;
+            if (parseNode.GetChildNode("x_unit") is null) { _explicitNullValueXUnit = default!; _explicitNullProperties?.Remove("x_unit"); }
+            else if (parseNode.GetChildNode("x_unit") is { } nullNodeXUnit && nullNodeXUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XUnit = null;
+            if (parseNode.GetChildNode("y_label") is null) { _explicitNullValueYLabel = default!; _explicitNullProperties?.Remove("y_label"); }
+            else if (parseNode.GetChildNode("y_label") is { } nullNodeYLabel && nullNodeYLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YLabel = null;
+            if (parseNode.GetChildNode("y_scale") is null) { _explicitNullValueYScale = default!; _explicitNullProperties?.Remove("y_scale"); }
+            else if (parseNode.GetChildNode("y_scale") is { } nullNodeYScale && nullNodeYScale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YScale = null;
+            if (parseNode.GetChildNode("y_tick_labels") is null) { _explicitNullValueYTickLabels = default!; _explicitNullProperties?.Remove("y_tick_labels"); }
+            else if (parseNode.GetChildNode("y_tick_labels") is { } nullNodeYTickLabels && nullNodeYTickLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YTickLabels = null;
+            if (parseNode.GetChildNode("y_ticks") is null) { _explicitNullValueYTicks = default!; _explicitNullProperties?.Remove("y_ticks"); }
+            else if (parseNode.GetChildNode("y_ticks") is { } nullNodeYTicks && nullNodeYTicks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YTicks = null;
+            if (parseNode.GetChildNode("y_unit") is null) { _explicitNullValueYUnit = default!; _explicitNullProperties?.Remove("y_unit"); }
+            else if (parseNode.GetChildNode("y_unit") is { } nullNodeYUnit && nullNodeYUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YUnit = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The chart elements (data series, points, etc.)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Groq.OpenApiClient.Models.ChartElement>? Elements { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.ChartElement>? Elements { get => _explicitNullValueElements; set { _explicitNullValueElements = value; AdditionalData?.Remove("elements"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elements"); else _explicitNullProperties?.Remove("elements"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.ChartElement>? _explicitNullValueElements = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Groq.OpenApiClient.Models.ChartElement> Elements { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.ChartElement> Elements { get => _explicitNullValueElements; set { _explicitNullValueElements = value; AdditionalData?.Remove("elements"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elements"); else _explicitNullProperties?.Remove("elements"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.ChartElement> _explicitNullValueElements = default!;
 #endif
         /// <summary>The title of the chart</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>The type of chart</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.ChartType? Type { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.ChartType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.ChartType? _explicitNullValueType = default!;
         /// <summary>The label for the x-axis</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XLabel { get; set; }
+        public string? XLabel { get => _explicitNullValueXLabel; set { _explicitNullValueXLabel = value; AdditionalData?.Remove("x_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_label"); else _explicitNullProperties?.Remove("x_label"); } }
+        private string? _explicitNullValueXLabel = default!;
 #nullable restore
 #else
-        public string XLabel { get; set; }
+        public string XLabel { get => _explicitNullValueXLabel; set { _explicitNullValueXLabel = value; AdditionalData?.Remove("x_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_label"); else _explicitNullProperties?.Remove("x_label"); } }
+        private string _explicitNullValueXLabel = default!;
 #endif
         /// <summary>The scale type for the x-axis</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XScale { get; set; }
+        public string? XScale { get => _explicitNullValueXScale; set { _explicitNullValueXScale = value; AdditionalData?.Remove("x_scale"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_scale"); else _explicitNullProperties?.Remove("x_scale"); } }
+        private string? _explicitNullValueXScale = default!;
 #nullable restore
 #else
-        public string XScale { get; set; }
+        public string XScale { get => _explicitNullValueXScale; set { _explicitNullValueXScale = value; AdditionalData?.Remove("x_scale"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_scale"); else _explicitNullProperties?.Remove("x_scale"); } }
+        private string _explicitNullValueXScale = default!;
 #endif
         /// <summary>The labels for the x-axis ticks</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? XTickLabels { get; set; }
+        public List<string>? XTickLabels { get => _explicitNullValueXTickLabels; set { _explicitNullValueXTickLabels = value; AdditionalData?.Remove("x_tick_labels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_tick_labels"); else _explicitNullProperties?.Remove("x_tick_labels"); } }
+        private List<string>? _explicitNullValueXTickLabels = default!;
 #nullable restore
 #else
-        public List<string> XTickLabels { get; set; }
+        public List<string> XTickLabels { get => _explicitNullValueXTickLabels; set { _explicitNullValueXTickLabels = value; AdditionalData?.Remove("x_tick_labels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_tick_labels"); else _explicitNullProperties?.Remove("x_tick_labels"); } }
+        private List<string> _explicitNullValueXTickLabels = default!;
 #endif
         /// <summary>The tick values for the x-axis</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? XTicks { get; set; }
+        public List<double?>? XTicks { get => _explicitNullValueXTicks; set { _explicitNullValueXTicks = value; AdditionalData?.Remove("x_ticks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_ticks"); else _explicitNullProperties?.Remove("x_ticks"); } }
+        private List<double?>? _explicitNullValueXTicks = default!;
 #nullable restore
 #else
-        public List<double?> XTicks { get; set; }
+        public List<double?> XTicks { get => _explicitNullValueXTicks; set { _explicitNullValueXTicks = value; AdditionalData?.Remove("x_ticks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_ticks"); else _explicitNullProperties?.Remove("x_ticks"); } }
+        private List<double?> _explicitNullValueXTicks = default!;
 #endif
         /// <summary>The unit for the x-axis</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XUnit { get; set; }
+        public string? XUnit { get => _explicitNullValueXUnit; set { _explicitNullValueXUnit = value; AdditionalData?.Remove("x_unit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_unit"); else _explicitNullProperties?.Remove("x_unit"); } }
+        private string? _explicitNullValueXUnit = default!;
 #nullable restore
 #else
-        public string XUnit { get; set; }
+        public string XUnit { get => _explicitNullValueXUnit; set { _explicitNullValueXUnit = value; AdditionalData?.Remove("x_unit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_unit"); else _explicitNullProperties?.Remove("x_unit"); } }
+        private string _explicitNullValueXUnit = default!;
 #endif
         /// <summary>The label for the y-axis</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? YLabel { get; set; }
+        public string? YLabel { get => _explicitNullValueYLabel; set { _explicitNullValueYLabel = value; AdditionalData?.Remove("y_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_label"); else _explicitNullProperties?.Remove("y_label"); } }
+        private string? _explicitNullValueYLabel = default!;
 #nullable restore
 #else
-        public string YLabel { get; set; }
+        public string YLabel { get => _explicitNullValueYLabel; set { _explicitNullValueYLabel = value; AdditionalData?.Remove("y_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_label"); else _explicitNullProperties?.Remove("y_label"); } }
+        private string _explicitNullValueYLabel = default!;
 #endif
         /// <summary>The scale type for the y-axis</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? YScale { get; set; }
+        public string? YScale { get => _explicitNullValueYScale; set { _explicitNullValueYScale = value; AdditionalData?.Remove("y_scale"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_scale"); else _explicitNullProperties?.Remove("y_scale"); } }
+        private string? _explicitNullValueYScale = default!;
 #nullable restore
 #else
-        public string YScale { get; set; }
+        public string YScale { get => _explicitNullValueYScale; set { _explicitNullValueYScale = value; AdditionalData?.Remove("y_scale"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_scale"); else _explicitNullProperties?.Remove("y_scale"); } }
+        private string _explicitNullValueYScale = default!;
 #endif
         /// <summary>The labels for the y-axis ticks</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? YTickLabels { get; set; }
+        public List<string>? YTickLabels { get => _explicitNullValueYTickLabels; set { _explicitNullValueYTickLabels = value; AdditionalData?.Remove("y_tick_labels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_tick_labels"); else _explicitNullProperties?.Remove("y_tick_labels"); } }
+        private List<string>? _explicitNullValueYTickLabels = default!;
 #nullable restore
 #else
-        public List<string> YTickLabels { get; set; }
+        public List<string> YTickLabels { get => _explicitNullValueYTickLabels; set { _explicitNullValueYTickLabels = value; AdditionalData?.Remove("y_tick_labels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_tick_labels"); else _explicitNullProperties?.Remove("y_tick_labels"); } }
+        private List<string> _explicitNullValueYTickLabels = default!;
 #endif
         /// <summary>The tick values for the y-axis</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? YTicks { get; set; }
+        public List<double?>? YTicks { get => _explicitNullValueYTicks; set { _explicitNullValueYTicks = value; AdditionalData?.Remove("y_ticks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_ticks"); else _explicitNullProperties?.Remove("y_ticks"); } }
+        private List<double?>? _explicitNullValueYTicks = default!;
 #nullable restore
 #else
-        public List<double?> YTicks { get; set; }
+        public List<double?> YTicks { get => _explicitNullValueYTicks; set { _explicitNullValueYTicks = value; AdditionalData?.Remove("y_ticks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_ticks"); else _explicitNullProperties?.Remove("y_ticks"); } }
+        private List<double?> _explicitNullValueYTicks = default!;
 #endif
         /// <summary>The unit for the y-axis</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? YUnit { get; set; }
+        public string? YUnit { get => _explicitNullValueYUnit; set { _explicitNullValueYUnit = value; AdditionalData?.Remove("y_unit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_unit"); else _explicitNullProperties?.Remove("y_unit"); } }
+        private string? _explicitNullValueYUnit = default!;
 #nullable restore
 #else
-        public string YUnit { get; set; }
+        public string YUnit { get => _explicitNullValueYUnit; set { _explicitNullValueYUnit = value; AdditionalData?.Remove("y_unit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_unit"); else _explicitNullProperties?.Remove("y_unit"); } }
+        private string _explicitNullValueYUnit = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.Chart"/> and sets the default values.
@@ -127,7 +185,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.Chart CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.Chart();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.Chart(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -139,7 +197,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 { "elements", n => { Elements = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChartElement>(global::Soenneker.Groq.OpenApiClient.Models.ChartElement.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChartType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChartType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
                 { "x_label", n => { XLabel = n.GetStringValue(); } },
                 { "x_scale", n => { XScale = n.GetStringValue(); } },
                 { "x_tick_labels", n => { XTickLabels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -172,6 +230,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("y_tick_labels", YTickLabels);
             writer.WriteCollectionOfPrimitiveValues<double?>("y_ticks", YTicks);
             writer.WriteStringValue("y_unit", YUnit);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

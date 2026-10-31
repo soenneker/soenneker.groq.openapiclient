@@ -11,189 +11,377 @@ namespace Soenneker.Groq.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateChatCompletionRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("chat_template_args") is null) { _explicitNullValueChatTemplateArgs = default!; _explicitNullProperties?.Remove("chat_template_args"); }
+            else if (parseNode.GetChildNode("chat_template_args") is { } nullNodeChatTemplateArgs && nullNodeChatTemplateArgs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatTemplateArgs = null;
+            if (parseNode.GetChildNode("citation_options") is null) { _explicitNullValueCitationOptions = default!; _explicitNullProperties?.Remove("citation_options"); }
+            else if (parseNode.GetChildNode("citation_options") is { } nullNodeCitationOptions && nullNodeCitationOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CitationOptions = null;
+            if (parseNode.GetChildNode("compound_custom") is null) { _explicitNullValueCompoundCustom = default!; _explicitNullProperties?.Remove("compound_custom"); }
+            else if (parseNode.GetChildNode("compound_custom") is { } nullNodeCompoundCustom && nullNodeCompoundCustom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompoundCustom = null;
+            if (parseNode.GetChildNode("custom_template") is null) { _explicitNullValueCustomTemplate = default!; _explicitNullProperties?.Remove("custom_template"); }
+            else if (parseNode.GetChildNode("custom_template") is { } nullNodeCustomTemplate && nullNodeCustomTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomTemplate = null;
+            if (parseNode.GetChildNode("debug") is null) { _explicitNullValueDebug = default!; _explicitNullProperties?.Remove("debug"); }
+            else if (parseNode.GetChildNode("debug") is { } nullNodeDebug && nullNodeDebug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Debug = null;
+            if (parseNode.GetChildNode("disable_tool_validation") is null) { _explicitNullValueDisableToolValidation = default!; _explicitNullProperties?.Remove("disable_tool_validation"); }
+            else if (parseNode.GetChildNode("disable_tool_validation") is { } nullNodeDisableToolValidation && nullNodeDisableToolValidation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisableToolValidation = null;
+            if (parseNode.GetChildNode("documents") is null) { _explicitNullValueDocuments = default!; _explicitNullProperties?.Remove("documents"); }
+            else if (parseNode.GetChildNode("documents") is { } nullNodeDocuments && nullNodeDocuments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Documents = null;
+            if (parseNode.GetChildNode("exclude_domains") is null) { _explicitNullValueExcludeDomains = default!; _explicitNullProperties?.Remove("exclude_domains"); }
+            else if (parseNode.GetChildNode("exclude_domains") is { } nullNodeExcludeDomains && nullNodeExcludeDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeDomains = null;
+            if (parseNode.GetChildNode("exclude_instance_ids") is null) { _explicitNullValueExcludeInstanceIds = default!; _explicitNullProperties?.Remove("exclude_instance_ids"); }
+            else if (parseNode.GetChildNode("exclude_instance_ids") is { } nullNodeExcludeInstanceIds && nullNodeExcludeInstanceIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeInstanceIds = null;
+            if (parseNode.GetChildNode("frequency_penalty") is null) { _explicitNullValueFrequencyPenalty = default!; _explicitNullProperties?.Remove("frequency_penalty"); }
+            else if (parseNode.GetChildNode("frequency_penalty") is { } nullNodeFrequencyPenalty && nullNodeFrequencyPenalty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrequencyPenalty = null;
+            if (parseNode.GetChildNode("function_call") is null) { _explicitNullValueFunctionCall = default!; _explicitNullProperties?.Remove("function_call"); }
+            else if (parseNode.GetChildNode("function_call") is { } nullNodeFunctionCall && nullNodeFunctionCall.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunctionCall = null;
+            if (parseNode.GetChildNode("functions") is null) { _explicitNullValueFunctions = default!; _explicitNullProperties?.Remove("functions"); }
+            else if (parseNode.GetChildNode("functions") is { } nullNodeFunctions && nullNodeFunctions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Functions = null;
+            if (parseNode.GetChildNode("include_domains") is null) { _explicitNullValueIncludeDomains = default!; _explicitNullProperties?.Remove("include_domains"); }
+            else if (parseNode.GetChildNode("include_domains") is { } nullNodeIncludeDomains && nullNodeIncludeDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeDomains = null;
+            if (parseNode.GetChildNode("include_reasoning") is null) { _explicitNullValueIncludeReasoning = default!; _explicitNullProperties?.Remove("include_reasoning"); }
+            else if (parseNode.GetChildNode("include_reasoning") is { } nullNodeIncludeReasoning && nullNodeIncludeReasoning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeReasoning = null;
+            if (parseNode.GetChildNode("logit_bias") is null) { _explicitNullValueLogitBias = default!; _explicitNullProperties?.Remove("logit_bias"); }
+            else if (parseNode.GetChildNode("logit_bias") is { } nullNodeLogitBias && nullNodeLogitBias.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogitBias = null;
+            if (parseNode.GetChildNode("logprobs") is null) { _explicitNullValueLogprobs = default!; _explicitNullProperties?.Remove("logprobs"); }
+            else if (parseNode.GetChildNode("logprobs") is { } nullNodeLogprobs && nullNodeLogprobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Logprobs = null;
+            if (parseNode.GetChildNode("max_completion_tokens") is null) { _explicitNullValueMaxCompletionTokens = default!; _explicitNullProperties?.Remove("max_completion_tokens"); }
+            else if (parseNode.GetChildNode("max_completion_tokens") is { } nullNodeMaxCompletionTokens && nullNodeMaxCompletionTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxCompletionTokens = null;
+            if (parseNode.GetChildNode("max_tokens") is null) { _explicitNullValueMaxTokens = default!; _explicitNullProperties?.Remove("max_tokens"); }
+            else if (parseNode.GetChildNode("max_tokens") is { } nullNodeMaxTokens && nullNodeMaxTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxTokens = null;
+            if (parseNode.GetChildNode("messages") is null) { _explicitNullValueMessages = default!; _explicitNullProperties?.Remove("messages"); }
+            else if (parseNode.GetChildNode("messages") is { } nullNodeMessages && nullNodeMessages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Messages = null;
+            if (parseNode.GetChildNode("metadata") is null) { _explicitNullValueMetadata = default!; _explicitNullProperties?.Remove("metadata"); }
+            else if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
+            else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("n") is null) { _explicitNullValueN = default!; _explicitNullProperties?.Remove("n"); }
+            else if (parseNode.GetChildNode("n") is { } nullNodeN && nullNodeN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) N = null;
+            if (parseNode.GetChildNode("parallel_tool_calls") is null) { _explicitNullValueParallelToolCalls = default!; _explicitNullProperties?.Remove("parallel_tool_calls"); }
+            else if (parseNode.GetChildNode("parallel_tool_calls") is { } nullNodeParallelToolCalls && nullNodeParallelToolCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParallelToolCalls = null;
+            if (parseNode.GetChildNode("presence_penalty") is null) { _explicitNullValuePresencePenalty = default!; _explicitNullProperties?.Remove("presence_penalty"); }
+            else if (parseNode.GetChildNode("presence_penalty") is { } nullNodePresencePenalty && nullNodePresencePenalty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PresencePenalty = null;
+            if (parseNode.GetChildNode("raw") is null) { _explicitNullValueRaw = default!; _explicitNullProperties?.Remove("raw"); }
+            else if (parseNode.GetChildNode("raw") is { } nullNodeRaw && nullNodeRaw.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Raw = null;
+            if (parseNode.GetChildNode("reasoning_effort") is null) { _explicitNullValueReasoningEffort = default!; _explicitNullProperties?.Remove("reasoning_effort"); }
+            else if (parseNode.GetChildNode("reasoning_effort") is { } nullNodeReasoningEffort && nullNodeReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningEffort = null;
+            if (parseNode.GetChildNode("reasoning_format") is null) { _explicitNullValueReasoningFormat = default!; _explicitNullProperties?.Remove("reasoning_format"); }
+            else if (parseNode.GetChildNode("reasoning_format") is { } nullNodeReasoningFormat && nullNodeReasoningFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningFormat = null;
+            if (parseNode.GetChildNode("response_format") is null) { _explicitNullValueResponseFormat = default!; _explicitNullProperties?.Remove("response_format"); }
+            else if (parseNode.GetChildNode("response_format") is { } nullNodeResponseFormat && nullNodeResponseFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseFormat = null;
+            if (parseNode.GetChildNode("search_settings") is null) { _explicitNullValueSearchSettings = default!; _explicitNullProperties?.Remove("search_settings"); }
+            else if (parseNode.GetChildNode("search_settings") is { } nullNodeSearchSettings && nullNodeSearchSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchSettings = null;
+            if (parseNode.GetChildNode("seed") is null) { _explicitNullValueSeed = default!; _explicitNullProperties?.Remove("seed"); }
+            else if (parseNode.GetChildNode("seed") is { } nullNodeSeed && nullNodeSeed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Seed = null;
+            if (parseNode.GetChildNode("service_tier") is null) { _explicitNullValueServiceTier = default!; _explicitNullProperties?.Remove("service_tier"); }
+            else if (parseNode.GetChildNode("service_tier") is { } nullNodeServiceTier && nullNodeServiceTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceTier = null;
+            if (parseNode.GetChildNode("stop") is null) { _explicitNullValueStop = default!; _explicitNullProperties?.Remove("stop"); }
+            else if (parseNode.GetChildNode("stop") is { } nullNodeStop && nullNodeStop.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stop = null;
+            if (parseNode.GetChildNode("store") is null) { _explicitNullValueStore = default!; _explicitNullProperties?.Remove("store"); }
+            else if (parseNode.GetChildNode("store") is { } nullNodeStore && nullNodeStore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Store = null;
+            if (parseNode.GetChildNode("stream") is null) { _explicitNullValueStream = default!; _explicitNullProperties?.Remove("stream"); }
+            else if (parseNode.GetChildNode("stream") is { } nullNodeStream && nullNodeStream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stream = null;
+            if (parseNode.GetChildNode("stream_options") is null) { _explicitNullValueStreamOptions = default!; _explicitNullProperties?.Remove("stream_options"); }
+            else if (parseNode.GetChildNode("stream_options") is { } nullNodeStreamOptions && nullNodeStreamOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StreamOptions = null;
+            if (parseNode.GetChildNode("temperature") is null) { _explicitNullValueTemperature = default!; _explicitNullProperties?.Remove("temperature"); }
+            else if (parseNode.GetChildNode("temperature") is { } nullNodeTemperature && nullNodeTemperature.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Temperature = null;
+            if (parseNode.GetChildNode("tool_choice") is null) { _explicitNullValueToolChoice = default!; _explicitNullProperties?.Remove("tool_choice"); }
+            else if (parseNode.GetChildNode("tool_choice") is { } nullNodeToolChoice && nullNodeToolChoice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolChoice = null;
+            if (parseNode.GetChildNode("tools") is null) { _explicitNullValueTools = default!; _explicitNullProperties?.Remove("tools"); }
+            else if (parseNode.GetChildNode("tools") is { } nullNodeTools && nullNodeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tools = null;
+            if (parseNode.GetChildNode("top_logprobs") is null) { _explicitNullValueTopLogprobs = default!; _explicitNullProperties?.Remove("top_logprobs"); }
+            else if (parseNode.GetChildNode("top_logprobs") is { } nullNodeTopLogprobs && nullNodeTopLogprobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopLogprobs = null;
+            if (parseNode.GetChildNode("top_p") is null) { _explicitNullValueTopP = default!; _explicitNullProperties?.Remove("top_p"); }
+            else if (parseNode.GetChildNode("top_p") is { } nullNodeTopP && nullNodeTopP.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopP = null;
+            if (parseNode.GetChildNode("user") is null) { _explicitNullValueUser = default!; _explicitNullProperties?.Remove("user"); }
+            else if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
+        }
+
+        /// <summary>Chat-template parameters forwarded to Dynamo deployments unchanged.The serving runtime validates parameter names, values, and model support.Rejected for deployments that do not use Dynamo.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestChatTemplateArgsProperty? ChatTemplateArgs { get => _explicitNullValueChatTemplateArgs; set { _explicitNullValueChatTemplateArgs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_template_args"); else _explicitNullProperties?.Remove("chat_template_args"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestChatTemplateArgsProperty? _explicitNullValueChatTemplateArgs = default!;
+#nullable restore
+#else
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestChatTemplateArgsProperty ChatTemplateArgs { get => _explicitNullValueChatTemplateArgs; set { _explicitNullValueChatTemplateArgs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_template_args"); else _explicitNullProperties?.Remove("chat_template_args"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestChatTemplateArgsProperty _explicitNullValueChatTemplateArgs = default!;
+#endif
         /// <summary>Whether to enable citations in the response. When enabled, the model will include citations for information retrieved from provided documents or web searches.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCitationOptions? CitationOptions { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCitationOptions? CitationOptions { get => _explicitNullValueCitationOptions; set { _explicitNullValueCitationOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citation_options"); else _explicitNullProperties?.Remove("citation_options"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCitationOptions? _explicitNullValueCitationOptions = default!;
         /// <summary>Custom configuration of models and tools for Compound.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustom? CompoundCustom { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustom? CompoundCustom { get => _explicitNullValueCompoundCustom; set { _explicitNullValueCompoundCustom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compound_custom"); else _explicitNullProperties?.Remove("compound_custom"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustom? _explicitNullValueCompoundCustom = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustom CompoundCustom { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustom CompoundCustom { get => _explicitNullValueCompoundCustom; set { _explicitNullValueCompoundCustom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compound_custom"); else _explicitNullProperties?.Remove("compound_custom"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustom _explicitNullValueCompoundCustom = default!;
 #endif
+        /// <summary>Custom template configuration for message formatting.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCustomTemplate? CustomTemplate { get => _explicitNullValueCustomTemplate; set { _explicitNullValueCustomTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_template"); else _explicitNullProperties?.Remove("custom_template"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCustomTemplate? _explicitNullValueCustomTemplate = default!;
+#nullable restore
+#else
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCustomTemplate CustomTemplate { get => _explicitNullValueCustomTemplate; set { _explicitNullValueCustomTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_template"); else _explicitNullProperties?.Remove("custom_template"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCustomTemplate _explicitNullValueCustomTemplate = default!;
+#endif
+        /// <summary>output input and output token IDs in xgroq debug field</summary>
+        public bool? Debug { get => _explicitNullValueDebug; set { _explicitNullValueDebug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("debug"); else _explicitNullProperties?.Remove("debug"); } }
+        private bool? _explicitNullValueDebug = default!;
         /// <summary>If set to true, groq will return called tools without validating that the tool is present in request.tools. tool_choice=required/none will still be enforced, but the request cannot require a specific tool be used.</summary>
-        public bool? DisableToolValidation { get; set; }
+        public bool? DisableToolValidation { get => _explicitNullValueDisableToolValidation; set { _explicitNullValueDisableToolValidation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable_tool_validation"); else _explicitNullProperties?.Remove("disable_tool_validation"); } }
+        private bool? _explicitNullValueDisableToolValidation = default!;
         /// <summary>A list of documents to provide context for the conversation. Each document contains text that can be referenced by the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocument>? Documents { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocument>? Documents { get => _explicitNullValueDocuments; set { _explicitNullValueDocuments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documents"); else _explicitNullProperties?.Remove("documents"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocument>? _explicitNullValueDocuments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocument> Documents { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocument> Documents { get => _explicitNullValueDocuments; set { _explicitNullValueDocuments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documents"); else _explicitNullProperties?.Remove("documents"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocument> _explicitNullValueDocuments = default!;
 #endif
         /// <summary>Deprecated: Use search_settings.exclude_domains instead.A list of domains to exclude from the search results when the model uses a web search tool.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludeDomains { get; set; }
+        public List<string>? ExcludeDomains { get => _explicitNullValueExcludeDomains; set { _explicitNullValueExcludeDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_domains"); else _explicitNullProperties?.Remove("exclude_domains"); } }
+        private List<string>? _explicitNullValueExcludeDomains = default!;
 #nullable restore
 #else
-        public List<string> ExcludeDomains { get; set; }
+        public List<string> ExcludeDomains { get => _explicitNullValueExcludeDomains; set { _explicitNullValueExcludeDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_domains"); else _explicitNullProperties?.Remove("exclude_domains"); } }
+        private List<string> _explicitNullValueExcludeDomains = default!;
+#endif
+        /// <summary>For internal use only</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ExcludeInstanceIds { get => _explicitNullValueExcludeInstanceIds; set { _explicitNullValueExcludeInstanceIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_instance_ids"); else _explicitNullProperties?.Remove("exclude_instance_ids"); } }
+        private List<string>? _explicitNullValueExcludeInstanceIds = default!;
+#nullable restore
+#else
+        public List<string> ExcludeInstanceIds { get => _explicitNullValueExcludeInstanceIds; set { _explicitNullValueExcludeInstanceIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_instance_ids"); else _explicitNullProperties?.Remove("exclude_instance_ids"); } }
+        private List<string> _explicitNullValueExcludeInstanceIds = default!;
 #endif
         /// <summary>This is not yet supported by any of our models. Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model&apos;s likelihood to repeat the same line verbatim.</summary>
-        public double? FrequencyPenalty { get; set; }
+        public double? FrequencyPenalty { get => _explicitNullValueFrequencyPenalty; set { _explicitNullValueFrequencyPenalty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frequency_penalty"); else _explicitNullProperties?.Remove("frequency_penalty"); } }
+        private double? _explicitNullValueFrequencyPenalty = default!;
         /// <summary>Deprecated in favor of `tool_choice`.Controls which (if any) function is called by the model.`none` means the model will not call a function and instead generates a message.`auto` means the model can pick between generating a message or calling a function.Specifying a particular function via `{&quot;name&quot;: &quot;my_function&quot;}` forces the model to call that function.`none` is the default when no functions are present. `auto` is the default if functions are present.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCall? FunctionCall { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCall? FunctionCall { get => _explicitNullValueFunctionCall; set { _explicitNullValueFunctionCall = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function_call"); else _explicitNullProperties?.Remove("function_call"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCall? _explicitNullValueFunctionCall = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCall FunctionCall { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCall FunctionCall { get => _explicitNullValueFunctionCall; set { _explicitNullValueFunctionCall = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function_call"); else _explicitNullProperties?.Remove("function_call"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCall _explicitNullValueFunctionCall = default!;
 #endif
         /// <summary>Deprecated in favor of `tools`.A list of functions the model may generate JSON inputs for.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions>? Functions { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions>? Functions { get => _explicitNullValueFunctions; set { _explicitNullValueFunctions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("functions"); else _explicitNullProperties?.Remove("functions"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions>? _explicitNullValueFunctions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions> Functions { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions> Functions { get => _explicitNullValueFunctions; set { _explicitNullValueFunctions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("functions"); else _explicitNullProperties?.Remove("functions"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions> _explicitNullValueFunctions = default!;
 #endif
         /// <summary>Deprecated: Use search_settings.include_domains instead.A list of domains to include in the search results when the model uses a web search tool.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? IncludeDomains { get; set; }
+        public List<string>? IncludeDomains { get => _explicitNullValueIncludeDomains; set { _explicitNullValueIncludeDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_domains"); else _explicitNullProperties?.Remove("include_domains"); } }
+        private List<string>? _explicitNullValueIncludeDomains = default!;
 #nullable restore
 #else
-        public List<string> IncludeDomains { get; set; }
+        public List<string> IncludeDomains { get => _explicitNullValueIncludeDomains; set { _explicitNullValueIncludeDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_domains"); else _explicitNullProperties?.Remove("include_domains"); } }
+        private List<string> _explicitNullValueIncludeDomains = default!;
 #endif
         /// <summary>Whether to include reasoning in the response.  If true, the response will include a `reasoning` field. If false, the model&apos;s reasoning will not be included in the response.This field is mutually exclusive with `reasoning_format`.</summary>
-        public bool? IncludeReasoning { get; set; }
+        public bool? IncludeReasoning { get => _explicitNullValueIncludeReasoning; set { _explicitNullValueIncludeReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_reasoning"); else _explicitNullProperties?.Remove("include_reasoning"); } }
+        private bool? _explicitNullValueIncludeReasoning = default!;
         /// <summary>This is not yet supported by any of our models.Modify the likelihood of specified tokens appearing in the completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty? LogitBias { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty? LogitBias { get => _explicitNullValueLogitBias; set { _explicitNullValueLogitBias = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logit_bias"); else _explicitNullProperties?.Remove("logit_bias"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty? _explicitNullValueLogitBias = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty LogitBias { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty LogitBias { get => _explicitNullValueLogitBias; set { _explicitNullValueLogitBias = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logit_bias"); else _explicitNullProperties?.Remove("logit_bias"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestLogitBiasProperty _explicitNullValueLogitBias = default!;
 #endif
         /// <summary>This is not yet supported by any of our models.Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the `content` of `message`.</summary>
-        public bool? Logprobs { get; set; }
+        public bool? Logprobs { get => _explicitNullValueLogprobs; set { _explicitNullValueLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logprobs"); else _explicitNullProperties?.Remove("logprobs"); } }
+        private bool? _explicitNullValueLogprobs = default!;
         /// <summary>The maximum number of tokens that can be generated in the chat completion. The total length of input tokens and generated tokens is limited by the model&apos;s context length.</summary>
-        public int? MaxCompletionTokens { get; set; }
+        public int? MaxCompletionTokens { get => _explicitNullValueMaxCompletionTokens; set { _explicitNullValueMaxCompletionTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_completion_tokens"); else _explicitNullProperties?.Remove("max_completion_tokens"); } }
+        private int? _explicitNullValueMaxCompletionTokens = default!;
         /// <summary>Deprecated in favor of `max_completion_tokens`.The maximum number of tokens that can be generated in the chat completion. The total length of input tokens and generated tokens is limited by the model&apos;s context length.</summary>
         [Obsolete("")]
-        public int? MaxTokens { get; set; }
+        public int? MaxTokens { get => _explicitNullValueMaxTokens; set { _explicitNullValueMaxTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_tokens"); else _explicitNullProperties?.Remove("max_tokens"); } }
+        private int? _explicitNullValueMaxTokens = default!;
         /// <summary>A list of messages comprising the conversation so far.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage>? Messages { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage>? Messages { get => _explicitNullValueMessages; set { _explicitNullValueMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages"); else _explicitNullProperties?.Remove("messages"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage>? _explicitNullValueMessages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage> Messages { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage> Messages { get => _explicitNullValueMessages; set { _explicitNullValueMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages"); else _explicitNullProperties?.Remove("messages"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage> _explicitNullValueMessages = default!;
 #endif
         /// <summary>This parameter is not currently supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty? Metadata { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty Metadata { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty _explicitNullValueMetadata = default!;
 #endif
         /// <summary>ID of the model to use. For details on which models are compatible with the Chat API, see available [models](https://console.groq.com/docs/models)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestModel? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestModel Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>How many chat completion choices to generate for each input message. Note that the current moment, only n=1 is supported. Other values will result in a 400 response.</summary>
-        public int? N { get; set; }
+        public int? N { get => _explicitNullValueN; set { _explicitNullValueN = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n"); else _explicitNullProperties?.Remove("n"); } }
+        private int? _explicitNullValueN = default!;
         /// <summary>Whether to enable parallel function calling during tool use.</summary>
-        public bool? ParallelToolCalls { get; set; }
+        public bool? ParallelToolCalls { get => _explicitNullValueParallelToolCalls; set { _explicitNullValueParallelToolCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parallel_tool_calls"); else _explicitNullProperties?.Remove("parallel_tool_calls"); } }
+        private bool? _explicitNullValueParallelToolCalls = default!;
         /// <summary>This is not yet supported by any of our models. Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model&apos;s likelihood to talk about new topics.</summary>
-        public double? PresencePenalty { get; set; }
-        /// <summary>qwen3 models support the following valuesSet to &apos;none&apos; to disable reasoning.Set to &apos;default&apos; or null to let Qwen reason.openai/gpt-oss-20b and openai/gpt-oss-120b support &apos;low&apos;, &apos;medium&apos;, or &apos;high&apos;.&apos;medium&apos; is the default value.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningEffort? ReasoningEffort { get; set; }
+        public double? PresencePenalty { get => _explicitNullValuePresencePenalty; set { _explicitNullValuePresencePenalty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presence_penalty"); else _explicitNullProperties?.Remove("presence_penalty"); } }
+        private double? _explicitNullValuePresencePenalty = default!;
+        /// <summary>Skip output post-processing such as stop-sequence trimming, special-token dropping, reasoning parsing, tool parsing, and JSON validation. Engine generation controls, including requested stop sequences and response_format constraints, still apply. Only available to allowlisted or Groq-internal organizations on Gemma 4 models served through Sombrero; rejected on Dynamo endpoints.</summary>
+        public bool? Raw { get => _explicitNullValueRaw; set { _explicitNullValueRaw = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw"); else _explicitNullProperties?.Remove("raw"); } }
+        private bool? _explicitNullValueRaw = default!;
+        /// <summary>qwen3 models support `none` to disable reasoning and `default` or nullto use the model default.qwen/qwen3.8-27b additionally supports `low`, `medium`, and `high`.Its default is `none`; `high` selects the model&apos;s native `xhigh` mode.openai/gpt-oss-20b and openai/gpt-oss-120b support &apos;low&apos;, &apos;medium&apos;, or &apos;high&apos;.&apos;medium&apos; is the default value.Values outside a model&apos;s supported set are rejected with a 400.</summary>
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningEffort? ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningEffort? _explicitNullValueReasoningEffort = default!;
         /// <summary>Specifies how to output reasoning tokensThis field is mutually exclusive with `include_reasoning`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningFormat? ReasoningFormat { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningFormat? ReasoningFormat { get => _explicitNullValueReasoningFormat; set { _explicitNullValueReasoningFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_format"); else _explicitNullProperties?.Remove("reasoning_format"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningFormat? _explicitNullValueReasoningFormat = default!;
         /// <summary>An object specifying the format that the model must output. Setting to `{ &quot;type&quot;: &quot;json_schema&quot;, &quot;json_schema&quot;: {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. `json_schema` response format is only available on [supported models](https://console.groq.com/docs/structured-outputs#supported-models). Setting to `{ &quot;type&quot;: &quot;json_object&quot; }` enables the older JSON mode, which ensures the message the model generates is valid JSON. Using `json_schema` is preferred for models that support it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat? ResponseFormat { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat? ResponseFormat { get => _explicitNullValueResponseFormat; set { _explicitNullValueResponseFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_format"); else _explicitNullProperties?.Remove("response_format"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat? _explicitNullValueResponseFormat = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat ResponseFormat { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat ResponseFormat { get => _explicitNullValueResponseFormat; set { _explicitNullValueResponseFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_format"); else _explicitNullProperties?.Remove("response_format"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat _explicitNullValueResponseFormat = default!;
 #endif
         /// <summary>Settings for web search functionality when the model uses a web search tool.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestSearchSettings? SearchSettings { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestSearchSettings? SearchSettings { get => _explicitNullValueSearchSettings; set { _explicitNullValueSearchSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_settings"); else _explicitNullProperties?.Remove("search_settings"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestSearchSettings? _explicitNullValueSearchSettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestSearchSettings SearchSettings { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestSearchSettings SearchSettings { get => _explicitNullValueSearchSettings; set { _explicitNullValueSearchSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_settings"); else _explicitNullProperties?.Remove("search_settings"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestSearchSettings _explicitNullValueSearchSettings = default!;
 #endif
         /// <summary>If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same `seed` and parameters should return the same result.Determinism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend.</summary>
-        public int? Seed { get; set; }
+        public int? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private int? _explicitNullValueSeed = default!;
         /// <summary>The service tier to use for the request. Defaults to `on_demand`.- `auto` will automatically select the highest tier available within the rate limits of your organization.- `flex` uses the flex tier, which will succeed or fail quickly.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier? ServiceTier { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier? _explicitNullValueServiceTier = default!;
         /// <summary>Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop? Stop { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop? Stop { get => _explicitNullValueStop; set { _explicitNullValueStop = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stop"); else _explicitNullProperties?.Remove("stop"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop? _explicitNullValueStop = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop Stop { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop Stop { get => _explicitNullValueStop; set { _explicitNullValueStop = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stop"); else _explicitNullProperties?.Remove("stop"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop _explicitNullValueStop = default!;
 #endif
         /// <summary>This parameter is not currently supported.</summary>
-        public bool? Store { get; set; }
+        public bool? Store { get => _explicitNullValueStore; set { _explicitNullValueStore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("store"); else _explicitNullProperties?.Remove("store"); } }
+        private bool? _explicitNullValueStore = default!;
         /// <summary>If set, partial message deltas will be sent. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example code](/docs/text-chat#streaming-a-chat-completion).</summary>
-        public bool? Stream { get; set; }
+        public bool? Stream { get => _explicitNullValueStream; set { _explicitNullValueStream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stream"); else _explicitNullProperties?.Remove("stream"); } }
+        private bool? _explicitNullValueStream = default!;
+        /// <summary>Options for streaming response. Only set this when you set `stream: true`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionStreamOptions? StreamOptions { get => _explicitNullValueStreamOptions; set { _explicitNullValueStreamOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stream_options"); else _explicitNullProperties?.Remove("stream_options"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionStreamOptions? _explicitNullValueStreamOptions = default!;
+#nullable restore
+#else
+        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionStreamOptions StreamOptions { get => _explicitNullValueStreamOptions; set { _explicitNullValueStreamOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stream_options"); else _explicitNullProperties?.Remove("stream_options"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionStreamOptions _explicitNullValueStreamOptions = default!;
+#endif
         /// <summary>What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.</summary>
-        public double? Temperature { get; set; }
+        public double? Temperature { get => _explicitNullValueTemperature; set { _explicitNullValueTemperature = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("temperature"); else _explicitNullProperties?.Remove("temperature"); } }
+        private double? _explicitNullValueTemperature = default!;
         /// <summary>Controls which (if any) tool is called by the model.`none` means the model will not call any tool and instead generates a message.`auto` means the model can pick between generating a message or calling one or more tools.`required` means the model must call one or more tools.Specifying a particular tool via `{&quot;type&quot;: &quot;function&quot;, &quot;function&quot;: {&quot;name&quot;: &quot;my_function&quot;}}` forces the model to call that tool.`none` is the default when no tools are present. `auto` is the default if tools are present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption? ToolChoice { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption? ToolChoice { get => _explicitNullValueToolChoice; set { _explicitNullValueToolChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_choice"); else _explicitNullProperties?.Remove("tool_choice"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption? _explicitNullValueToolChoice = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption ToolChoice { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption ToolChoice { get => _explicitNullValueToolChoice; set { _explicitNullValueToolChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_choice"); else _explicitNullProperties?.Remove("tool_choice"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption _explicitNullValueToolChoice = default!;
 #endif
         /// <summary>A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionTool>? Tools { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionTool>? Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionTool>? _explicitNullValueTools = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionTool> Tools { get; set; }
+        public List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionTool> Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionTool> _explicitNullValueTools = default!;
 #endif
         /// <summary>This is not yet supported by any of our models.An integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability. `logprobs` must be set to `true` if this parameter is used.</summary>
-        public int? TopLogprobs { get; set; }
+        public int? TopLogprobs { get => _explicitNullValueTopLogprobs; set { _explicitNullValueTopLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_logprobs"); else _explicitNullProperties?.Remove("top_logprobs"); } }
+        private int? _explicitNullValueTopLogprobs = default!;
         /// <summary>An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.</summary>
-        public double? TopP { get; set; }
+        public double? TopP { get => _explicitNullValueTopP; set { _explicitNullValueTopP = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_p"); else _explicitNullProperties?.Remove("top_p"); } }
+        private double? _explicitNullValueTopP = default!;
         /// <summary>A unique identifier representing your end-user, which can help us monitor and detect abuse.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? User { get; set; }
+        public string? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private string? _explicitNullValueUser = default!;
 #nullable restore
 #else
-        public string User { get; set; }
+        public string User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private string _explicitNullValueUser = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequest"/> and sets the default values.
         /// </summary>
         public CreateChatCompletionRequest()
         {
+            Debug = false;
             DisableToolValidation = false;
             FrequencyPenalty = 0;
             Logprobs = false;
             N = 1;
             ParallelToolCalls = true;
             PresencePenalty = 0;
+            Raw = false;
             Stream = false;
             Temperature = 1;
             TopP = 1;
@@ -206,7 +394,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -216,11 +404,15 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "chat_template_args", n => { ChatTemplateArgs = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestChatTemplateArgsProperty>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestChatTemplateArgsProperty.CreateFromDiscriminatorValue); } },
                 { "citation_options", n => { CitationOptions = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCitationOptions>(); } },
                 { "compound_custom", n => { CompoundCustom = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustom>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustom.CreateFromDiscriminatorValue); } },
+                { "custom_template", n => { CustomTemplate = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCustomTemplate>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCustomTemplate.CreateFromDiscriminatorValue); } },
+                { "debug", n => { Debug = n.GetBoolValue(); } },
                 { "disable_tool_validation", n => { DisableToolValidation = n.GetBoolValue(); } },
                 { "documents", n => { Documents = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocument>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocument.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "exclude_domains", n => { ExcludeDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "exclude_instance_ids", n => { ExcludeInstanceIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },
                 { "function_call", n => { FunctionCall = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCall>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCall.CreateFromDiscriminatorValue); } },
                 { "functions", n => { Functions = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -232,10 +424,11 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty.CreateFromDiscriminatorValue); } },
-                { "model", n => { Model = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestModel>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestModel.CreateFromDiscriminatorValue); } },
+                { "model", n => { Model = n.GetStringValue(); } },
                 { "n", n => { N = n.GetIntValue(); } },
                 { "parallel_tool_calls", n => { ParallelToolCalls = n.GetBoolValue(); } },
                 { "presence_penalty", n => { PresencePenalty = n.GetDoubleValue(); } },
+                { "raw", n => { Raw = n.GetBoolValue(); } },
                 { "reasoning_effort", n => { ReasoningEffort = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningEffort>(); } },
                 { "reasoning_format", n => { ReasoningFormat = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningFormat>(); } },
                 { "response_format", n => { ResponseFormat = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat.CreateFromDiscriminatorValue); } },
@@ -245,6 +438,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "stop", n => { Stop = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop.CreateFromDiscriminatorValue); } },
                 { "store", n => { Store = n.GetBoolValue(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
+                { "stream_options", n => { StreamOptions = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionStreamOptions>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionStreamOptions.CreateFromDiscriminatorValue); } },
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
                 { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption.CreateFromDiscriminatorValue); } },
                 { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionTool>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionTool.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -260,11 +454,15 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestChatTemplateArgsProperty>("chat_template_args", ChatTemplateArgs);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCitationOptions>("citation_options", CitationOptions);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustom>("compound_custom", CompoundCustom);
+            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCustomTemplate>("custom_template", CustomTemplate);
+            writer.WriteBoolValue("debug", Debug);
             writer.WriteBoolValue("disable_tool_validation", DisableToolValidation);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocument>("documents", Documents);
             writer.WriteCollectionOfPrimitiveValues<string>("exclude_domains", ExcludeDomains);
+            writer.WriteCollectionOfPrimitiveValues<string>("exclude_instance_ids", ExcludeInstanceIds);
             writer.WriteDoubleValue("frequency_penalty", FrequencyPenalty);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestFunctionCall>("function_call", FunctionCall);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionFunctions>("functions", Functions);
@@ -276,10 +474,11 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage>("messages", Messages);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestMetadataProperty>("metadata", Metadata);
-            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestModel>("model", Model);
+            writer.WriteStringValue("model", Model);
             writer.WriteIntValue("n", N);
             writer.WriteBoolValue("parallel_tool_calls", ParallelToolCalls);
             writer.WriteDoubleValue("presence_penalty", PresencePenalty);
+            writer.WriteBoolValue("raw", Raw);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningEffort>("reasoning_effort", ReasoningEffort);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestReasoningFormat>("reasoning_format", ReasoningFormat);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat>("response_format", ResponseFormat);
@@ -289,12 +488,14 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop>("stop", Stop);
             writer.WriteBoolValue("store", Store);
             writer.WriteBoolValue("stream", Stream);
+            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionStreamOptions>("stream_options", StreamOptions);
             writer.WriteDoubleValue("temperature", Temperature);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionToolChoiceOption>("tool_choice", ToolChoice);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionTool>("tools", Tools);
             writer.WriteIntValue("top_logprobs", TopLogprobs);
             writer.WriteDoubleValue("top_p", TopP);
-            writer.WriteStringValue("user", User);
+            writer.WriteStringValue("user", User);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

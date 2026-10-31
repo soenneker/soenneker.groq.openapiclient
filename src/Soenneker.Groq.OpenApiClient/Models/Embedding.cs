@@ -12,21 +12,38 @@ namespace Soenneker.Groq.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Embedding : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("embedding") is null) { _explicitNullValueEmbeddingProp = default!; _explicitNullProperties?.Remove("embedding"); }
+            else if (parseNode.GetChildNode("embedding") is { } nullNodeEmbeddingProp && nullNodeEmbeddingProp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmbeddingProp = null;
+            if (parseNode.GetChildNode("index") is null) { _explicitNullValueIndex = default!; _explicitNullProperties?.Remove("index"); }
+            else if (parseNode.GetChildNode("index") is { } nullNodeIndex && nullNodeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Index = null;
+            if (parseNode.GetChildNode("object") is null) { _explicitNullValueObject = default!; _explicitNullProperties?.Remove("object"); }
+            else if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The embedding property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.EmbeddingEmbedding? EmbeddingProp { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.EmbeddingEmbedding? EmbeddingProp { get => _explicitNullValueEmbeddingProp; set { _explicitNullValueEmbeddingProp = value; AdditionalData?.Remove("embedding"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding"); else _explicitNullProperties?.Remove("embedding"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.EmbeddingEmbedding? _explicitNullValueEmbeddingProp = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.EmbeddingEmbedding EmbeddingProp { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.EmbeddingEmbedding EmbeddingProp { get => _explicitNullValueEmbeddingProp; set { _explicitNullValueEmbeddingProp = value; AdditionalData?.Remove("embedding"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding"); else _explicitNullProperties?.Remove("embedding"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.EmbeddingEmbedding _explicitNullValueEmbeddingProp = default!;
 #endif
         /// <summary>The index of the embedding in the list of embeddings.</summary>
-        public int? Index { get; set; }
+        public int? Index { get => _explicitNullValueIndex; set { _explicitNullValueIndex = value; AdditionalData?.Remove("index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index"); else _explicitNullProperties?.Remove("index"); } }
+        private int? _explicitNullValueIndex = default!;
         /// <summary>The object type, which is always &quot;embedding&quot;.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.EmbeddingObject? Object { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.EmbeddingObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; AdditionalData?.Remove("object"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.EmbeddingObject? _explicitNullValueObject = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.Embedding"/> and sets the default values.
         /// </summary>
@@ -42,7 +59,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.Embedding CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.Embedding();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.Embedding(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,7 +71,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             {
                 { "embedding", n => { EmbeddingProp = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.EmbeddingEmbedding>(global::Soenneker.Groq.OpenApiClient.Models.EmbeddingEmbedding.CreateFromDiscriminatorValue); } },
                 { "index", n => { Index = n.GetIntValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.EmbeddingObject>(); } },
+                { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.EmbeddingObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
             };
         }
         /// <summary>
@@ -67,6 +84,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.EmbeddingEmbedding>("embedding", EmbeddingProp);
             writer.WriteIntValue("index", Index);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.EmbeddingObject>("object", Object);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

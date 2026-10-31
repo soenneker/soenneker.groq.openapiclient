@@ -11,40 +11,63 @@ namespace Soenneker.Groq.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class XGroqNonStreamingDebug : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("input_token_ids") is null) { _explicitNullValueInputTokenIds = default!; _explicitNullProperties?.Remove("input_token_ids"); }
+            else if (parseNode.GetChildNode("input_token_ids") is { } nullNodeInputTokenIds && nullNodeInputTokenIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTokenIds = null;
+            if (parseNode.GetChildNode("input_tokens") is null) { _explicitNullValueInputTokens = default!; _explicitNullProperties?.Remove("input_tokens"); }
+            else if (parseNode.GetChildNode("input_tokens") is { } nullNodeInputTokens && nullNodeInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTokens = null;
+            if (parseNode.GetChildNode("output_token_ids") is null) { _explicitNullValueOutputTokenIds = default!; _explicitNullProperties?.Remove("output_token_ids"); }
+            else if (parseNode.GetChildNode("output_token_ids") is { } nullNodeOutputTokenIds && nullNodeOutputTokenIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputTokenIds = null;
+            if (parseNode.GetChildNode("output_tokens") is null) { _explicitNullValueOutputTokens = default!; _explicitNullProperties?.Remove("output_tokens"); }
+            else if (parseNode.GetChildNode("output_tokens") is { } nullNodeOutputTokens && nullNodeOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Token IDs for the input.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? InputTokenIds { get; set; }
+        public List<int?>? InputTokenIds { get => _explicitNullValueInputTokenIds; set { _explicitNullValueInputTokenIds = value; AdditionalData?.Remove("input_token_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_token_ids"); else _explicitNullProperties?.Remove("input_token_ids"); } }
+        private List<int?>? _explicitNullValueInputTokenIds = default!;
 #nullable restore
 #else
-        public List<int?> InputTokenIds { get; set; }
+        public List<int?> InputTokenIds { get => _explicitNullValueInputTokenIds; set { _explicitNullValueInputTokenIds = value; AdditionalData?.Remove("input_token_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_token_ids"); else _explicitNullProperties?.Remove("input_token_ids"); } }
+        private List<int?> _explicitNullValueInputTokenIds = default!;
 #endif
         /// <summary>Token strings for the input.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? InputTokens { get; set; }
+        public List<string>? InputTokens { get => _explicitNullValueInputTokens; set { _explicitNullValueInputTokens = value; AdditionalData?.Remove("input_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_tokens"); else _explicitNullProperties?.Remove("input_tokens"); } }
+        private List<string>? _explicitNullValueInputTokens = default!;
 #nullable restore
 #else
-        public List<string> InputTokens { get; set; }
+        public List<string> InputTokens { get => _explicitNullValueInputTokens; set { _explicitNullValueInputTokens = value; AdditionalData?.Remove("input_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_tokens"); else _explicitNullProperties?.Remove("input_tokens"); } }
+        private List<string> _explicitNullValueInputTokens = default!;
 #endif
         /// <summary>Token IDs for the output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? OutputTokenIds { get; set; }
+        public List<int?>? OutputTokenIds { get => _explicitNullValueOutputTokenIds; set { _explicitNullValueOutputTokenIds = value; AdditionalData?.Remove("output_token_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_token_ids"); else _explicitNullProperties?.Remove("output_token_ids"); } }
+        private List<int?>? _explicitNullValueOutputTokenIds = default!;
 #nullable restore
 #else
-        public List<int?> OutputTokenIds { get; set; }
+        public List<int?> OutputTokenIds { get => _explicitNullValueOutputTokenIds; set { _explicitNullValueOutputTokenIds = value; AdditionalData?.Remove("output_token_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_token_ids"); else _explicitNullProperties?.Remove("output_token_ids"); } }
+        private List<int?> _explicitNullValueOutputTokenIds = default!;
 #endif
         /// <summary>Token strings for the output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OutputTokens { get; set; }
+        public List<string>? OutputTokens { get => _explicitNullValueOutputTokens; set { _explicitNullValueOutputTokens = value; AdditionalData?.Remove("output_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_tokens"); else _explicitNullProperties?.Remove("output_tokens"); } }
+        private List<string>? _explicitNullValueOutputTokens = default!;
 #nullable restore
 #else
-        public List<string> OutputTokens { get; set; }
+        public List<string> OutputTokens { get => _explicitNullValueOutputTokens; set { _explicitNullValueOutputTokens = value; AdditionalData?.Remove("output_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_tokens"); else _explicitNullProperties?.Remove("output_tokens"); } }
+        private List<string> _explicitNullValueOutputTokens = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreamingDebug"/> and sets the default values.
@@ -61,7 +84,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreamingDebug CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreamingDebug();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.XGroqNonStreamingDebug(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +111,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("input_tokens", InputTokens);
             writer.WriteCollectionOfPrimitiveValues<int?>("output_token_ids", OutputTokenIds);
             writer.WriteCollectionOfPrimitiveValues<string>("output_tokens", OutputTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

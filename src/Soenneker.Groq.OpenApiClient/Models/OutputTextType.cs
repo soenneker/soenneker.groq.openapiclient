@@ -3,14 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
+    /// <summary>The type of the output text. Always `output_text`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum CreateEmbeddingRequestModelAnyOf2
-    #pragma warning restore CS1591
+    public enum OutputTextType
     {
-        [EnumMember(Value = "nomic-embed-text-v1_5")]
+        [EnumMember(Value = "output_text")]
         #pragma warning disable CS1591
-        NomicEmbedTextV15,
+        OutputText,
         #pragma warning restore CS1591
     }
 }

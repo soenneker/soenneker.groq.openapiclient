@@ -3,10 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>Level of reasoning effort. Supported values: `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.</summary>
+    /// <summary>Level of reasoning effort. Supported values: `none`, `low`, `medium`, `high`.`none` disables reasoning and is supported only by Qwen3.8 models. Lower gradedvalues provide faster responses with less reasoning depth. When omitted, thedefault is `none` for Qwen3.8 and `medium` for GPT-OSS models.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CreateResponseRequestReasoningEffort
     {
+        [EnumMember(Value = "none")]
+        #pragma warning disable CS1591
+        None,
+        #pragma warning restore CS1591
         [EnumMember(Value = "low")]
         #pragma warning disable CS1591
         Low,

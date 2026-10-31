@@ -12,24 +12,39 @@ namespace Soenneker.Groq.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateChatCompletionRequestCompoundCustomTools : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("enabled_tools") is null) { _explicitNullValueEnabledTools = default!; _explicitNullProperties?.Remove("enabled_tools"); }
+            else if (parseNode.GetChildNode("enabled_tools") is { } nullNodeEnabledTools && nullNodeEnabledTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnabledTools = null;
+            if (parseNode.GetChildNode("wolfram_settings") is null) { _explicitNullValueWolframSettings = default!; _explicitNullProperties?.Remove("wolfram_settings"); }
+            else if (parseNode.GetChildNode("wolfram_settings") is { } nullNodeWolframSettings && nullNodeWolframSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WolframSettings = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A list of tool names that are enabled for the request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EnabledTools { get; set; }
+        public List<string>? EnabledTools { get => _explicitNullValueEnabledTools; set { _explicitNullValueEnabledTools = value; AdditionalData?.Remove("enabled_tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled_tools"); else _explicitNullProperties?.Remove("enabled_tools"); } }
+        private List<string>? _explicitNullValueEnabledTools = default!;
 #nullable restore
 #else
-        public List<string> EnabledTools { get; set; }
+        public List<string> EnabledTools { get => _explicitNullValueEnabledTools; set { _explicitNullValueEnabledTools = value; AdditionalData?.Remove("enabled_tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled_tools"); else _explicitNullProperties?.Remove("enabled_tools"); } }
+        private List<string> _explicitNullValueEnabledTools = default!;
 #endif
         /// <summary>Configuration for the Wolfram tool integration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomToolsWolframSettings? WolframSettings { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomToolsWolframSettings? WolframSettings { get => _explicitNullValueWolframSettings; set { _explicitNullValueWolframSettings = value; AdditionalData?.Remove("wolfram_settings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wolfram_settings"); else _explicitNullProperties?.Remove("wolfram_settings"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomToolsWolframSettings? _explicitNullValueWolframSettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomToolsWolframSettings WolframSettings { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomToolsWolframSettings WolframSettings { get => _explicitNullValueWolframSettings; set { _explicitNullValueWolframSettings = value; AdditionalData?.Remove("wolfram_settings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wolfram_settings"); else _explicitNullProperties?.Remove("wolfram_settings"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomToolsWolframSettings _explicitNullValueWolframSettings = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomTools"/> and sets the default values.
@@ -46,7 +61,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomTools CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomTools();
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomTools(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +86,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("enabled_tools", EnabledTools);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestCompoundCustomToolsWolframSettings>("wolfram_settings", WolframSettings);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

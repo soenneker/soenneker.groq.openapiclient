@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>The object type, which is always `file`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum FileObject
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "file")]
         #pragma warning disable CS1591

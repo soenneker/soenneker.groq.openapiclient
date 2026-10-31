@@ -12,39 +12,75 @@ namespace Soenneker.Groq.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CompletionUsage : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("completion_time") is null) { _explicitNullValueCompletionTime = default!; _explicitNullProperties?.Remove("completion_time"); }
+            else if (parseNode.GetChildNode("completion_time") is { } nullNodeCompletionTime && nullNodeCompletionTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletionTime = null;
+            if (parseNode.GetChildNode("completion_tokens") is null) { _explicitNullValueCompletionTokens = default!; _explicitNullProperties?.Remove("completion_tokens"); }
+            else if (parseNode.GetChildNode("completion_tokens") is { } nullNodeCompletionTokens && nullNodeCompletionTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletionTokens = null;
+            if (parseNode.GetChildNode("completion_tokens_details") is null) { _explicitNullValueCompletionTokensDetails = default!; _explicitNullProperties?.Remove("completion_tokens_details"); }
+            else if (parseNode.GetChildNode("completion_tokens_details") is { } nullNodeCompletionTokensDetails && nullNodeCompletionTokensDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletionTokensDetails = null;
+            if (parseNode.GetChildNode("prompt_time") is null) { _explicitNullValuePromptTime = default!; _explicitNullProperties?.Remove("prompt_time"); }
+            else if (parseNode.GetChildNode("prompt_time") is { } nullNodePromptTime && nullNodePromptTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptTime = null;
+            if (parseNode.GetChildNode("prompt_tokens") is null) { _explicitNullValuePromptTokens = default!; _explicitNullProperties?.Remove("prompt_tokens"); }
+            else if (parseNode.GetChildNode("prompt_tokens") is { } nullNodePromptTokens && nullNodePromptTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptTokens = null;
+            if (parseNode.GetChildNode("prompt_tokens_details") is null) { _explicitNullValuePromptTokensDetails = default!; _explicitNullProperties?.Remove("prompt_tokens_details"); }
+            else if (parseNode.GetChildNode("prompt_tokens_details") is { } nullNodePromptTokensDetails && nullNodePromptTokensDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptTokensDetails = null;
+            if (parseNode.GetChildNode("queue_time") is null) { _explicitNullValueQueueTime = default!; _explicitNullProperties?.Remove("queue_time"); }
+            else if (parseNode.GetChildNode("queue_time") is { } nullNodeQueueTime && nullNodeQueueTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueueTime = null;
+            if (parseNode.GetChildNode("total_time") is null) { _explicitNullValueTotalTime = default!; _explicitNullProperties?.Remove("total_time"); }
+            else if (parseNode.GetChildNode("total_time") is { } nullNodeTotalTime && nullNodeTotalTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalTime = null;
+            if (parseNode.GetChildNode("total_tokens") is null) { _explicitNullValueTotalTokens = default!; _explicitNullProperties?.Remove("total_tokens"); }
+            else if (parseNode.GetChildNode("total_tokens") is { } nullNodeTotalTokens && nullNodeTotalTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Time spent generating tokens</summary>
-        public double? CompletionTime { get; set; }
+        public double? CompletionTime { get => _explicitNullValueCompletionTime; set { _explicitNullValueCompletionTime = value; AdditionalData?.Remove("completion_time"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_time"); else _explicitNullProperties?.Remove("completion_time"); } }
+        private double? _explicitNullValueCompletionTime = default!;
         /// <summary>Number of tokens in the generated completion.</summary>
-        public int? CompletionTokens { get; set; }
+        public int? CompletionTokens { get => _explicitNullValueCompletionTokens; set { _explicitNullValueCompletionTokens = value; AdditionalData?.Remove("completion_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_tokens"); else _explicitNullProperties?.Remove("completion_tokens"); } }
+        private int? _explicitNullValueCompletionTokens = default!;
         /// <summary>Breakdown of tokens in the completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsageCompletionTokensDetails? CompletionTokensDetails { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsageCompletionTokensDetails? CompletionTokensDetails { get => _explicitNullValueCompletionTokensDetails; set { _explicitNullValueCompletionTokensDetails = value; AdditionalData?.Remove("completion_tokens_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_tokens_details"); else _explicitNullProperties?.Remove("completion_tokens_details"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CompletionUsageCompletionTokensDetails? _explicitNullValueCompletionTokensDetails = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsageCompletionTokensDetails CompletionTokensDetails { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsageCompletionTokensDetails CompletionTokensDetails { get => _explicitNullValueCompletionTokensDetails; set { _explicitNullValueCompletionTokensDetails = value; AdditionalData?.Remove("completion_tokens_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_tokens_details"); else _explicitNullProperties?.Remove("completion_tokens_details"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CompletionUsageCompletionTokensDetails _explicitNullValueCompletionTokensDetails = default!;
 #endif
         /// <summary>Time spent processing input tokens</summary>
-        public double? PromptTime { get; set; }
+        public double? PromptTime { get => _explicitNullValuePromptTime; set { _explicitNullValuePromptTime = value; AdditionalData?.Remove("prompt_time"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_time"); else _explicitNullProperties?.Remove("prompt_time"); } }
+        private double? _explicitNullValuePromptTime = default!;
         /// <summary>Number of tokens in the prompt.</summary>
-        public int? PromptTokens { get; set; }
+        public int? PromptTokens { get => _explicitNullValuePromptTokens; set { _explicitNullValuePromptTokens = value; AdditionalData?.Remove("prompt_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_tokens"); else _explicitNullProperties?.Remove("prompt_tokens"); } }
+        private int? _explicitNullValuePromptTokens = default!;
         /// <summary>Breakdown of tokens in the prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsagePromptTokensDetails? PromptTokensDetails { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsagePromptTokensDetails? PromptTokensDetails { get => _explicitNullValuePromptTokensDetails; set { _explicitNullValuePromptTokensDetails = value; AdditionalData?.Remove("prompt_tokens_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_tokens_details"); else _explicitNullProperties?.Remove("prompt_tokens_details"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CompletionUsagePromptTokensDetails? _explicitNullValuePromptTokensDetails = default!;
 #nullable restore
 #else
-        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsagePromptTokensDetails PromptTokensDetails { get; set; }
+        public global::Soenneker.Groq.OpenApiClient.Models.CompletionUsagePromptTokensDetails PromptTokensDetails { get => _explicitNullValuePromptTokensDetails; set { _explicitNullValuePromptTokensDetails = value; AdditionalData?.Remove("prompt_tokens_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_tokens_details"); else _explicitNullProperties?.Remove("prompt_tokens_details"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CompletionUsagePromptTokensDetails _explicitNullValuePromptTokensDetails = default!;
 #endif
         /// <summary>Time the requests was spent queued</summary>
-        public double? QueueTime { get; set; }
+        public double? QueueTime { get => _explicitNullValueQueueTime; set { _explicitNullValueQueueTime = value; AdditionalData?.Remove("queue_time"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_time"); else _explicitNullProperties?.Remove("queue_time"); } }
+        private double? _explicitNullValueQueueTime = default!;
         /// <summary>completion time and prompt time combined</summary>
-        public double? TotalTime { get; set; }
+        public double? TotalTime { get => _explicitNullValueTotalTime; set { _explicitNullValueTotalTime = value; AdditionalData?.Remove("total_time"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_time"); else _explicitNullProperties?.Remove("total_time"); } }
+        private double? _explicitNullValueTotalTime = default!;
         /// <summary>Total number of tokens used in the request (prompt + completion).</summary>
-        public int? TotalTokens { get; set; }
+        public int? TotalTokens { get => _explicitNullValueTotalTokens; set { _explicitNullValueTotalTokens = value; AdditionalData?.Remove("total_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_tokens"); else _explicitNullProperties?.Remove("total_tokens"); } }
+        private int? _explicitNullValueTotalTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage"/> and sets the default values.
         /// </summary>
@@ -60,7 +96,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -97,6 +133,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteDoubleValue("queue_time", QueueTime);
             writer.WriteDoubleValue("total_time", TotalTime);
             writer.WriteIntValue("total_tokens", TotalTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
