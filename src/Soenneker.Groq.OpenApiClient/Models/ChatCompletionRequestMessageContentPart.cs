@@ -51,9 +51,9 @@ namespace Soenneker.Groq.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "document" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartDocument(),
-                "image_url" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartImage(),
-                "text" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText(),
+                "document" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartDocumentVariant(),
+                "image_url" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartImageVariant(),
+                "text" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartTextVariant(),
                 _ => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPart(),
             };
         }

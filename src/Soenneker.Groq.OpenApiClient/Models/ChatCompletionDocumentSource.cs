@@ -52,8 +52,8 @@ namespace Soenneker.Groq.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "json" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceChatCompletionDocumentSourceJson(),
-                "text" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceChatCompletionDocumentSourceText(),
+                "json" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceJsonVariant(),
+                "text" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceTextVariant(),
                 _ => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSource(),
             };
         }

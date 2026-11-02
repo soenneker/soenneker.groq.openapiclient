@@ -1307,8 +1307,8 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "text": "#/components/schemas/ChatCompletionDocumentSourceChatCompletionDocumentSourceText",
-            "json": "#/components/schemas/ChatCompletionDocumentSourceChatCompletionDocumentSourceJson"
+            "text": "#/components/schemas/ChatCompletionDocumentSourceTextVariant",
+            "json": "#/components/schemas/ChatCompletionDocumentSourceJsonVariant"
           }
         },
         "x-client-original-tagged-union": {
@@ -1494,9 +1494,9 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "text": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText",
-            "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartImage",
-            "document": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartDocument"
+            "text": "#/components/schemas/ChatCompletionRequestMessageContentPartTextVariant",
+            "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartImageVariant",
+            "document": "#/components/schemas/ChatCompletionRequestMessageContentPartDocumentVariant"
           }
         },
         "x-client-original-tagged-union": {
@@ -3563,9 +3563,9 @@
             "discriminator": {
               "propertyName": "type",
               "mapping": {
-                "text": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText",
-                "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartImage",
-                "document": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartDocument"
+                "text": "#/components/schemas/ChatCompletionRequestMessageContentPartTextVariant",
+                "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartImageVariant",
+                "document": "#/components/schemas/ChatCompletionRequestMessageContentPartDocumentVariant"
               }
             },
             "x-client-array-item-dispatch": true
@@ -3600,9 +3600,9 @@
             "discriminator": {
               "propertyName": "type",
               "mapping": {
-                "text": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText",
-                "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartImage",
-                "document": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartDocument"
+                "text": "#/components/schemas/ChatCompletionRequestMessageContentPartTextVariant",
+                "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartImageVariant",
+                "document": "#/components/schemas/ChatCompletionRequestMessageContentPartDocumentVariant"
               }
             },
             "x-client-array-item-dispatch": true
@@ -6213,7 +6213,7 @@
         },
         "x-client-untyped-value": true
       },
-      "ChatCompletionDocumentSourceChatCompletionDocumentSourceText": {
+      "ChatCompletionDocumentSourceTextVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ChatCompletionDocumentSource"
@@ -6239,7 +6239,7 @@
           }
         ]
       },
-      "ChatCompletionDocumentSourceChatCompletionDocumentSourceJson": {
+      "ChatCompletionDocumentSourceJsonVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ChatCompletionDocumentSource"
@@ -6467,7 +6467,7 @@
           }
         ]
       },
-      "ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText": {
+      "ChatCompletionRequestMessageContentPartTextVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPart"
@@ -6491,7 +6491,7 @@
           }
         ]
       },
-      "ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartImage": {
+      "ChatCompletionRequestMessageContentPartImageVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPart"
@@ -6514,7 +6514,7 @@
           }
         ]
       },
-      "ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartDocument": {
+      "ChatCompletionRequestMessageContentPartDocumentVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPart"

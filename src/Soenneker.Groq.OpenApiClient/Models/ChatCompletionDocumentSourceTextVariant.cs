@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
+    /// <summary>
+    /// A document whose contents are provided inline as text.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText : global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPart, IParsable
-    #pragma warning restore CS1591
+    public partial class ChatCompletionDocumentSourceTextVariant : global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSource, IParsable
     {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -22,7 +23,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             else if (parseNode.GetChildNode("text") is { } nullNodeText && nullNodeText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Text = null;
         }
 
-        /// <summary>The text content.</summary>
+        /// <summary>The document contents.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Text { get => _explicitNullValueText; set { _explicitNullValueText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
@@ -35,12 +36,12 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceTextVariant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceTextVariant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionDocumentSourceTextVariant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
