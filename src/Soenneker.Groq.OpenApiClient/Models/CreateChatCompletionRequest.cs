@@ -302,8 +302,15 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public int? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
         private int? _explicitNullValueSeed = default!;
         /// <summary>The service tier to use for the request. Defaults to `on_demand`.- `auto` will automatically select the highest tier available within the rate limits of your organization.- `flex` uses the flex tier, which will succeed or fail quickly.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
         private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier? _explicitNullValueServiceTier = default!;
+#nullable restore
+#else
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier _explicitNullValueServiceTier = default!;
+#endif
         /// <summary>Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -434,7 +441,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "response_format", n => { ResponseFormat = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat.CreateFromDiscriminatorValue); } },
                 { "search_settings", n => { SearchSettings = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestSearchSettings>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestSearchSettings.CreateFromDiscriminatorValue); } },
                 { "seed", n => { Seed = n.GetIntValue(); } },
-                { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier>(); } },
+                { "service_tier", n => { ServiceTier = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier.CreateFromDiscriminatorValue); } },
                 { "stop", n => { Stop = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop.CreateFromDiscriminatorValue); } },
                 { "store", n => { Store = n.GetBoolValue(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
@@ -484,7 +491,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestResponseFormat>("response_format", ResponseFormat);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestSearchSettings>("search_settings", SearchSettings);
             writer.WriteIntValue("seed", Seed);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier>("service_tier", ServiceTier);
+            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestServiceTier>("service_tier", ServiceTier);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionRequestStop>("stop", Stop);
             writer.WriteBoolValue("store", Store);
             writer.WriteBoolValue("stream", Stream);

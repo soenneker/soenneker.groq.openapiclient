@@ -7,21 +7,32 @@ using System.IO;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    /// <summary>
-    /// An array of content parts with a defined type, each can be of type `text` or `image_url` when passing in images. You can pass multiple images by adding multiple `image_url` content parts. Image input is only supported when using the `gpt-4-visual-preview` model.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class ChatCompletionRequestMessageContentPart : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string? _explicitNullValueType = default!;
+#nullable restore
+#else
+        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string _explicitNullValueType = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPart"/> and sets the default values.
         /// </summary>
@@ -37,7 +48,14 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public static global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPart CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPart(), parseNode);
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            return mappingValue switch
+            {
+                "document" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartDocument(),
+                "image_url" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartImage(),
+                "text" => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText(),
+                _ => new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageContentPart(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,6 +65,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -56,6 +75,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("type", Type);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

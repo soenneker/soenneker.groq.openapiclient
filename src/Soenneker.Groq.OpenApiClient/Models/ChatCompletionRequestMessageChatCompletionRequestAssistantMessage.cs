@@ -9,14 +9,15 @@ namespace Soenneker.Groq.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ChatCompletionRequestAssistantMessage : IParsable
+    public partial class ChatCompletionRequestMessageChatCompletionRequestAssistantMessage : global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage, IParsable
     #pragma warning restore CS1591
-    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+    {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            base.CaptureExplicitNulls(parseNode);
             if (parseNode.GetChildNode("content") is null) { _explicitNullValueContent = default!; _explicitNullProperties?.Remove("content"); }
             else if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
             if (parseNode.GetChildNode("function_call") is null) { _explicitNullValueFunctionCall = default!; _explicitNullProperties?.Remove("function_call"); }
@@ -25,8 +26,6 @@ namespace Soenneker.Groq.OpenApiClient.Models
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
             if (parseNode.GetChildNode("reasoning") is null) { _explicitNullValueReasoning = default!; _explicitNullProperties?.Remove("reasoning"); }
             else if (parseNode.GetChildNode("reasoning") is { } nullNodeReasoning && nullNodeReasoning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reasoning = null;
-            if (parseNode.GetChildNode("role") is null) { _explicitNullValueRole = default!; _explicitNullProperties?.Remove("role"); }
-            else if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
             if (parseNode.GetChildNode("tool_call_id") is null) { _explicitNullValueToolCallId = default!; _explicitNullProperties?.Remove("tool_call_id"); }
             else if (parseNode.GetChildNode("tool_call_id") is { } nullNodeToolCallId && nullNodeToolCallId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolCallId = null;
             if (parseNode.GetChildNode("tool_calls") is null) { _explicitNullValueToolCalls = default!; _explicitNullProperties?.Remove("tool_calls"); }
@@ -74,9 +73,6 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public string Reasoning { get => _explicitNullValueReasoning; set { _explicitNullValueReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning"); else _explicitNullProperties?.Remove("reasoning"); } }
         private string _explicitNullValueReasoning = default!;
 #endif
-        /// <summary>The role of the messages author, in this case `assistant`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.AssistantRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
-        private global::Soenneker.Groq.OpenApiClient.Models.AssistantRole? _explicitNullValueRole = default!;
         /// <summary>DO NOT USE.  This field is present because OpenAI allows it and users send it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,26 +96,25 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestAssistantMessage"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageChatCompletionRequestAssistantMessage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestAssistantMessage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageChatCompletionRequestAssistantMessage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestAssistantMessage(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageChatCompletionRequestAssistantMessage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestAssistantMessageContent>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestAssistantMessageContent.CreateFromDiscriminatorValue); } },
                 { "function_call", n => { FunctionCall = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestAssistantMessageFunctionCall>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestAssistantMessageFunctionCall.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.AssistantRole>(); } },
                 { "tool_call_id", n => { ToolCallId = n.GetStringValue(); } },
                 { "tool_calls", n => { ToolCalls = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionMessageToolCall>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionMessageToolCall.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -128,14 +123,14 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer)
+        public override void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            base.Serialize(writer);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestAssistantMessageContent>("content", Content);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestAssistantMessageFunctionCall>("function_call", FunctionCall);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("reasoning", Reasoning);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.AssistantRole>("role", Role);
             writer.WriteStringValue("tool_call_id", ToolCallId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionMessageToolCall>("tool_calls", ToolCalls);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             

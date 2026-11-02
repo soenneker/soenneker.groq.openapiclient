@@ -91,8 +91,15 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; AdditionalData?.Remove("object"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
         private global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject? _explicitNullValueObject = default!;
         /// <summary>The service tier used for the request. Deployments running in strict OpenAI compatibility report Groq-specific tiers as `default`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
         private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier? _explicitNullValueServiceTier = default!;
+#nullable restore
+#else
+        public global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier _explicitNullValueServiceTier = default!;
+#endif
         /// <summary>This fingerprint represents the backend configuration that the model runs with.Can be used in conjunction with the `seed` request parameter to understand when backend changes have been made that might impact determinism.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -164,7 +171,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
                 { "mcp_list_tools", n => { McpListTools = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
-                { "service_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueServiceTier = default; _explicitNullProperties?.Remove("service_tier"); AdditionalData["service_tier"] = unknown; } else { ServiceTier = parsed; AdditionalData.Remove("service_tier"); } } },
+                { "service_tier", n => { ServiceTier = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier.CreateFromDiscriminatorValue); } },
                 { "system_fingerprint", n => { SystemFingerprint = n.GetStringValue(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage>(global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage.CreateFromDiscriminatorValue); } },
                 { "usage_breakdown", n => { UsageBreakdown = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown>(global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown.CreateFromDiscriminatorValue); } },
@@ -184,7 +191,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseMcpListToolsItem>("mcp_list_tools", McpListTools);
             writer.WriteStringValue("model", Model);
             writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionObject>("object", Object);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier>("service_tier", ServiceTier);
+            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseServiceTier>("service_tier", ServiceTier);
             writer.WriteStringValue("system_fingerprint", SystemFingerprint);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CompletionUsage>("usage", Usage);
             writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateChatCompletionResponseUsageBreakdown>("usage_breakdown", UsageBreakdown);

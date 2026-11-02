@@ -1110,42 +1110,6 @@
           }
         }
       },
-      "BatchRequestInput": {
-        "type": "object",
-        "properties": {
-          "custom_id": {
-            "type": "string",
-            "description": "A developer-provided per-request id that will be used to match outputs to inputs. Must be unique for each request in a batch."
-          },
-          "method": {
-            "$ref": "#/components/schemas/PostMethod"
-          },
-          "url": {
-            "type": "string",
-            "description": "The OpenAI API relative URL to be used for the request. Currently \u0060/v1/chat/completions\u0060 is supported."
-          }
-        },
-        "description": "The per-line object of the batch input file"
-      },
-      "BatchRequestOutput": {
-        "type": "object",
-        "properties": {
-          "custom_id": {
-            "type": "string",
-            "description": "A developer-provided per-request id that will be used to match outputs to inputs."
-          },
-          "error": {
-            "$ref": "#/components/schemas/BatchRequestOutputError"
-          },
-          "id": {
-            "type": "string"
-          },
-          "response": {
-            "$ref": "#/components/schemas/BatchRequestOutputResponse"
-          }
-        },
-        "description": "The per-line object of the batch output and error files"
-      },
       "BrowserResult": {
         "required": [
           "url",
@@ -1332,14 +1296,6 @@
       },
       "ChatCompletionDocumentSource": {
         "title": "Document source",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ChatCompletionDocumentSourceText"
-          },
-          {
-            "$ref": "#/components/schemas/ChatCompletionDocumentSourceJson"
-          }
-        ],
         "description": "The source of the document. Only text and JSON sources are currently supported.",
         "x-client-original-discriminator": {
           "propertyName": "type",
@@ -1347,44 +1303,49 @@
             "json": "#/components/schemas/ChatCompletionDocumentSourceJson",
             "text": "#/components/schemas/ChatCompletionDocumentSourceText"
           }
-        }
-      },
-      "ChatCompletionDocumentSourceJson": {
-        "title": "JSON document source",
-        "required": [
-          "type",
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ChatCompletionDocumentSourceJsonDataProperty"
-          },
-          "type": {
-            "$ref": "#/components/schemas/JsonType"
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "text": "#/components/schemas/ChatCompletionDocumentSourceChatCompletionDocumentSourceText",
+            "json": "#/components/schemas/ChatCompletionDocumentSourceChatCompletionDocumentSourceJson"
           }
         },
-        "additionalProperties": false,
-        "description": "A document whose contents are provided inline as JSON data."
-      },
-      "ChatCompletionDocumentSourceText": {
-        "title": "Text document source",
-        "required": [
-          "type",
-          "text"
-        ],
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string",
-            "description": "The document contents."
+        "x-client-original-tagged-union": {
+          "title": "Document source",
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/ChatCompletionDocumentSourceText"
+            },
+            {
+              "$ref": "#/components/schemas/ChatCompletionDocumentSourceJson"
+            }
+          ],
+          "description": "The source of the document. Only text and JSON sources are currently supported.",
+          "x-client-original-discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "json": "#/components/schemas/ChatCompletionDocumentSourceJson",
+              "text": "#/components/schemas/ChatCompletionDocumentSourceText"
+            }
           },
-          "type": {
-            "$ref": "#/components/schemas/TextType"
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "text": "#/components/schemas/ChatCompletionDocumentSourceText",
+              "json": "#/components/schemas/ChatCompletionDocumentSourceJson"
+            }
           }
         },
-        "additionalProperties": false,
-        "description": "A document whose contents are provided inline as text."
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "ChatCompletionFunctionCallOption": {
         "required": [
@@ -1419,13 +1380,6 @@
         },
         "deprecated": true
       },
-      "ChatCompletionMessageExecutedTools": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ChatCompletionMessageExecutedToolsItem"
-        },
-        "description": "A list of tools that were executed during the chat completion for compound AI systems."
-      },
       "ChatCompletionMessageToolCall": {
         "required": [
           "id",
@@ -1446,34 +1400,6 @@
           }
         }
       },
-      "ChatCompletionMessageToolCallChunk": {
-        "required": [
-          "index"
-        ],
-        "type": "object",
-        "properties": {
-          "function": {
-            "$ref": "#/components/schemas/ChatCompletionMessageToolCallChunkFunction"
-          },
-          "id": {
-            "type": "string",
-            "description": "The ID of the tool call."
-          },
-          "index": {
-            "type": "integer"
-          },
-          "type": {
-            "$ref": "#/components/schemas/FunctionType"
-          }
-        }
-      },
-      "ChatCompletionMessageToolCalls": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ChatCompletionMessageToolCall"
-        },
-        "description": "The tool calls generated by the model, such as function calls."
-      },
       "ChatCompletionNamedToolChoice": {
         "required": [
           "type",
@@ -1490,105 +1416,7 @@
         },
         "description": "Specifies a tool the model should use. Use to force the model to call a specific function."
       },
-      "ChatCompletionRequestAssistantMessage": {
-        "title": "Assistant message",
-        "required": [
-          "role"
-        ],
-        "type": "object",
-        "properties": {
-          "content": {
-            "$ref": "#/components/schemas/ChatCompletionRequestAssistantMessageContent"
-          },
-          "function_call": {
-            "$ref": "#/components/schemas/ChatCompletionRequestAssistantMessageFunctionCall"
-          },
-          "name": {
-            "type": "string",
-            "description": "An optional name for the participant. Provides the model information to differentiate between participants of the same role."
-          },
-          "reasoning": {
-            "type": "string",
-            "description": "The reasoning output by the assistant if reasoning_format was set to \u0027parsed\u0027.\nThis field is supported on [models that support reasoning](https://console.groq.com/docs/reasoning).\n",
-            "nullable": true
-          },
-          "role": {
-            "$ref": "#/components/schemas/AssistantRole"
-          },
-          "tool_call_id": {
-            "required": [
-              "arguments",
-              "name"
-            ],
-            "type": "string",
-            "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
-            "nullable": true,
-            "x-groq-meta": {
-              "hidden": true
-            }
-          },
-          "tool_calls": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChatCompletionMessageToolCall"
-            },
-            "description": "The tool calls generated by the model, such as function calls."
-          }
-        },
-        "additionalProperties": false
-      },
-      "ChatCompletionRequestFunctionMessage": {
-        "title": "Function message",
-        "required": [
-          "role",
-          "content",
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "content": {
-            "title": "Function message content",
-            "type": "string",
-            "description": "The contents of the function message.",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the function to call."
-          },
-          "role": {
-            "$ref": "#/components/schemas/FunctionRole"
-          },
-          "tool_call_id": {
-            "type": "string",
-            "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
-            "nullable": true,
-            "x-groq-meta": {
-              "hidden": true
-            }
-          }
-        },
-        "additionalProperties": false,
-        "deprecated": true
-      },
       "ChatCompletionRequestMessage": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ChatCompletionRequestSystemMessage"
-          },
-          {
-            "$ref": "#/components/schemas/ChatCompletionRequestUserMessage"
-          },
-          {
-            "$ref": "#/components/schemas/ChatCompletionRequestAssistantMessage"
-          },
-          {
-            "$ref": "#/components/schemas/ChatCompletionRequestToolMessage"
-          },
-          {
-            "$ref": "#/components/schemas/ChatCompletionRequestFunctionMessage"
-          }
-        ],
         "x-client-original-discriminator": {
           "propertyName": "role",
           "mapping": {
@@ -1599,60 +1427,108 @@
             "tool": "#/components/schemas/ChatCompletionRequestToolMessage",
             "user": "#/components/schemas/ChatCompletionRequestUserMessage"
           }
-        }
+        },
+        "discriminator": {
+          "propertyName": "role",
+          "mapping": {
+            "system": "#/components/schemas/ChatCompletionRequestMessageChatCompletionRequestSystemMessage",
+            "developer": "#/components/schemas/ChatCompletionRequestMessageChatCompletionRequestSystemMessage",
+            "user": "#/components/schemas/ChatCompletionRequestMessageChatCompletionRequestUserMessage",
+            "assistant": "#/components/schemas/ChatCompletionRequestMessageChatCompletionRequestAssistantMessage",
+            "tool": "#/components/schemas/ChatCompletionRequestMessageChatCompletionRequestToolMessage",
+            "function": "#/components/schemas/ChatCompletionRequestMessageChatCompletionRequestFunctionMessage"
+          }
+        },
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/ChatCompletionRequestSystemMessage"
+            },
+            {
+              "$ref": "#/components/schemas/ChatCompletionRequestUserMessage"
+            },
+            {
+              "$ref": "#/components/schemas/ChatCompletionRequestAssistantMessage"
+            },
+            {
+              "$ref": "#/components/schemas/ChatCompletionRequestToolMessage"
+            },
+            {
+              "$ref": "#/components/schemas/ChatCompletionRequestFunctionMessage"
+            }
+          ],
+          "x-client-original-discriminator": {
+            "propertyName": "role",
+            "mapping": {
+              "assistant": "#/components/schemas/ChatCompletionRequestAssistantMessage",
+              "developer": "#/components/schemas/ChatCompletionRequestSystemMessage",
+              "function": "#/components/schemas/ChatCompletionRequestFunctionMessage",
+              "system": "#/components/schemas/ChatCompletionRequestSystemMessage",
+              "tool": "#/components/schemas/ChatCompletionRequestToolMessage",
+              "user": "#/components/schemas/ChatCompletionRequestUserMessage"
+            }
+          },
+          "discriminator": {
+            "propertyName": "role",
+            "mapping": {
+              "system": "#/components/schemas/ChatCompletionRequestSystemMessage",
+              "developer": "#/components/schemas/ChatCompletionRequestSystemMessage",
+              "user": "#/components/schemas/ChatCompletionRequestUserMessage",
+              "assistant": "#/components/schemas/ChatCompletionRequestAssistantMessage",
+              "tool": "#/components/schemas/ChatCompletionRequestToolMessage",
+              "function": "#/components/schemas/ChatCompletionRequestFunctionMessage"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "role"
+        ]
       },
       "ChatCompletionRequestMessageContentPart": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartText"
-          },
-          {
-            "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartImage"
-          },
-          {
-            "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartDocument"
-          }
-        ],
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "text": "#/components/schemas/ChatCompletionRequestMessageContentPartText",
-            "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartImage",
-            "document": "#/components/schemas/ChatCompletionRequestMessageContentPartDocument"
+            "text": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText",
+            "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartImage",
+            "document": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartDocument"
           }
-        }
-      },
-      "ChatCompletionRequestMessageContentPartDocument": {
-        "title": "Document content part",
-        "required": [
-          "type",
-          "document"
-        ],
+        },
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartText"
+            },
+            {
+              "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartImage"
+            },
+            {
+              "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartDocument"
+            }
+          ],
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "text": "#/components/schemas/ChatCompletionRequestMessageContentPartText",
+              "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartImage",
+              "document": "#/components/schemas/ChatCompletionRequestMessageContentPartDocument"
+            }
+          }
+        },
         "type": "object",
         "properties": {
-          "document": {
-            "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartDocumentDocument"
-          },
           "type": {
-            "$ref": "#/components/schemas/DocumentType"
+            "type": "string"
           }
-        }
-      },
-      "ChatCompletionRequestMessageContentPartImage": {
-        "title": "Image content part",
+        },
         "required": [
-          "type",
-          "image_url"
-        ],
-        "type": "object",
-        "properties": {
-          "image_url": {
-            "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartImageImageUrl"
-          },
-          "type": {
-            "$ref": "#/components/schemas/ImageUrlType"
-          }
-        }
+          "type"
+        ]
       },
       "ChatCompletionRequestMessageContentPartText": {
         "title": "Text content part",
@@ -1670,93 +1546,6 @@
             "$ref": "#/components/schemas/TextType"
           }
         }
-      },
-      "ChatCompletionRequestSystemMessage": {
-        "title": "System message",
-        "required": [
-          "content",
-          "role"
-        ],
-        "type": "object",
-        "properties": {
-          "content": {
-            "$ref": "#/components/schemas/ChatCompletionRequestSystemMessageContent"
-          },
-          "name": {
-            "type": "string",
-            "description": "An optional name for the participant. Provides the model information to differentiate between participants of the same role."
-          },
-          "role": {
-            "$ref": "#/components/schemas/ChatCompletionRequestSystemMessageRole"
-          },
-          "tool_call_id": {
-            "type": "string",
-            "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
-            "nullable": true,
-            "x-groq-meta": {
-              "hidden": true
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "ChatCompletionRequestToolMessage": {
-        "title": "Tool message",
-        "required": [
-          "role",
-          "content",
-          "tool_call_id"
-        ],
-        "type": "object",
-        "properties": {
-          "content": {
-            "$ref": "#/components/schemas/ChatCompletionRequestToolMessageContent"
-          },
-          "name": {
-            "type": "string",
-            "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
-            "x-groq-meta": {
-              "hidden": true
-            }
-          },
-          "role": {
-            "$ref": "#/components/schemas/ToolRole"
-          },
-          "tool_call_id": {
-            "type": "string",
-            "description": "Tool call that this message is responding to."
-          }
-        },
-        "additionalProperties": false
-      },
-      "ChatCompletionRequestUserMessage": {
-        "title": "User message",
-        "required": [
-          "content",
-          "role"
-        ],
-        "type": "object",
-        "properties": {
-          "content": {
-            "$ref": "#/components/schemas/ChatCompletionRequestUserMessageContent"
-          },
-          "name": {
-            "type": "string",
-            "description": "An optional name for the participant. Provides the model information to differentiate between participants of the same role."
-          },
-          "role": {
-            "$ref": "#/components/schemas/UserRole"
-          },
-          "tool_call_id": {
-            "type": "string",
-            "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
-            "nullable": true,
-            "x-groq-meta": {
-              "hidden": true
-            }
-          }
-        },
-        "additionalProperties": false
       },
       "ChatCompletionResponseMessage": {
         "required": [
@@ -1810,43 +1599,6 @@
         },
         "description": "A chat completion message generated by the model."
       },
-      "ChatCompletionRole": {
-        "enum": [
-          "system",
-          "user",
-          "assistant",
-          "tool",
-          "function"
-        ],
-        "type": "string",
-        "description": "The role of the author of a message",
-        "x-ms-enum": {
-          "name": "ChatCompletionRole",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "system",
-              "name": "System"
-            },
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "assistant",
-              "name": "Assistant"
-            },
-            {
-              "value": "tool",
-              "name": "Tool"
-            },
-            {
-              "value": "function",
-              "name": "Function"
-            }
-          ]
-        }
-      },
       "ChatCompletionStreamOptions": {
         "type": "object",
         "properties": {
@@ -1863,53 +1615,6 @@
         },
         "description": "Options for streaming response. Only set this when you set \u0060stream: true\u0060.\n",
         "nullable": true
-      },
-      "ChatCompletionStreamResponseDelta": {
-        "type": "object",
-        "properties": {
-          "annotations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Annotation"
-            },
-            "description": "A list of annotations providing citations and references for the content in the message."
-          },
-          "content": {
-            "type": "string",
-            "description": "The contents of the chunk message.",
-            "nullable": true
-          },
-          "executed_tools": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChatCompletionMessageExecutedToolsItem"
-            },
-            "description": "A list of tools that were executed during the chat completion for compound AI systems."
-          },
-          "function_call": {
-            "$ref": "#/components/schemas/ChatCompletionStreamResponseDeltaFunctionCall"
-          },
-          "reasoning": {
-            "type": "string",
-            "description": "The model\u0027s reasoning for a response. Only available for [models that support reasoning](https://console.groq.com/docs/reasoning) when request parameter reasoning_format has value \u0060parsed\u0060.",
-            "nullable": true
-          },
-          "refusal": {
-            "type": "string",
-            "description": "A safety refusal the model generated instead of content.",
-            "nullable": true
-          },
-          "role": {
-            "$ref": "#/components/schemas/ChatCompletionStreamResponseDeltaRole"
-          },
-          "tool_calls": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChatCompletionMessageToolCallChunk"
-            }
-          }
-        },
-        "description": "A chat completion delta generated by streamed model responses."
       },
       "ChatCompletionTokenLogprob": {
         "required": [
@@ -2001,22 +1706,6 @@
           "validator": "ChatCompletionToolChoiceOption"
         },
         "nullable": true
-      },
-      "ChatCompletionUsageBreakdown": {
-        "required": [
-          "models"
-        ],
-        "type": "object",
-        "properties": {
-          "models": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChatCompletionUsageBreakdownModelsItem"
-            },
-            "description": "List of models used in the request and their individual usage statistics"
-          }
-        },
-        "description": "Usage statistics for compound AI completion requests."
       },
       "CodeExecutionResult": {
         "type": "object",
@@ -2392,59 +2081,6 @@
           }
         },
         "description": "Represents a chat completion response returned by model, based on the provided input."
-      },
-      "CreateChatCompletionStreamResponse": {
-        "required": [
-          "choices",
-          "created",
-          "id",
-          "model",
-          "object"
-        ],
-        "type": "object",
-        "properties": {
-          "choices": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CreateChatCompletionStreamResponseChoicesItem"
-            },
-            "description": "A list of chat completion choices. Can contain more than one elements if \u0060n\u0060 is greater than 1.\n"
-          },
-          "created": {
-            "type": "integer",
-            "description": "The Unix timestamp (in seconds) of when the chat completion was created. Each chunk has the same timestamp."
-          },
-          "id": {
-            "type": "string",
-            "description": "A unique identifier for the chat completion. Each chunk has the same ID."
-          },
-          "model": {
-            "type": "string",
-            "description": "The model to generate the completion."
-          },
-          "obfuscation": {
-            "type": "string",
-            "description": "Random padding that normalizes chunk sizes as a mitigation against side-channel attacks. Present on deployments that stream obfuscation unless \u0060stream_options.include_obfuscation\u0060 is false.",
-            "nullable": true
-          },
-          "object": {
-            "$ref": "#/components/schemas/ChatCompletionChunkObject"
-          },
-          "service_tier": {
-            "$ref": "#/components/schemas/CreateChatCompletionStreamResponseServiceTier"
-          },
-          "system_fingerprint": {
-            "type": "string",
-            "description": "This fingerprint represents the backend configuration that the model runs with.\nCan be used in conjunction with the \u0060seed\u0060 request parameter to understand when backend changes have been made that might impact determinism.\n"
-          },
-          "usage": {
-            "$ref": "#/components/schemas/CreateChatCompletionStreamResponseUsage"
-          },
-          "x_groq": {
-            "$ref": "#/components/schemas/XGroq"
-          }
-        },
-        "description": "Represents a streamed chunk of a chat completion response returned by model, based on the provided input."
       },
       "CreateEmbeddingRequest": {
         "required": [
@@ -2889,43 +2525,6 @@
         },
         "description": "Represents a transcription response returned by model, based on the provided input."
       },
-      "CreateTranscriptionResponseVerboseJson": {
-        "required": [
-          "language",
-          "duration",
-          "text"
-        ],
-        "type": "object",
-        "properties": {
-          "duration": {
-            "type": "string",
-            "description": "The duration of the input audio."
-          },
-          "language": {
-            "type": "string",
-            "description": "The language of the input audio."
-          },
-          "segments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TranscriptionSegment"
-            },
-            "description": "Segments of the transcribed text and their corresponding details."
-          },
-          "text": {
-            "type": "string",
-            "description": "The transcribed text."
-          },
-          "words": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TranscriptionWord"
-            },
-            "description": "Extracted words and their corresponding timestamps."
-          }
-        },
-        "description": "Represents a verbose json transcription response returned by model, based on the provided input."
-      },
       "CreateTranslationRequest": {
         "required": [
           "model"
@@ -2984,69 +2583,6 @@
             "type": "string"
           }
         }
-      },
-      "CreateTranslationResponseVerboseJson": {
-        "required": [
-          "language",
-          "duration",
-          "text"
-        ],
-        "type": "object",
-        "properties": {
-          "duration": {
-            "type": "string",
-            "description": "The duration of the input audio."
-          },
-          "language": {
-            "type": "string",
-            "description": "The language of the output translation (always \u0060english\u0060)."
-          },
-          "segments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TranscriptionSegment"
-            },
-            "description": "Segments of the translated text and their corresponding details."
-          },
-          "text": {
-            "type": "string",
-            "description": "The translated text."
-          }
-        }
-      },
-      "DebugData": {
-        "type": "object",
-        "properties": {
-          "input_token_ids": {
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "description": "Token IDs for the input."
-          },
-          "input_tokens": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Token strings for the input."
-          },
-          "output_token_ids": {
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "description": "Token IDs for the output."
-          },
-          "output_tokens": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Token strings for the output."
-          }
-        },
-        "description": "Debug information including input and output token IDs and strings. Only present when debug=true in the request."
       },
       "DeleteFileResponse": {
         "required": [
@@ -3145,66 +2681,6 @@
         },
         "description": "Represents an embedding vector returned by embedding endpoint.\n"
       },
-      "Error": {
-        "required": [
-          "type",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string",
-            "nullable": true
-          },
-          "debug": {
-            "$ref": "#/components/schemas/DebugData"
-          },
-          "failed_generation": {
-            "type": "string",
-            "nullable": true
-          },
-          "message": {
-            "type": "string"
-          },
-          "param": {
-            "type": "string",
-            "nullable": true
-          },
-          "schema_code": {
-            "type": "string",
-            "nullable": true
-          },
-          "schema_kind": {
-            "type": "string",
-            "nullable": true
-          },
-          "schema_path": {
-            "type": "string",
-            "nullable": true
-          },
-          "schema_path_segments": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Segments of the schema path relevant to validation errors."
-          },
-          "type": {
-            "type": "string"
-          }
-        }
-      },
-      "ErrorResponse": {
-        "required": [
-          "error"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "$ref": "#/components/schemas/Error"
-          }
-        }
-      },
       "File": {
         "title": "File",
         "type": "object",
@@ -3281,10 +2757,6 @@
             "default": false
           }
         }
-      },
-      "FunctionParameters": {
-        "type": "object",
-        "description": "Function parameters defined as a JSON Schema object. Refer to https://json-schema.org/understanding-json-schema/ for schema documentation."
       },
       "ListBatchesResponse": {
         "required": [
@@ -3476,82 +2948,95 @@
         }
       },
       "ResponseAnnotation": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ResponseFileCitation"
-          },
-          {
-            "$ref": "#/components/schemas/ResponseUrlCitation"
-          }
-        ],
         "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "file_citation": "#/components/schemas/ResponseFileCitation",
             "url_citation": "#/components/schemas/ResponseUrlCitation"
           }
-        }
-      },
-      "ResponseEasyInputMessage": {
-        "title": "Easy input message",
-        "required": [
-          "role",
-          "content"
-        ],
-        "type": "object",
-        "properties": {
-          "content": {
-            "$ref": "#/components/schemas/ResponseEasyInputMessageContent"
-          },
-          "role": {
-            "$ref": "#/components/schemas/ResponseEasyInputMessageRole"
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "file_citation": "#/components/schemas/ResponseAnnotationResponseFileCitation",
+            "url_citation": "#/components/schemas/ResponseAnnotationResponseUrlCitation"
           }
         },
-        "description": "A message input to the model with a role indicating instruction following hierarchy.\n"
-      },
-      "ResponseFileCitation": {
-        "title": "File citation",
-        "required": [
-          "type",
-          "file_id"
-        ],
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/ResponseFileCitation"
+            },
+            {
+              "$ref": "#/components/schemas/ResponseUrlCitation"
+            }
+          ],
+          "x-client-original-discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "file_citation": "#/components/schemas/ResponseFileCitation",
+              "url_citation": "#/components/schemas/ResponseUrlCitation"
+            }
+          },
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "file_citation": "#/components/schemas/ResponseFileCitation",
+              "url_citation": "#/components/schemas/ResponseUrlCitation"
+            }
+          }
+        },
         "type": "object",
         "properties": {
-          "file_id": {
-            "type": "string",
-            "description": "The ID of the file."
-          },
-          "index": {
-            "type": "integer",
-            "description": "The index of the citation in the text."
-          },
           "type": {
-            "$ref": "#/components/schemas/FileCitationType"
+            "type": "string"
           }
         },
-        "description": "A citation to a file."
+        "required": [
+          "type"
+        ]
       },
       "ResponseFormatConfiguration": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ResponseFormatText"
-          },
-          {
-            "$ref": "#/components/schemas/ResponseFormatJsonObject"
-          },
-          {
-            "$ref": "#/components/schemas/TextResponseFormatJsonSchema"
-          }
-        ],
         "description": "An object specifying the format that the model must output.\n",
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "text": "#/components/schemas/ResponseFormatText",
-            "json_object": "#/components/schemas/ResponseFormatJsonObject",
-            "json_schema": "#/components/schemas/TextResponseFormatJsonSchema"
+            "text": "#/components/schemas/ResponseFormatConfigurationResponseFormatText",
+            "json_object": "#/components/schemas/ResponseFormatConfigurationResponseFormatJsonObject",
+            "json_schema": "#/components/schemas/ResponseFormatConfigurationTextResponseFormatJsonSchema"
           }
-        }
+        },
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/ResponseFormatText"
+            },
+            {
+              "$ref": "#/components/schemas/ResponseFormatJsonObject"
+            },
+            {
+              "$ref": "#/components/schemas/TextResponseFormatJsonSchema"
+            }
+          ],
+          "description": "An object specifying the format that the model must output.\n",
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "text": "#/components/schemas/ResponseFormatText",
+              "json_object": "#/components/schemas/ResponseFormatJsonObject",
+              "json_schema": "#/components/schemas/TextResponseFormatJsonSchema"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "ResponseFormatJsonObject": {
         "title": "JSON object",
@@ -3582,11 +3067,6 @@
           }
         },
         "description": "JSON Schema response format. Used to generate structured JSON responses.\n"
-      },
-      "ResponseFormatJsonSchemaSchema": {
-        "title": "JSON schema",
-        "type": "object",
-        "description": "The schema for the response format, described as a JSON Schema object.\nLearn how to build JSON schemas [here](https://json-schema.org/).\n"
       },
       "ResponseFormatText": {
         "title": "Text",
@@ -3747,24 +3227,6 @@
         },
         "description": "A message input to the model with explicit type field.\n"
       },
-      "ResponseInputTextContent": {
-        "title": "Input text",
-        "required": [
-          "type",
-          "text"
-        ],
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string",
-            "description": "The text input to the model."
-          },
-          "type": {
-            "$ref": "#/components/schemas/InputTextType"
-          }
-        },
-        "description": "A text input to the model."
-      },
       "ResponseItemReference": {
         "title": "Item reference",
         "required": [
@@ -3839,54 +3301,7 @@
           }
         }
       },
-      "ResponseOutputFunctionCall": {
-        "title": "Function call",
-        "required": [
-          "type",
-          "id",
-          "call_id",
-          "name",
-          "arguments"
-        ],
-        "type": "object",
-        "properties": {
-          "arguments": {
-            "type": "string",
-            "description": "A JSON string of the arguments to pass to the function."
-          },
-          "call_id": {
-            "type": "string",
-            "description": "The unique ID of the function tool call generated by the model."
-          },
-          "id": {
-            "type": "string",
-            "description": "The unique ID of the function tool call."
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the function to call."
-          },
-          "status": {
-            "$ref": "#/components/schemas/ResponseOutputFunctionCallStatus"
-          },
-          "type": {
-            "$ref": "#/components/schemas/FunctionCallType"
-          }
-        },
-        "description": "A function call generated by the model."
-      },
       "ResponseOutputItem": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ResponseOutputMessage"
-          },
-          {
-            "$ref": "#/components/schemas/ResponseOutputFunctionCall"
-          },
-          {
-            "$ref": "#/components/schemas/ResponseOutputReasoning"
-          }
-        ],
         "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
@@ -3894,100 +3309,53 @@
             "message": "#/components/schemas/ResponseOutputMessage",
             "reasoning": "#/components/schemas/ResponseOutputReasoning"
           }
-        }
-      },
-      "ResponseOutputMessage": {
-        "title": "Output message",
-        "required": [
-          "type",
-          "id",
-          "role",
-          "content"
-        ],
-        "type": "object",
-        "properties": {
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseOutputContent"
-            },
-            "description": "The content of the output message."
-          },
-          "id": {
-            "type": "string",
-            "description": "The unique ID of the output message."
-          },
-          "role": {
-            "$ref": "#/components/schemas/AssistantRole"
-          },
-          "status": {
-            "$ref": "#/components/schemas/ResponseOutputMessageStatus"
-          },
-          "type": {
-            "$ref": "#/components/schemas/MessageType"
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "message": "#/components/schemas/ResponseOutputItemResponseOutputMessage",
+            "function_call": "#/components/schemas/ResponseOutputItemResponseOutputFunctionCall",
+            "reasoning": "#/components/schemas/ResponseOutputItemResponseOutputReasoning"
           }
         },
-        "description": "An output message from the model."
-      },
-      "ResponseOutputReasoning": {
-        "title": "Reasoning",
-        "required": [
-          "type",
-          "id",
-          "summary"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The unique ID of the reasoning output."
-          },
-          "summary": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseOutputReasoningSummaryItemProperty"
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/ResponseOutputMessage"
             },
-            "description": "Summary items (currently empty)."
+            {
+              "$ref": "#/components/schemas/ResponseOutputFunctionCall"
+            },
+            {
+              "$ref": "#/components/schemas/ResponseOutputReasoning"
+            }
+          ],
+          "x-client-original-discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "function_call": "#/components/schemas/ResponseOutputFunctionCall",
+              "message": "#/components/schemas/ResponseOutputMessage",
+              "reasoning": "#/components/schemas/ResponseOutputReasoning"
+            }
           },
-          "type": {
-            "$ref": "#/components/schemas/ReasoningType"
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "message": "#/components/schemas/ResponseOutputMessage",
+              "function_call": "#/components/schemas/ResponseOutputFunctionCall",
+              "reasoning": "#/components/schemas/ResponseOutputReasoning"
+            }
           }
         },
-        "description": "A reasoning output from the model. Available for [models that support reasoning](https://console.groq.com/docs/reasoning)."
-      },
-      "ResponseOutputTextContent": {
-        "title": "Output text",
-        "required": [
-          "type",
-          "text",
-          "annotations"
-        ],
         "type": "object",
         "properties": {
-          "annotations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseAnnotation"
-            },
-            "description": "The annotations of the text output."
-          },
-          "logprobs": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Log probability information for the output.",
-            "nullable": true
-          },
-          "text": {
-            "type": "string",
-            "description": "The text output from the model."
-          },
           "type": {
-            "$ref": "#/components/schemas/OutputTextType"
+            "type": "string"
           }
         },
-        "description": "A text output from the model."
+        "required": [
+          "type"
+        ]
       },
       "ResponseTool": {
         "required": [
@@ -4029,36 +3397,6 @@
         "description": "Controls which (if any) tool is called by the model.\n\u0060none\u0060 means the model will not call any tool and instead generates a message.\n\u0060auto\u0060 means the model can pick between generating a message or calling one or more tools.\n\u0060required\u0060 means the model must call one or more tools.\nSpecifying a particular tool via \u0060{\u0022type\u0022: \u0022function\u0022, \u0022function\u0022: {\u0022name\u0022: \u0022my_function\u0022}}\u0060 forces the model to call that tool.\n\n\u0060none\u0060 is the default when no tools are present. \u0060auto\u0060 is the default if tools are present.\n",
         "nullable": true
       },
-      "ResponseUrlCitation": {
-        "title": "URL citation",
-        "required": [
-          "type",
-          "url"
-        ],
-        "type": "object",
-        "properties": {
-          "end_index": {
-            "type": "integer",
-            "description": "The index of the last character of the URL citation in the message."
-          },
-          "start_index": {
-            "type": "integer",
-            "description": "The index of the first character of the URL citation in the message."
-          },
-          "title": {
-            "type": "string",
-            "description": "The title of the web resource."
-          },
-          "type": {
-            "$ref": "#/components/schemas/UrlCitationType"
-          },
-          "url": {
-            "type": "string",
-            "description": "The URL of the web resource."
-          }
-        },
-        "description": "A citation for a web resource."
-      },
       "ResponseUsage": {
         "required": [
           "input_tokens",
@@ -4089,174 +3427,6 @@
           }
         },
         "description": "Usage statistics for the response request."
-      },
-      "TextResponseFormatJsonSchema": {
-        "title": "JSON schema",
-        "required": [
-          "type",
-          "name",
-          "schema"
-        ],
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string",
-            "description": "A description of what the response format is for, used by the model to determine how to respond in the format.\n"
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the response format. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.\n"
-          },
-          "schema": {
-            "$ref": "#/components/schemas/TextResponseFormatJsonSchemaSchemaProperty"
-          },
-          "strict": {
-            "type": "boolean",
-            "description": "Whether to enable strict schema adherence when generating the output.\n",
-            "default": false,
-            "nullable": true
-          },
-          "type": {
-            "$ref": "#/components/schemas/JsonSchemaType"
-          }
-        },
-        "description": "JSON Schema response format. Used to generate structured JSON responses.\n"
-      },
-      "TranscriptionSegment": {
-        "required": [
-          "id",
-          "seek",
-          "start",
-          "end",
-          "text",
-          "tokens"
-        ],
-        "type": "object",
-        "properties": {
-          "audio_text": {
-            "type": "string",
-            "description": "Transcribed text for the entire chunk"
-          },
-          "avg_logprob": {
-            "type": "number",
-            "description": "Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.",
-            "format": "float"
-          },
-          "chunk_end": {
-            "type": "integer",
-            "description": "End chunk timestamp."
-          },
-          "chunk_start": {
-            "type": "integer",
-            "description": "Start chunk timestamp."
-          },
-          "compression_ratio": {
-            "type": "number",
-            "description": "Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.",
-            "format": "float"
-          },
-          "end": {
-            "type": "number",
-            "description": "End time of the segment in seconds.",
-            "format": "float"
-          },
-          "id": {
-            "type": "integer",
-            "description": "Unique identifier of the segment."
-          },
-          "no_speech_prob": {
-            "type": "number",
-            "description": "Probability of no speech in the segment. If the value is higher than 1.0 and the \u0060avg_logprob\u0060 is below -1, consider this segment silent.",
-            "format": "float"
-          },
-          "seek": {
-            "type": "integer",
-            "description": "Seek offset of the segment."
-          },
-          "start": {
-            "type": "number",
-            "description": "Start time of the segment in seconds.",
-            "format": "float"
-          },
-          "temperature": {
-            "type": "number",
-            "description": "Temperature parameter used for generating the segment.",
-            "format": "float"
-          },
-          "text": {
-            "type": "string",
-            "description": "Text content of the segment."
-          },
-          "token_scores": {
-            "type": "array",
-            "items": {
-              "type": "number",
-              "format": "float"
-            },
-            "description": "Token-level scores."
-          },
-          "tokens": {
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "description": "Array of token IDs for the text content."
-          }
-        }
-      },
-      "TranscriptionWord": {
-        "required": [
-          "word",
-          "start",
-          "end"
-        ],
-        "type": "object",
-        "properties": {
-          "end": {
-            "type": "number",
-            "description": "End time of the word in seconds.",
-            "format": "float"
-          },
-          "start": {
-            "type": "number",
-            "description": "Start time of the word in seconds.",
-            "format": "float"
-          },
-          "word": {
-            "type": "string",
-            "description": "The text content of the word."
-          }
-        }
-      },
-      "XGroq": {
-        "type": "object",
-        "properties": {
-          "debug": {
-            "$ref": "#/components/schemas/XGroqDebug"
-          },
-          "error": {
-            "type": "string",
-            "description": "An error string indicating why a stream was stopped early.",
-            "nullable": true
-          },
-          "id": {
-            "type": "string",
-            "description": "A groq request ID which can be used to refer to a specific request to groq support.\nSent only in the first and final chunk.\n",
-            "nullable": true
-          },
-          "seed": {
-            "type": "integer",
-            "description": "The seed used for the request. Sent in the final chunk.",
-            "nullable": true
-          },
-          "usage": {
-            "$ref": "#/components/schemas/XGroqUsage"
-          },
-          "usage_breakdown": {
-            "$ref": "#/components/schemas/XGroqUsageBreakdown"
-          }
-        },
-        "description": "Groq-specific metadata for streaming responses. Different fields appear in different chunks."
       },
       "XGroqNonStreaming": {
         "required": [
@@ -4381,7 +3551,24 @@
             "items": {
               "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPart"
             },
-            "description": "An array of content parts with a defined type, each can be of type \u0060text\u0060 or \u0060image_url\u0060 when passing in images. You can pass multiple images by adding multiple \u0060image_url\u0060 content parts. Image input is only supported when using the \u0060gpt-4-visual-preview\u0060 model."
+            "description": "An array of content parts with a defined type, each can be of type \u0060text\u0060 or \u0060image_url\u0060 when passing in images. You can pass multiple images by adding multiple \u0060image_url\u0060 content parts. Image input is only supported when using the \u0060gpt-4-visual-preview\u0060 model.",
+            "properties": {
+              "type": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "discriminator": {
+              "propertyName": "type",
+              "mapping": {
+                "text": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText",
+                "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartImage",
+                "document": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartDocument"
+              }
+            },
+            "x-client-array-item-dispatch": true
           }
         ],
         "description": "The contents of the tool message."
@@ -4401,14 +3588,27 @@
             "items": {
               "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPart"
             },
-            "description": "An array of content parts with a defined type, each can be of type \u0060text\u0060 or \u0060image_url\u0060 when passing in images. You can pass multiple images by adding multiple \u0060image_url\u0060 content parts. Image input is only supported when using the \u0060gpt-4-visual-preview\u0060 model."
+            "description": "An array of content parts with a defined type, each can be of type \u0060text\u0060 or \u0060image_url\u0060 when passing in images. You can pass multiple images by adding multiple \u0060image_url\u0060 content parts. Image input is only supported when using the \u0060gpt-4-visual-preview\u0060 model.",
+            "properties": {
+              "type": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "discriminator": {
+              "propertyName": "type",
+              "mapping": {
+                "text": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText",
+                "image_url": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartImage",
+                "document": "#/components/schemas/ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartDocument"
+              }
+            },
+            "x-client-array-item-dispatch": true
           }
         ],
         "description": "The contents of the user message.\n"
-      },
-      "ChatCompletionToolType": {
-        "type": "string",
-        "x-client-inline-scalar": true
       },
       "CreateChatCompletionRequestFunctionCall": {
         "oneOf": [
@@ -4422,12 +3622,6 @@
         "description": "Deprecated in favor of \u0060tool_choice\u0060.\n\nControls which (if any) function is called by the model.\n\u0060none\u0060 means the model will not call a function and instead generates a message.\n\u0060auto\u0060 means the model can pick between generating a message or calling a function.\nSpecifying a particular function via \u0060{\u0022name\u0022: \u0022my_function\u0022}\u0060 forces the model to call that function.\n\n\u0060none\u0060 is the default when no functions are present. \u0060auto\u0060 is the default if functions are present.\n",
         "deprecated": true,
         "nullable": true
-      },
-      "CreateChatCompletionRequestModel": {
-        "type": "string",
-        "x-client-inline-scalar": true,
-        "description": "ID of the model to use. For details on which models are compatible with the Chat API, see available [models](https://console.groq.com/docs/models)",
-        "example": "meta-llama/llama-4-scout-17b-16e-instruct"
       },
       "CreateChatCompletionRequestResponseFormat": {
         "oneOf": [
@@ -4487,52 +3681,6 @@
         },
         "description": "Detailed usage breakdown by model when multiple models are used in the request for compound AI systems."
       },
-      "CreateChatCompletionStreamResponseUsage": {
-        "required": [
-          "prompt_tokens",
-          "completion_tokens",
-          "total_tokens"
-        ],
-        "type": "object",
-        "properties": {
-          "completion_time": {
-            "type": "number",
-            "description": "Time spent generating tokens"
-          },
-          "completion_tokens": {
-            "type": "integer",
-            "description": "Number of tokens in the generated completion."
-          },
-          "completion_tokens_details": {
-            "$ref": "#/components/schemas/CompletionUsageCompletionTokensDetails"
-          },
-          "prompt_time": {
-            "type": "number",
-            "description": "Time spent processing input tokens"
-          },
-          "prompt_tokens": {
-            "type": "integer",
-            "description": "Number of tokens in the prompt."
-          },
-          "prompt_tokens_details": {
-            "$ref": "#/components/schemas/CompletionUsagePromptTokensDetails"
-          },
-          "queue_time": {
-            "type": "number",
-            "description": "Time the requests was spent queued"
-          },
-          "total_time": {
-            "type": "number",
-            "description": "completion time and prompt time combined"
-          },
-          "total_tokens": {
-            "type": "integer",
-            "description": "Total number of tokens used in the request (prompt \u002B completion)."
-          }
-        },
-        "description": "Present when \u0060stream_options.include_usage\u0060 is set - null on every chunk except the final usage chunk, which carries the totals for the request.",
-        "nullable": true
-      },
       "CreateEmbeddingRequestInput": {
         "oneOf": [
           {
@@ -4561,12 +3709,6 @@
           "validator": "EmbeddingInput"
         }
       },
-      "CreateEmbeddingRequestModel": {
-        "type": "string",
-        "x-client-inline-scalar": true,
-        "description": "ID of the model to use.\n",
-        "example": "nomic-embed-text-v1_5"
-      },
       "CreateResponseRequestInput": {
         "oneOf": [
           {
@@ -4584,35 +3726,6 @@
           }
         ],
         "description": "Text input to the model, used to generate a response.\n"
-      },
-      "CreateResponseRequestModel": {
-        "type": "string",
-        "x-client-inline-scalar": true,
-        "description": "ID of the model to use. For details on which models are compatible with the Responses API, see available [models](https://console.groq.com/docs/models)",
-        "example": "llama-3.3-70b-versatile"
-      },
-      "CreateSpeechRequestModel": {
-        "type": "string",
-        "x-client-inline-scalar": true,
-        "description": "One of the [available TTS models](/docs/text-to-speech).\n",
-        "example": "playai-tts"
-      },
-      "CreateTranscriptionRequestLanguage": {
-        "type": "string",
-        "x-client-inline-scalar": true,
-        "description": "The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.\n"
-      },
-      "CreateTranscriptionRequestModel": {
-        "type": "string",
-        "x-client-inline-scalar": true,
-        "description": "ID of the model to use. \u0060whisper-large-v3\u0060 and \u0060whisper-large-v3-turbo\u0060 are currently available.\n",
-        "example": "whisper-large-v3-turbo"
-      },
-      "CreateTranslationRequestModel": {
-        "type": "string",
-        "x-client-inline-scalar": true,
-        "description": "ID of the model to use. \u0060whisper-large-v3\u0060 and \u0060whisper-large-v3-turbo\u0060 are currently available.\n",
-        "example": "whisper-large-v3-turbo"
       },
       "EmbeddingEmbedding": {
         "oneOf": [
@@ -4646,103 +3759,6 @@
           }
         ],
         "description": "Text input to the model.\n"
-      },
-      "XGroqDebug": {
-        "type": "object",
-        "properties": {
-          "input_token_ids": {
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "description": "Token IDs for the input."
-          },
-          "input_tokens": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Token strings for the input."
-          },
-          "output_token_ids": {
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "description": "Token IDs for the output."
-          },
-          "output_tokens": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Token strings for the output."
-          }
-        },
-        "nullable": true
-      },
-      "XGroqUsage": {
-        "required": [
-          "prompt_tokens",
-          "completion_tokens",
-          "total_tokens"
-        ],
-        "type": "object",
-        "properties": {
-          "completion_time": {
-            "type": "number",
-            "description": "Time spent generating tokens"
-          },
-          "completion_tokens": {
-            "type": "integer",
-            "description": "Number of tokens in the generated completion."
-          },
-          "completion_tokens_details": {
-            "$ref": "#/components/schemas/CompletionUsageCompletionTokensDetails"
-          },
-          "prompt_time": {
-            "type": "number",
-            "description": "Time spent processing input tokens"
-          },
-          "prompt_tokens": {
-            "type": "integer",
-            "description": "Number of tokens in the prompt."
-          },
-          "prompt_tokens_details": {
-            "$ref": "#/components/schemas/CompletionUsagePromptTokensDetails"
-          },
-          "queue_time": {
-            "type": "number",
-            "description": "Time the requests was spent queued"
-          },
-          "total_time": {
-            "type": "number",
-            "description": "completion time and prompt time combined"
-          },
-          "total_tokens": {
-            "type": "integer",
-            "description": "Total number of tokens used in the request (prompt \u002B completion)."
-          }
-        },
-        "description": "Usage information for the stream. Only sent in the final chunk.",
-        "nullable": true
-      },
-      "XGroqUsageBreakdown": {
-        "required": [
-          "models"
-        ],
-        "type": "object",
-        "properties": {
-          "models": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChatCompletionUsageBreakdownModelsItem"
-            },
-            "description": "List of models used in the request and their individual usage statistics"
-          }
-        },
-        "description": "Detailed usage breakdown by model when multiple models are used in the request for compound AI systems. Only sent in the final chunk.",
-        "nullable": true
       },
       "XGroqNonStreamingDebug": {
         "type": "object",
@@ -4793,11 +3809,6 @@
           }
         }
       },
-      "BatchMetadata": {
-        "type": "object",
-        "description": "Set of key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format.\n",
-        "nullable": true
-      },
       "BatchRequestCounts": {
         "required": [
           "total",
@@ -4821,42 +3832,6 @@
         },
         "description": "The request counts for different statuses within the batch."
       },
-      "BatchRequestOutputError": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string",
-            "description": "A machine-readable error code."
-          },
-          "message": {
-            "type": "string",
-            "description": "A human-readable error message."
-          }
-        },
-        "description": "For requests that failed with a non-HTTP error, this will contain more information on the cause of the failure.",
-        "nullable": true
-      },
-      "BatchRequestOutputResponse": {
-        "type": "object",
-        "properties": {
-          "body": {
-            "$ref": "#/components/schemas/BatchRequestOutputResponseBodyProperty"
-          },
-          "request_id": {
-            "type": "string",
-            "description": "An unique identifier for the OpenAI API request. Please include this request ID when contacting support."
-          },
-          "status_code": {
-            "type": "integer",
-            "description": "The HTTP status code of the response"
-          }
-        },
-        "nullable": true
-      },
-      "ChatCompletionDocumentSourceJsonData": {
-        "type": "object",
-        "description": "The JSON payload associated with the document."
-      },
       "ChatCompletionMessageToolCallFunction": {
         "required": [
           "name",
@@ -4874,19 +3849,6 @@
           }
         },
         "description": "The function that the model called."
-      },
-      "ChatCompletionMessageToolCallChunkFunction": {
-        "type": "object",
-        "properties": {
-          "arguments": {
-            "type": "string",
-            "description": "The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function."
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the function to call."
-          }
-        }
       },
       "ChatCompletionNamedToolChoiceFunction": {
         "required": [
@@ -4943,7 +3905,7 @@
           "url": {
             "type": "string",
             "description": "Either a URL of the image or the base64 encoded image data.",
-            "format": "uri"
+            "x-client-original-format": "uri"
           }
         }
       },
@@ -4952,21 +3914,6 @@
           "name",
           "arguments"
         ],
-        "type": "object",
-        "properties": {
-          "arguments": {
-            "type": "string",
-            "description": "The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function."
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the function to call."
-          }
-        },
-        "description": "Deprecated and replaced by \u0060tool_calls\u0060. The name and arguments of a function that should be called, as generated by the model.",
-        "deprecated": true
-      },
-      "ChatCompletionStreamResponseDeltaFunctionCall": {
         "type": "object",
         "properties": {
           "arguments": {
@@ -5005,16 +3952,6 @@
             "type": "string",
             "description": "The token."
           }
-        }
-      },
-      "ChatCompletionToolHeaders": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "HTTP headers to send with requests to the MCP server (optional for MCP tools).",
-        "x-groq-meta": {
-          "hidden": true
         }
       },
       "ChatCompletionUsageBreakdownModelsItem": {
@@ -5061,14 +3998,6 @@
         "description": "Breakdown of tokens in the prompt.",
         "nullable": true
       },
-      "CreateChatCompletionRequestChatTemplateArgs": {
-        "type": "object",
-        "description": "Chat-template parameters forwarded to Dynamo deployments unchanged.\nThe serving runtime validates parameter names, values, and model support.\nRejected for deployments that do not use Dynamo.\n",
-        "nullable": true,
-        "x-groq-meta": {
-          "hidden": true
-        }
-      },
       "CreateChatCompletionRequestCompoundCustom": {
         "type": "object",
         "properties": {
@@ -5108,22 +4037,6 @@
         "x-groq-meta": {
           "hidden": true
         }
-      },
-      "CreateChatCompletionRequestLogitBias": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "integer"
-        },
-        "description": "This is not yet supported by any of our models.\nModify the likelihood of specified tokens appearing in the completion.\n",
-        "nullable": true
-      },
-      "CreateChatCompletionRequestMetadata": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "This parameter is not currently supported.\n",
-        "nullable": true
       },
       "CreateChatCompletionRequestSearchSettings": {
         "type": "object",
@@ -5206,29 +4119,6 @@
           }
         }
       },
-      "CreateChatCompletionStreamResponseChoicesItem": {
-        "required": [
-          "delta",
-          "finish_reason",
-          "index"
-        ],
-        "type": "object",
-        "properties": {
-          "delta": {
-            "$ref": "#/components/schemas/ChatCompletionStreamResponseDelta"
-          },
-          "finish_reason": {
-            "$ref": "#/components/schemas/CreateChatCompletionStreamResponseChoicesItemFinishReason"
-          },
-          "index": {
-            "type": "integer",
-            "description": "The index of the choice in the list of choices."
-          },
-          "logprobs": {
-            "$ref": "#/components/schemas/CreateChatCompletionStreamResponseChoicesItemLogprobs"
-          }
-        }
-      },
       "CreateEmbeddingResponseUsage": {
         "required": [
           "prompt_tokens",
@@ -5246,14 +4136,6 @@
           }
         },
         "description": "The usage information for the request."
-      },
-      "CreateResponseRequestMetadata": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Custom key-value pairs for storing additional information. Maximum of 16 pairs.\n",
-        "nullable": true
       },
       "CreateResponseRequestReasoning": {
         "type": "object",
@@ -5302,14 +4184,6 @@
           }
         },
         "description": "Details about why the response is incomplete.",
-        "nullable": true
-      },
-      "CreateResponseResponseMetadata": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Metadata attached to the response.",
         "nullable": true
       },
       "CreateResponseResponseReasoning": {
@@ -5441,9 +4315,6 @@
           }
         }
       },
-      "ResponseOutputReasoningSummaryItem": {
-        "type": "object"
-      },
       "ResponseUsageInputTokensDetails": {
         "required": [
           "cached_tokens"
@@ -5478,10 +4349,6 @@
           }
         },
         "description": "Breakdown of output tokens."
-      },
-      "TextResponseFormatJsonSchemaSchema": {
-        "type": "object",
-        "description": "The schema for the response format, described as a JSON Schema object.\n"
       },
       "XGroqNonStreamingUsage": {
         "type": "object",
@@ -5541,14 +4408,6 @@
             "nullable": true
           }
         }
-      },
-      "BatchRequestOutputResponseBody": {
-        "type": "object",
-        "description": "The JSON body of the response"
-      },
-      "ChatCompletionRequestMessageContentPartDocumentDocumentData": {
-        "type": "object",
-        "description": "The JSON document data."
       },
       "CreateChatCompletionRequestCompoundCustomModels": {
         "type": "object",
@@ -5621,24 +4480,6 @@
           }
         }
       },
-      "CreateChatCompletionStreamResponseChoicesItemLogprobs": {
-        "required": [
-          "content"
-        ],
-        "type": "object",
-        "properties": {
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChatCompletionTokenLogprob"
-            },
-            "description": "A list of message content tokens with log probability information.",
-            "nullable": true
-          }
-        },
-        "description": "Log probability information for the choice.",
-        "nullable": true
-      },
       "ChatCompletionMessageExecutedToolsItemSearchResultsResultsItem": {
         "type": "object",
         "properties": {
@@ -5673,17 +4514,6 @@
         "description": "Configuration for the Wolfram tool integration.",
         "nullable": true
       },
-      "CreateChatCompletionResponseMcpListToolsItemToolsItemInputSchema": {
-        "type": "object",
-        "description": "JSON Schema describing the tool\u0027s input parameters."
-      },
-      "CreateSpeech200WavResponse": {
-        "type": "string",
-        "format": "binary"
-      },
-      "CreateTranslation200PlainResponse": {
-        "type": "string"
-      },
       "CreateBatchRequest": {
         "required": [
           "input_file_id",
@@ -5708,20 +4538,9 @@
           }
         }
       },
-      "DownloadFile200OctetStreamResponse": {
-        "type": "string",
-        "format": "binary"
-      },
-      "ExamplePayload": {
-        "type": "object",
-        "description": "Placeholder schema for path example refs"
-      },
       "CreateSpeech200WavResponseSchema": {
         "type": "string",
         "format": "binary"
-      },
-      "CreateTranslation200PlainResponseSchema": {
-        "type": "string"
       },
       "DownloadFile200OctetStreamResponseSchema": {
         "type": "string",
@@ -5804,10 +4623,6 @@
       "TextResponseFormatJsonSchemaSchemaProperty": {
         "type": "object",
         "description": "The schema for the response format, described as a JSON Schema object.\n"
-      },
-      "BatchRequestOutputResponseBodyProperty": {
-        "type": "object",
-        "description": "The JSON body of the response"
       },
       "ChatCompletionRequestMessageContentPartDocumentDocumentDataProperty": {
         "type": "object",
@@ -5918,24 +4733,6 @@
             {
               "value": "cancelled",
               "name": "Cancelled"
-            }
-          ]
-        }
-      },
-      "PostMethod": {
-        "enum": [
-          "POST"
-        ],
-        "type": "string",
-        "description": "The HTTP method to be used for the request. Currently only \u0060POST\u0060 is supported.",
-        "x-stainless-const": true,
-        "x-ms-enum": {
-          "name": "PostMethod",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "POST",
-              "name": "Post"
             }
           ]
         }
@@ -6162,38 +4959,6 @@
           ]
         }
       },
-      "ChatCompletionStreamResponseDeltaRole": {
-        "enum": [
-          "system",
-          "user",
-          "assistant",
-          "tool"
-        ],
-        "type": "string",
-        "description": "The role of the author of this message.",
-        "x-ms-enum": {
-          "name": "ChatCompletionStreamResponseDeltaRole",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "system",
-              "name": "System"
-            },
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "assistant",
-              "name": "Assistant"
-            },
-            {
-              "value": "tool",
-              "name": "Tool"
-            }
-          ]
-        }
-      },
       "ChatCompletionToolChoiceOptionOneOf1": {
         "enum": [
           "none",
@@ -6326,38 +5091,44 @@
         }
       },
       "CreateChatCompletionRequestServiceTier": {
-        "enum": [
-          "auto",
-          "on_demand",
-          "flex",
-          "performance",
-          null
-        ],
-        "type": "string",
         "description": "The service tier to use for the request. Defaults to \u0060on_demand\u0060.\n- \u0060auto\u0060 will automatically select the highest tier available within the rate limits of your organization.\n- \u0060flex\u0060 uses the flex tier, which will succeed or fail quickly.\n",
-        "nullable": true,
-        "x-ms-enum": {
-          "name": "CreateChatCompletionRequestServiceTier",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "auto",
-              "name": "Auto"
-            },
-            {
-              "value": "on_demand",
-              "name": "OnDemand"
-            },
-            {
-              "value": "flex",
-              "name": "Flex"
-            },
-            {
-              "value": "performance",
-              "name": "Performance"
+        "anyOf": [
+          {
+            "enum": [
+              "auto",
+              "on_demand",
+              "flex",
+              "performance"
+            ],
+            "type": "string",
+            "description": "The service tier to use for the request. Defaults to \u0060on_demand\u0060.\n- \u0060auto\u0060 will automatically select the highest tier available within the rate limits of your organization.\n- \u0060flex\u0060 uses the flex tier, which will succeed or fail quickly.\n",
+            "x-ms-enum": {
+              "name": "CreateChatCompletionRequestServiceTier",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "auto",
+                  "name": "Auto"
+                },
+                {
+                  "value": "on_demand",
+                  "name": "OnDemand"
+                },
+                {
+                  "value": "flex",
+                  "name": "Flex"
+                },
+                {
+                  "value": "performance",
+                  "name": "Performance"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "$ref": "#/components/schemas/OpenApiNullValue"
+          }
+        ]
       },
       "ChatCompletionObject": {
         "enum": [
@@ -6377,98 +5148,49 @@
         }
       },
       "CreateChatCompletionResponseServiceTier": {
-        "enum": [
-          "auto",
-          "on_demand",
-          "flex",
-          "performance",
-          "default",
-          null
-        ],
-        "type": "string",
         "description": "The service tier used for the request. Deployments running in strict OpenAI compatibility report Groq-specific tiers as \u0060default\u0060.",
-        "nullable": true,
-        "x-ms-enum": {
-          "name": "CreateChatCompletionResponseServiceTier",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "auto",
-              "name": "Auto"
-            },
-            {
-              "value": "on_demand",
-              "name": "OnDemand"
-            },
-            {
-              "value": "flex",
-              "name": "Flex"
-            },
-            {
-              "value": "performance",
-              "name": "Performance"
-            },
-            {
-              "value": "default",
-              "name": "DefaultValue"
+        "anyOf": [
+          {
+            "enum": [
+              "auto",
+              "on_demand",
+              "flex",
+              "performance",
+              "default"
+            ],
+            "type": "string",
+            "description": "The service tier used for the request. Deployments running in strict OpenAI compatibility report Groq-specific tiers as \u0060default\u0060.",
+            "x-ms-enum": {
+              "name": "CreateChatCompletionResponseServiceTier",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "auto",
+                  "name": "Auto"
+                },
+                {
+                  "value": "on_demand",
+                  "name": "OnDemand"
+                },
+                {
+                  "value": "flex",
+                  "name": "Flex"
+                },
+                {
+                  "value": "performance",
+                  "name": "Performance"
+                },
+                {
+                  "value": "default",
+                  "name": "DefaultValue"
+                }
+              ]
             }
-          ]
-        }
-      },
-      "ChatCompletionChunkObject": {
-        "enum": [
-          "chat.completion.chunk"
-        ],
-        "type": "string",
-        "description": "The object type, which is always \u0060chat.completion.chunk\u0060.",
-        "x-ms-enum": {
-          "name": "ChatCompletionChunkObject",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "chat.completion.chunk",
-              "name": "ChatCompletionChunk"
-            }
-          ]
-        }
-      },
-      "CreateChatCompletionStreamResponseServiceTier": {
-        "enum": [
-          "auto",
-          "on_demand",
-          "flex",
-          "performance",
-          "default"
-        ],
-        "type": "string",
-        "description": "The service tier used for the request. Deployments running in strict OpenAI compatibility report Groq-specific tiers as \u0060default\u0060.",
-        "nullable": true,
-        "x-ms-enum": {
-          "name": "CreateChatCompletionStreamResponseServiceTier",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "auto",
-              "name": "Auto"
-            },
-            {
-              "value": "on_demand",
-              "name": "OnDemand"
-            },
-            {
-              "value": "flex",
-              "name": "Flex"
-            },
-            {
-              "value": "performance",
-              "name": "Performance"
-            },
-            {
-              "value": "default",
-              "name": "DefaultValue"
-            }
-          ]
-        }
+          },
+          {
+            "$ref": "#/components/schemas/OpenApiNullValue"
+          }
+        ]
       },
       "CreateEmbeddingRequestEncodingFormat": {
         "enum": [
@@ -7295,33 +6017,6 @@
           ]
         }
       },
-      "ChatCompletionToolTypeAnyOf1": {
-        "enum": [
-          "function",
-          "browser_search",
-          "code_interpreter"
-        ],
-        "type": "string",
-        "description": "The type of the tool. \u0060function\u0060, \u0060browser_search\u0060, and \u0060code_interpreter\u0060 are supported.",
-        "x-ms-enum": {
-          "name": "ChatCompletionToolTypeAnyOf1",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "function",
-              "name": "Function"
-            },
-            {
-              "value": "browser_search",
-              "name": "BrowserSearch"
-            },
-            {
-              "value": "code_interpreter",
-              "name": "CodeInterpreter"
-            }
-          ]
-        }
-      },
       "CreateChatCompletionRequestFunctionCallOneOf1": {
         "enum": [
           "none",
@@ -7345,718 +6040,6 @@
             {
               "value": "required",
               "name": "Required"
-            }
-          ]
-        }
-      },
-      "CreateChatCompletionRequestModelAnyOf2": {
-        "enum": [
-          "compound-beta",
-          "compound-beta-mini",
-          "gemma2-9b-it",
-          "llama-3.1-8b-instant",
-          "llama-3.3-70b-versatile",
-          "meta-llama/llama-4-maverick-17b-128e-instruct",
-          "meta-llama/llama-4-scout-17b-16e-instruct",
-          "meta-llama/llama-guard-4-12b",
-          "moonshotai/kimi-k2-instruct",
-          "openai/gpt-oss-120b",
-          "openai/gpt-oss-20b",
-          "qwen/qwen3-32b",
-          "qwen/qwen3.6-27b",
-          "qwen/qwen3.8-27b"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "CreateChatCompletionRequestModelAnyOf2",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "compound-beta",
-              "name": "CompoundBeta"
-            },
-            {
-              "value": "compound-beta-mini",
-              "name": "CompoundBetaMini"
-            },
-            {
-              "value": "gemma2-9b-it",
-              "name": "Gemma29BIt"
-            },
-            {
-              "value": "llama-3.1-8b-instant",
-              "name": "Llama318BInstant"
-            },
-            {
-              "value": "llama-3.3-70b-versatile",
-              "name": "Llama3370BVersatile"
-            },
-            {
-              "value": "meta-llama/llama-4-maverick-17b-128e-instruct",
-              "name": "MetaLlamaLlama4Maverick17B128EInstruct"
-            },
-            {
-              "value": "meta-llama/llama-4-scout-17b-16e-instruct",
-              "name": "MetaLlamaLlama4Scout17B16EInstruct"
-            },
-            {
-              "value": "meta-llama/llama-guard-4-12b",
-              "name": "MetaLlamaLlamaGuard412B"
-            },
-            {
-              "value": "moonshotai/kimi-k2-instruct",
-              "name": "MoonshotaiKimiK2Instruct"
-            },
-            {
-              "value": "openai/gpt-oss-120b",
-              "name": "OpenaiGptOss120B"
-            },
-            {
-              "value": "openai/gpt-oss-20b",
-              "name": "OpenaiGptOss20B"
-            },
-            {
-              "value": "qwen/qwen3-32b",
-              "name": "QwenQwen332B"
-            },
-            {
-              "value": "qwen/qwen3.6-27b",
-              "name": "QwenQwen3627B"
-            },
-            {
-              "value": "qwen/qwen3.8-27b",
-              "name": "QwenQwen3827B"
-            }
-          ]
-        }
-      },
-      "CreateEmbeddingRequestModelAnyOf2": {
-        "enum": [
-          "nomic-embed-text-v1_5"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "CreateEmbeddingRequestModelAnyOf2",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "nomic-embed-text-v1_5",
-              "name": "NomicEmbedTextV15"
-            }
-          ]
-        }
-      },
-      "CreateResponseRequestModelAnyOf2": {
-        "enum": [
-          "gemma2-9b-it",
-          "llama-3.3-70b-versatile",
-          "llama-3.1-8b-instant",
-          "llama-guard-3-8b",
-          "llama3-70b-8192",
-          "llama3-8b-8192"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "CreateResponseRequestModelAnyOf2",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "gemma2-9b-it",
-              "name": "Gemma29BIt"
-            },
-            {
-              "value": "llama-3.3-70b-versatile",
-              "name": "Llama3370BVersatile"
-            },
-            {
-              "value": "llama-3.1-8b-instant",
-              "name": "Llama318BInstant"
-            },
-            {
-              "value": "llama-guard-3-8b",
-              "name": "LlamaGuard38B"
-            },
-            {
-              "value": "llama3-70b-8192",
-              "name": "Llama370B8192"
-            },
-            {
-              "value": "llama3-8b-8192",
-              "name": "Llama38B8192"
-            }
-          ]
-        }
-      },
-      "CreateSpeechRequestModelAnyOf2": {
-        "enum": [
-          "playai-tts",
-          "playai-tts-arabic"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "CreateSpeechRequestModelAnyOf2",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "playai-tts",
-              "name": "PlayaiTts"
-            },
-            {
-              "value": "playai-tts-arabic",
-              "name": "PlayaiTtsArabic"
-            }
-          ]
-        }
-      },
-      "CreateTranscriptionRequestLanguageAnyOf2": {
-        "enum": [
-          "en",
-          "zh",
-          "de",
-          "es",
-          "ru",
-          "ko",
-          "fr",
-          "ja",
-          "pt",
-          "tr",
-          "pl",
-          "ca",
-          "nl",
-          "ar",
-          "sv",
-          "it",
-          "id",
-          "hi",
-          "fi",
-          "vi",
-          "he",
-          "uk",
-          "el",
-          "ms",
-          "cs",
-          "ro",
-          "da",
-          "hu",
-          "ta",
-          "no",
-          "th",
-          "ur",
-          "hr",
-          "bg",
-          "lt",
-          "la",
-          "mi",
-          "ml",
-          "cy",
-          "sk",
-          "te",
-          "fa",
-          "lv",
-          "bn",
-          "sr",
-          "az",
-          "sl",
-          "kn",
-          "et",
-          "mk",
-          "br",
-          "eu",
-          "is",
-          "hy",
-          "ne",
-          "mn",
-          "bs",
-          "kk",
-          "sq",
-          "sw",
-          "gl",
-          "mr",
-          "pa",
-          "si",
-          "km",
-          "sn",
-          "yo",
-          "so",
-          "af",
-          "oc",
-          "ka",
-          "be",
-          "tg",
-          "sd",
-          "gu",
-          "am",
-          "yi",
-          "lo",
-          "uz",
-          "fo",
-          "ht",
-          "ps",
-          "tk",
-          "nn",
-          "mt",
-          "sa",
-          "lb",
-          "my",
-          "bo",
-          "tl",
-          "mg",
-          "as",
-          "tt",
-          "haw",
-          "ln",
-          "ha",
-          "ba",
-          "jv",
-          "su",
-          "yue"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "CreateTranscriptionRequestLanguageAnyOf2",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "en",
-              "name": "En"
-            },
-            {
-              "value": "zh",
-              "name": "Zh"
-            },
-            {
-              "value": "de",
-              "name": "De"
-            },
-            {
-              "value": "es",
-              "name": "Es"
-            },
-            {
-              "value": "ru",
-              "name": "Ru"
-            },
-            {
-              "value": "ko",
-              "name": "Ko"
-            },
-            {
-              "value": "fr",
-              "name": "Fr"
-            },
-            {
-              "value": "ja",
-              "name": "Ja"
-            },
-            {
-              "value": "pt",
-              "name": "Pt"
-            },
-            {
-              "value": "tr",
-              "name": "Tr"
-            },
-            {
-              "value": "pl",
-              "name": "Pl"
-            },
-            {
-              "value": "ca",
-              "name": "Ca"
-            },
-            {
-              "value": "nl",
-              "name": "Nl"
-            },
-            {
-              "value": "ar",
-              "name": "Ar"
-            },
-            {
-              "value": "sv",
-              "name": "Sv"
-            },
-            {
-              "value": "it",
-              "name": "It"
-            },
-            {
-              "value": "id",
-              "name": "Id"
-            },
-            {
-              "value": "hi",
-              "name": "Hi"
-            },
-            {
-              "value": "fi",
-              "name": "Fi"
-            },
-            {
-              "value": "vi",
-              "name": "Vi"
-            },
-            {
-              "value": "he",
-              "name": "He"
-            },
-            {
-              "value": "uk",
-              "name": "Uk"
-            },
-            {
-              "value": "el",
-              "name": "El"
-            },
-            {
-              "value": "ms",
-              "name": "Ms"
-            },
-            {
-              "value": "cs",
-              "name": "Cs"
-            },
-            {
-              "value": "ro",
-              "name": "Ro"
-            },
-            {
-              "value": "da",
-              "name": "Da"
-            },
-            {
-              "value": "hu",
-              "name": "Hu"
-            },
-            {
-              "value": "ta",
-              "name": "Ta"
-            },
-            {
-              "value": "no",
-              "name": "No"
-            },
-            {
-              "value": "th",
-              "name": "Th"
-            },
-            {
-              "value": "ur",
-              "name": "Ur"
-            },
-            {
-              "value": "hr",
-              "name": "Hr"
-            },
-            {
-              "value": "bg",
-              "name": "Bg"
-            },
-            {
-              "value": "lt",
-              "name": "Lt"
-            },
-            {
-              "value": "la",
-              "name": "La"
-            },
-            {
-              "value": "mi",
-              "name": "Mi"
-            },
-            {
-              "value": "ml",
-              "name": "Ml"
-            },
-            {
-              "value": "cy",
-              "name": "Cy"
-            },
-            {
-              "value": "sk",
-              "name": "Sk"
-            },
-            {
-              "value": "te",
-              "name": "Te"
-            },
-            {
-              "value": "fa",
-              "name": "Fa"
-            },
-            {
-              "value": "lv",
-              "name": "Lv"
-            },
-            {
-              "value": "bn",
-              "name": "Bn"
-            },
-            {
-              "value": "sr",
-              "name": "Sr"
-            },
-            {
-              "value": "az",
-              "name": "Az"
-            },
-            {
-              "value": "sl",
-              "name": "Sl"
-            },
-            {
-              "value": "kn",
-              "name": "Kn"
-            },
-            {
-              "value": "et",
-              "name": "Et"
-            },
-            {
-              "value": "mk",
-              "name": "Mk"
-            },
-            {
-              "value": "br",
-              "name": "Br"
-            },
-            {
-              "value": "eu",
-              "name": "Eu"
-            },
-            {
-              "value": "is",
-              "name": "IsValue"
-            },
-            {
-              "value": "hy",
-              "name": "Hy"
-            },
-            {
-              "value": "ne",
-              "name": "Ne"
-            },
-            {
-              "value": "mn",
-              "name": "Mn"
-            },
-            {
-              "value": "bs",
-              "name": "Bs"
-            },
-            {
-              "value": "kk",
-              "name": "Kk"
-            },
-            {
-              "value": "sq",
-              "name": "Sq"
-            },
-            {
-              "value": "sw",
-              "name": "Sw"
-            },
-            {
-              "value": "gl",
-              "name": "Gl"
-            },
-            {
-              "value": "mr",
-              "name": "Mr"
-            },
-            {
-              "value": "pa",
-              "name": "Pa"
-            },
-            {
-              "value": "si",
-              "name": "Si"
-            },
-            {
-              "value": "km",
-              "name": "Km"
-            },
-            {
-              "value": "sn",
-              "name": "Sn"
-            },
-            {
-              "value": "yo",
-              "name": "Yo"
-            },
-            {
-              "value": "so",
-              "name": "So"
-            },
-            {
-              "value": "af",
-              "name": "Af"
-            },
-            {
-              "value": "oc",
-              "name": "Oc"
-            },
-            {
-              "value": "ka",
-              "name": "Ka"
-            },
-            {
-              "value": "be",
-              "name": "Be"
-            },
-            {
-              "value": "tg",
-              "name": "Tg"
-            },
-            {
-              "value": "sd",
-              "name": "Sd"
-            },
-            {
-              "value": "gu",
-              "name": "Gu"
-            },
-            {
-              "value": "am",
-              "name": "Am"
-            },
-            {
-              "value": "yi",
-              "name": "Yi"
-            },
-            {
-              "value": "lo",
-              "name": "Lo"
-            },
-            {
-              "value": "uz",
-              "name": "Uz"
-            },
-            {
-              "value": "fo",
-              "name": "Fo"
-            },
-            {
-              "value": "ht",
-              "name": "Ht"
-            },
-            {
-              "value": "ps",
-              "name": "Ps"
-            },
-            {
-              "value": "tk",
-              "name": "Tk"
-            },
-            {
-              "value": "nn",
-              "name": "Nn"
-            },
-            {
-              "value": "mt",
-              "name": "Mt"
-            },
-            {
-              "value": "sa",
-              "name": "Sa"
-            },
-            {
-              "value": "lb",
-              "name": "Lb"
-            },
-            {
-              "value": "my",
-              "name": "My"
-            },
-            {
-              "value": "bo",
-              "name": "Bo"
-            },
-            {
-              "value": "tl",
-              "name": "Tl"
-            },
-            {
-              "value": "mg",
-              "name": "Mg"
-            },
-            {
-              "value": "as",
-              "name": "AsValue"
-            },
-            {
-              "value": "tt",
-              "name": "Tt"
-            },
-            {
-              "value": "haw",
-              "name": "Haw"
-            },
-            {
-              "value": "ln",
-              "name": "Ln"
-            },
-            {
-              "value": "ha",
-              "name": "Ha"
-            },
-            {
-              "value": "ba",
-              "name": "Ba"
-            },
-            {
-              "value": "jv",
-              "name": "Jv"
-            },
-            {
-              "value": "su",
-              "name": "Su"
-            },
-            {
-              "value": "yue",
-              "name": "Yue"
-            }
-          ]
-        }
-      },
-      "CreateTranscriptionRequestModelAnyOf2": {
-        "enum": [
-          "whisper-large-v3",
-          "whisper-large-v3-turbo"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "CreateTranscriptionRequestModelAnyOf2",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "whisper-large-v3",
-              "name": "WhisperLargeV3"
-            },
-            {
-              "value": "whisper-large-v3-turbo",
-              "name": "WhisperLargeV3Turbo"
-            }
-          ]
-        }
-      },
-      "CreateTranslationRequestModelAnyOf2": {
-        "enum": [
-          "whisper-large-v3",
-          "whisper-large-v3-turbo"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "CreateTranslationRequestModelAnyOf2",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "whisper-large-v3",
-              "name": "WhisperLargeV3"
-            },
-            {
-              "value": "whisper-large-v3-turbo",
-              "name": "WhisperLargeV3Turbo"
             }
           ]
         }
@@ -8099,39 +6082,6 @@
         "description": "The reason the model stopped generating tokens. This will be \u0060stop\u0060 if the model hit a natural stop point or a provided stop sequence,\n\u0060length\u0060 if the maximum number of tokens specified in the request was reached,\n\u0060tool_calls\u0060 if the model called a tool, or \u0060function_call\u0060 (deprecated) if the model called a function.\n",
         "x-ms-enum": {
           "name": "CreateChatCompletionResponseChoicesItemFinishReason",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "stop",
-              "name": "Stop"
-            },
-            {
-              "value": "length",
-              "name": "Length"
-            },
-            {
-              "value": "tool_calls",
-              "name": "ToolCalls"
-            },
-            {
-              "value": "function_call",
-              "name": "FunctionCall"
-            }
-          ]
-        }
-      },
-      "CreateChatCompletionStreamResponseChoicesItemFinishReason": {
-        "enum": [
-          "stop",
-          "length",
-          "tool_calls",
-          "function_call"
-        ],
-        "type": "string",
-        "description": "The reason the model stopped generating tokens. This will be \u0060stop\u0060 if the model hit a natural stop point or a provided stop sequence,\n\u0060length\u0060 if the maximum number of tokens specified in the request was reached,\n\u0060tool_calls\u0060 if the model called a tool, or \u0060function_call\u0060 (deprecated) if the model called a function.\n",
-        "nullable": true,
-        "x-ms-enum": {
-          "name": "CreateChatCompletionStreamResponseChoicesItemFinishReason",
           "modelAsString": false,
           "values": [
             {
@@ -8253,6 +6203,599 @@
           "role",
           "content",
           "type"
+        ]
+      },
+      "OpenApiNullValue": {
+        "type": "object",
+        "nullable": true,
+        "not": {
+          "type": "object"
+        },
+        "x-client-untyped-value": true
+      },
+      "ChatCompletionDocumentSourceChatCompletionDocumentSourceText": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatCompletionDocumentSource"
+          },
+          {
+            "title": "Text document source",
+            "required": [
+              "type",
+              "text"
+            ],
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "The document contents."
+              },
+              "type": {
+                "$ref": "#/components/schemas/TextType"
+              }
+            },
+            "additionalProperties": false,
+            "description": "A document whose contents are provided inline as text."
+          }
+        ]
+      },
+      "ChatCompletionDocumentSourceChatCompletionDocumentSourceJson": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatCompletionDocumentSource"
+          },
+          {
+            "title": "JSON document source",
+            "required": [
+              "type",
+              "data"
+            ],
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/ChatCompletionDocumentSourceJsonDataProperty"
+              },
+              "type": {
+                "$ref": "#/components/schemas/JsonType"
+              }
+            },
+            "additionalProperties": false,
+            "description": "A document whose contents are provided inline as JSON data."
+          }
+        ]
+      },
+      "ChatCompletionRequestMessageChatCompletionRequestSystemMessage": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatCompletionRequestMessage"
+          },
+          {
+            "title": "System message",
+            "required": [
+              "content",
+              "role"
+            ],
+            "type": "object",
+            "properties": {
+              "content": {
+                "$ref": "#/components/schemas/ChatCompletionRequestSystemMessageContent"
+              },
+              "name": {
+                "type": "string",
+                "description": "An optional name for the participant. Provides the model information to differentiate between participants of the same role."
+              },
+              "role": {
+                "$ref": "#/components/schemas/ChatCompletionRequestSystemMessageRole"
+              },
+              "tool_call_id": {
+                "type": "string",
+                "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
+                "nullable": true,
+                "x-groq-meta": {
+                  "hidden": true
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "ChatCompletionRequestMessageChatCompletionRequestUserMessage": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatCompletionRequestMessage"
+          },
+          {
+            "title": "User message",
+            "required": [
+              "content",
+              "role"
+            ],
+            "type": "object",
+            "properties": {
+              "content": {
+                "$ref": "#/components/schemas/ChatCompletionRequestUserMessageContent"
+              },
+              "name": {
+                "type": "string",
+                "description": "An optional name for the participant. Provides the model information to differentiate between participants of the same role."
+              },
+              "role": {
+                "$ref": "#/components/schemas/UserRole"
+              },
+              "tool_call_id": {
+                "type": "string",
+                "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
+                "nullable": true,
+                "x-groq-meta": {
+                  "hidden": true
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "ChatCompletionRequestMessageChatCompletionRequestAssistantMessage": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatCompletionRequestMessage"
+          },
+          {
+            "title": "Assistant message",
+            "required": [
+              "role"
+            ],
+            "type": "object",
+            "properties": {
+              "content": {
+                "$ref": "#/components/schemas/ChatCompletionRequestAssistantMessageContent"
+              },
+              "function_call": {
+                "$ref": "#/components/schemas/ChatCompletionRequestAssistantMessageFunctionCall"
+              },
+              "name": {
+                "type": "string",
+                "description": "An optional name for the participant. Provides the model information to differentiate between participants of the same role."
+              },
+              "reasoning": {
+                "type": "string",
+                "description": "The reasoning output by the assistant if reasoning_format was set to \u0027parsed\u0027.\nThis field is supported on [models that support reasoning](https://console.groq.com/docs/reasoning).\n",
+                "nullable": true
+              },
+              "role": {
+                "$ref": "#/components/schemas/AssistantRole"
+              },
+              "tool_call_id": {
+                "required": [
+                  "arguments",
+                  "name"
+                ],
+                "type": "string",
+                "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
+                "nullable": true,
+                "x-groq-meta": {
+                  "hidden": true
+                }
+              },
+              "tool_calls": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ChatCompletionMessageToolCall"
+                },
+                "description": "The tool calls generated by the model, such as function calls."
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "ChatCompletionRequestMessageChatCompletionRequestToolMessage": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatCompletionRequestMessage"
+          },
+          {
+            "title": "Tool message",
+            "required": [
+              "role",
+              "content",
+              "tool_call_id"
+            ],
+            "type": "object",
+            "properties": {
+              "content": {
+                "$ref": "#/components/schemas/ChatCompletionRequestToolMessageContent"
+              },
+              "name": {
+                "type": "string",
+                "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
+                "x-groq-meta": {
+                  "hidden": true
+                }
+              },
+              "role": {
+                "$ref": "#/components/schemas/ToolRole"
+              },
+              "tool_call_id": {
+                "type": "string",
+                "description": "Tool call that this message is responding to."
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "ChatCompletionRequestMessageChatCompletionRequestFunctionMessage": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatCompletionRequestMessage"
+          },
+          {
+            "title": "Function message",
+            "required": [
+              "role",
+              "content",
+              "name"
+            ],
+            "type": "object",
+            "properties": {
+              "content": {
+                "title": "Function message content",
+                "type": "string",
+                "description": "The contents of the function message.",
+                "nullable": true
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the function to call."
+              },
+              "role": {
+                "$ref": "#/components/schemas/FunctionRole"
+              },
+              "tool_call_id": {
+                "type": "string",
+                "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
+                "nullable": true,
+                "x-groq-meta": {
+                  "hidden": true
+                }
+              }
+            },
+            "additionalProperties": false,
+            "deprecated": true
+          }
+        ]
+      },
+      "ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartText": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPart"
+          },
+          {
+            "title": "Text content part",
+            "required": [
+              "type",
+              "text"
+            ],
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "The text content."
+              },
+              "type": {
+                "$ref": "#/components/schemas/TextType"
+              }
+            }
+          }
+        ]
+      },
+      "ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartImage": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPart"
+          },
+          {
+            "title": "Image content part",
+            "required": [
+              "type",
+              "image_url"
+            ],
+            "type": "object",
+            "properties": {
+              "image_url": {
+                "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartImageImageUrl"
+              },
+              "type": {
+                "$ref": "#/components/schemas/ImageUrlType"
+              }
+            }
+          }
+        ]
+      },
+      "ChatCompletionRequestMessageContentPartChatCompletionRequestMessageContentPartDocument": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPart"
+          },
+          {
+            "title": "Document content part",
+            "required": [
+              "type",
+              "document"
+            ],
+            "type": "object",
+            "properties": {
+              "document": {
+                "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartDocumentDocument"
+              },
+              "type": {
+                "$ref": "#/components/schemas/DocumentType"
+              }
+            }
+          }
+        ]
+      },
+      "ResponseAnnotationResponseFileCitation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResponseAnnotation"
+          },
+          {
+            "title": "File citation",
+            "required": [
+              "type",
+              "file_id"
+            ],
+            "type": "object",
+            "properties": {
+              "file_id": {
+                "type": "string",
+                "description": "The ID of the file."
+              },
+              "index": {
+                "type": "integer",
+                "description": "The index of the citation in the text."
+              },
+              "type": {
+                "$ref": "#/components/schemas/FileCitationType"
+              }
+            },
+            "description": "A citation to a file."
+          }
+        ]
+      },
+      "ResponseAnnotationResponseUrlCitation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResponseAnnotation"
+          },
+          {
+            "title": "URL citation",
+            "required": [
+              "type",
+              "url"
+            ],
+            "type": "object",
+            "properties": {
+              "end_index": {
+                "type": "integer",
+                "description": "The index of the last character of the URL citation in the message."
+              },
+              "start_index": {
+                "type": "integer",
+                "description": "The index of the first character of the URL citation in the message."
+              },
+              "title": {
+                "type": "string",
+                "description": "The title of the web resource."
+              },
+              "type": {
+                "$ref": "#/components/schemas/UrlCitationType"
+              },
+              "url": {
+                "type": "string",
+                "description": "The URL of the web resource."
+              }
+            },
+            "description": "A citation for a web resource."
+          }
+        ]
+      },
+      "ResponseFormatConfigurationResponseFormatText": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResponseFormatConfiguration"
+          },
+          {
+            "title": "Text",
+            "required": [
+              "type"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/TextType"
+              }
+            },
+            "description": "Default response format. Used to generate text responses.\n"
+          }
+        ]
+      },
+      "ResponseFormatConfigurationResponseFormatJsonObject": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResponseFormatConfiguration"
+          },
+          {
+            "title": "JSON object",
+            "required": [
+              "type"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/JsonObjectType"
+              }
+            },
+            "description": "JSON object response format. An older method of generating JSON responses. Using \u0060json_schema\u0060 is recommended for models that support it. Note that the model will not generate JSON without a system or user message instructing it to do so.\n"
+          }
+        ]
+      },
+      "ResponseFormatConfigurationTextResponseFormatJsonSchema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResponseFormatConfiguration"
+          },
+          {
+            "title": "JSON schema",
+            "required": [
+              "type",
+              "name",
+              "schema"
+            ],
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "A description of what the response format is for, used by the model to determine how to respond in the format.\n"
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the response format. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.\n"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/TextResponseFormatJsonSchemaSchemaProperty"
+              },
+              "strict": {
+                "type": "boolean",
+                "description": "Whether to enable strict schema adherence when generating the output.\n",
+                "default": false,
+                "nullable": true
+              },
+              "type": {
+                "$ref": "#/components/schemas/JsonSchemaType"
+              }
+            },
+            "description": "JSON Schema response format. Used to generate structured JSON responses.\n"
+          }
+        ]
+      },
+      "ResponseOutputItemResponseOutputMessage": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResponseOutputItem"
+          },
+          {
+            "title": "Output message",
+            "required": [
+              "type",
+              "id",
+              "role",
+              "content"
+            ],
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResponseOutputContent"
+                },
+                "description": "The content of the output message."
+              },
+              "id": {
+                "type": "string",
+                "description": "The unique ID of the output message."
+              },
+              "role": {
+                "$ref": "#/components/schemas/AssistantRole"
+              },
+              "status": {
+                "$ref": "#/components/schemas/ResponseOutputMessageStatus"
+              },
+              "type": {
+                "$ref": "#/components/schemas/MessageType"
+              }
+            },
+            "description": "An output message from the model."
+          }
+        ]
+      },
+      "ResponseOutputItemResponseOutputFunctionCall": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResponseOutputItem"
+          },
+          {
+            "title": "Function call",
+            "required": [
+              "type",
+              "id",
+              "call_id",
+              "name",
+              "arguments"
+            ],
+            "type": "object",
+            "properties": {
+              "arguments": {
+                "type": "string",
+                "description": "A JSON string of the arguments to pass to the function."
+              },
+              "call_id": {
+                "type": "string",
+                "description": "The unique ID of the function tool call generated by the model."
+              },
+              "id": {
+                "type": "string",
+                "description": "The unique ID of the function tool call."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the function to call."
+              },
+              "status": {
+                "$ref": "#/components/schemas/ResponseOutputFunctionCallStatus"
+              },
+              "type": {
+                "$ref": "#/components/schemas/FunctionCallType"
+              }
+            },
+            "description": "A function call generated by the model."
+          }
+        ]
+      },
+      "ResponseOutputItemResponseOutputReasoning": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResponseOutputItem"
+          },
+          {
+            "title": "Reasoning",
+            "required": [
+              "type",
+              "id",
+              "summary"
+            ],
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "The unique ID of the reasoning output."
+              },
+              "summary": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResponseOutputReasoningSummaryItemProperty"
+                },
+                "description": "Summary items (currently empty)."
+              },
+              "type": {
+                "$ref": "#/components/schemas/ReasoningType"
+              }
+            },
+            "description": "A reasoning output from the model. Available for [models that support reasoning](https://console.groq.com/docs/reasoning)."
+          }
         ]
       }
     },
@@ -8428,5 +6971,2287 @@
         "type": "endpoints"
       }
     ]
+  },
+  "x-client-unused-schemas": {
+    "BatchRequestInput": {
+      "type": "object",
+      "properties": {
+        "custom_id": {
+          "type": "string",
+          "description": "A developer-provided per-request id that will be used to match outputs to inputs. Must be unique for each request in a batch."
+        },
+        "method": {
+          "$ref": "#/components/schemas/PostMethod"
+        },
+        "url": {
+          "type": "string",
+          "description": "The OpenAI API relative URL to be used for the request. Currently \u0060/v1/chat/completions\u0060 is supported."
+        }
+      },
+      "description": "The per-line object of the batch input file"
+    },
+    "BatchRequestOutput": {
+      "type": "object",
+      "properties": {
+        "custom_id": {
+          "type": "string",
+          "description": "A developer-provided per-request id that will be used to match outputs to inputs."
+        },
+        "error": {
+          "$ref": "#/components/schemas/BatchRequestOutputError"
+        },
+        "id": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "#/components/schemas/BatchRequestOutputResponse"
+        }
+      },
+      "description": "The per-line object of the batch output and error files"
+    },
+    "ChatCompletionDocumentSourceJson": {
+      "title": "JSON document source",
+      "required": [
+        "type",
+        "data"
+      ],
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/ChatCompletionDocumentSourceJsonDataProperty"
+        },
+        "type": {
+          "$ref": "#/components/schemas/JsonType"
+        }
+      },
+      "additionalProperties": false,
+      "description": "A document whose contents are provided inline as JSON data."
+    },
+    "ChatCompletionDocumentSourceText": {
+      "title": "Text document source",
+      "required": [
+        "type",
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The document contents."
+        },
+        "type": {
+          "$ref": "#/components/schemas/TextType"
+        }
+      },
+      "additionalProperties": false,
+      "description": "A document whose contents are provided inline as text."
+    },
+    "ChatCompletionMessageExecutedTools": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ChatCompletionMessageExecutedToolsItem"
+      },
+      "description": "A list of tools that were executed during the chat completion for compound AI systems."
+    },
+    "ChatCompletionMessageToolCallChunk": {
+      "required": [
+        "index"
+      ],
+      "type": "object",
+      "properties": {
+        "function": {
+          "$ref": "#/components/schemas/ChatCompletionMessageToolCallChunkFunction"
+        },
+        "id": {
+          "type": "string",
+          "description": "The ID of the tool call."
+        },
+        "index": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/components/schemas/FunctionType"
+        }
+      }
+    },
+    "ChatCompletionMessageToolCalls": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ChatCompletionMessageToolCall"
+      },
+      "description": "The tool calls generated by the model, such as function calls."
+    },
+    "ChatCompletionRequestAssistantMessage": {
+      "title": "Assistant message",
+      "required": [
+        "role"
+      ],
+      "type": "object",
+      "properties": {
+        "content": {
+          "$ref": "#/components/schemas/ChatCompletionRequestAssistantMessageContent"
+        },
+        "function_call": {
+          "$ref": "#/components/schemas/ChatCompletionRequestAssistantMessageFunctionCall"
+        },
+        "name": {
+          "type": "string",
+          "description": "An optional name for the participant. Provides the model information to differentiate between participants of the same role."
+        },
+        "reasoning": {
+          "type": "string",
+          "description": "The reasoning output by the assistant if reasoning_format was set to \u0027parsed\u0027.\nThis field is supported on [models that support reasoning](https://console.groq.com/docs/reasoning).\n",
+          "nullable": true
+        },
+        "role": {
+          "$ref": "#/components/schemas/AssistantRole"
+        },
+        "tool_call_id": {
+          "required": [
+            "arguments",
+            "name"
+          ],
+          "type": "string",
+          "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
+          "nullable": true,
+          "x-groq-meta": {
+            "hidden": true
+          }
+        },
+        "tool_calls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ChatCompletionMessageToolCall"
+          },
+          "description": "The tool calls generated by the model, such as function calls."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ChatCompletionRequestFunctionMessage": {
+      "title": "Function message",
+      "required": [
+        "role",
+        "content",
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "content": {
+          "title": "Function message content",
+          "type": "string",
+          "description": "The contents of the function message.",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the function to call."
+        },
+        "role": {
+          "$ref": "#/components/schemas/FunctionRole"
+        },
+        "tool_call_id": {
+          "type": "string",
+          "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
+          "nullable": true,
+          "x-groq-meta": {
+            "hidden": true
+          }
+        }
+      },
+      "additionalProperties": false,
+      "deprecated": true
+    },
+    "ChatCompletionRequestMessageContentPartDocument": {
+      "title": "Document content part",
+      "required": [
+        "type",
+        "document"
+      ],
+      "type": "object",
+      "properties": {
+        "document": {
+          "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartDocumentDocument"
+        },
+        "type": {
+          "$ref": "#/components/schemas/DocumentType"
+        }
+      }
+    },
+    "ChatCompletionRequestMessageContentPartImage": {
+      "title": "Image content part",
+      "required": [
+        "type",
+        "image_url"
+      ],
+      "type": "object",
+      "properties": {
+        "image_url": {
+          "$ref": "#/components/schemas/ChatCompletionRequestMessageContentPartImageImageUrl"
+        },
+        "type": {
+          "$ref": "#/components/schemas/ImageUrlType"
+        }
+      }
+    },
+    "ChatCompletionRequestSystemMessage": {
+      "title": "System message",
+      "required": [
+        "content",
+        "role"
+      ],
+      "type": "object",
+      "properties": {
+        "content": {
+          "$ref": "#/components/schemas/ChatCompletionRequestSystemMessageContent"
+        },
+        "name": {
+          "type": "string",
+          "description": "An optional name for the participant. Provides the model information to differentiate between participants of the same role."
+        },
+        "role": {
+          "$ref": "#/components/schemas/ChatCompletionRequestSystemMessageRole"
+        },
+        "tool_call_id": {
+          "type": "string",
+          "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
+          "nullable": true,
+          "x-groq-meta": {
+            "hidden": true
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ChatCompletionRequestToolMessage": {
+      "title": "Tool message",
+      "required": [
+        "role",
+        "content",
+        "tool_call_id"
+      ],
+      "type": "object",
+      "properties": {
+        "content": {
+          "$ref": "#/components/schemas/ChatCompletionRequestToolMessageContent"
+        },
+        "name": {
+          "type": "string",
+          "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
+          "x-groq-meta": {
+            "hidden": true
+          }
+        },
+        "role": {
+          "$ref": "#/components/schemas/ToolRole"
+        },
+        "tool_call_id": {
+          "type": "string",
+          "description": "Tool call that this message is responding to."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ChatCompletionRequestUserMessage": {
+      "title": "User message",
+      "required": [
+        "content",
+        "role"
+      ],
+      "type": "object",
+      "properties": {
+        "content": {
+          "$ref": "#/components/schemas/ChatCompletionRequestUserMessageContent"
+        },
+        "name": {
+          "type": "string",
+          "description": "An optional name for the participant. Provides the model information to differentiate between participants of the same role."
+        },
+        "role": {
+          "$ref": "#/components/schemas/UserRole"
+        },
+        "tool_call_id": {
+          "type": "string",
+          "description": "DO NOT USE.  This field is present because OpenAI allows it and users send it.",
+          "nullable": true,
+          "x-groq-meta": {
+            "hidden": true
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ChatCompletionRole": {
+      "enum": [
+        "system",
+        "user",
+        "assistant",
+        "tool",
+        "function"
+      ],
+      "type": "string",
+      "description": "The role of the author of a message",
+      "x-ms-enum": {
+        "name": "ChatCompletionRole",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "system",
+            "name": "System"
+          },
+          {
+            "value": "user",
+            "name": "User"
+          },
+          {
+            "value": "assistant",
+            "name": "Assistant"
+          },
+          {
+            "value": "tool",
+            "name": "Tool"
+          },
+          {
+            "value": "function",
+            "name": "Function"
+          }
+        ]
+      }
+    },
+    "ChatCompletionStreamResponseDelta": {
+      "type": "object",
+      "properties": {
+        "annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Annotation"
+          },
+          "description": "A list of annotations providing citations and references for the content in the message."
+        },
+        "content": {
+          "type": "string",
+          "description": "The contents of the chunk message.",
+          "nullable": true
+        },
+        "executed_tools": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ChatCompletionMessageExecutedToolsItem"
+          },
+          "description": "A list of tools that were executed during the chat completion for compound AI systems."
+        },
+        "function_call": {
+          "$ref": "#/components/schemas/ChatCompletionStreamResponseDeltaFunctionCall"
+        },
+        "reasoning": {
+          "type": "string",
+          "description": "The model\u0027s reasoning for a response. Only available for [models that support reasoning](https://console.groq.com/docs/reasoning) when request parameter reasoning_format has value \u0060parsed\u0060.",
+          "nullable": true
+        },
+        "refusal": {
+          "type": "string",
+          "description": "A safety refusal the model generated instead of content.",
+          "nullable": true
+        },
+        "role": {
+          "$ref": "#/components/schemas/ChatCompletionStreamResponseDeltaRole"
+        },
+        "tool_calls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ChatCompletionMessageToolCallChunk"
+          }
+        }
+      },
+      "description": "A chat completion delta generated by streamed model responses."
+    },
+    "ChatCompletionUsageBreakdown": {
+      "required": [
+        "models"
+      ],
+      "type": "object",
+      "properties": {
+        "models": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ChatCompletionUsageBreakdownModelsItem"
+          },
+          "description": "List of models used in the request and their individual usage statistics"
+        }
+      },
+      "description": "Usage statistics for compound AI completion requests."
+    },
+    "CreateChatCompletionStreamResponse": {
+      "required": [
+        "choices",
+        "created",
+        "id",
+        "model",
+        "object"
+      ],
+      "type": "object",
+      "properties": {
+        "choices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/CreateChatCompletionStreamResponseChoicesItem"
+          },
+          "description": "A list of chat completion choices. Can contain more than one elements if \u0060n\u0060 is greater than 1.\n"
+        },
+        "created": {
+          "type": "integer",
+          "description": "The Unix timestamp (in seconds) of when the chat completion was created. Each chunk has the same timestamp."
+        },
+        "id": {
+          "type": "string",
+          "description": "A unique identifier for the chat completion. Each chunk has the same ID."
+        },
+        "model": {
+          "type": "string",
+          "description": "The model to generate the completion."
+        },
+        "obfuscation": {
+          "type": "string",
+          "description": "Random padding that normalizes chunk sizes as a mitigation against side-channel attacks. Present on deployments that stream obfuscation unless \u0060stream_options.include_obfuscation\u0060 is false.",
+          "nullable": true
+        },
+        "object": {
+          "$ref": "#/components/schemas/ChatCompletionChunkObject"
+        },
+        "service_tier": {
+          "$ref": "#/components/schemas/CreateChatCompletionStreamResponseServiceTier"
+        },
+        "system_fingerprint": {
+          "type": "string",
+          "description": "This fingerprint represents the backend configuration that the model runs with.\nCan be used in conjunction with the \u0060seed\u0060 request parameter to understand when backend changes have been made that might impact determinism.\n"
+        },
+        "usage": {
+          "$ref": "#/components/schemas/CreateChatCompletionStreamResponseUsage"
+        },
+        "x_groq": {
+          "$ref": "#/components/schemas/XGroq"
+        }
+      },
+      "description": "Represents a streamed chunk of a chat completion response returned by model, based on the provided input."
+    },
+    "CreateTranscriptionResponseVerboseJson": {
+      "required": [
+        "language",
+        "duration",
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "duration": {
+          "type": "string",
+          "description": "The duration of the input audio."
+        },
+        "language": {
+          "type": "string",
+          "description": "The language of the input audio."
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/TranscriptionSegment"
+          },
+          "description": "Segments of the transcribed text and their corresponding details."
+        },
+        "text": {
+          "type": "string",
+          "description": "The transcribed text."
+        },
+        "words": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/TranscriptionWord"
+          },
+          "description": "Extracted words and their corresponding timestamps."
+        }
+      },
+      "description": "Represents a verbose json transcription response returned by model, based on the provided input."
+    },
+    "CreateTranslationResponseVerboseJson": {
+      "required": [
+        "language",
+        "duration",
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "duration": {
+          "type": "string",
+          "description": "The duration of the input audio."
+        },
+        "language": {
+          "type": "string",
+          "description": "The language of the output translation (always \u0060english\u0060)."
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/TranscriptionSegment"
+          },
+          "description": "Segments of the translated text and their corresponding details."
+        },
+        "text": {
+          "type": "string",
+          "description": "The translated text."
+        }
+      }
+    },
+    "DebugData": {
+      "type": "object",
+      "properties": {
+        "input_token_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Token IDs for the input."
+        },
+        "input_tokens": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Token strings for the input."
+        },
+        "output_token_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Token IDs for the output."
+        },
+        "output_tokens": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Token strings for the output."
+        }
+      },
+      "description": "Debug information including input and output token IDs and strings. Only present when debug=true in the request."
+    },
+    "Error": {
+      "required": [
+        "type",
+        "message"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "nullable": true
+        },
+        "debug": {
+          "$ref": "#/components/schemas/DebugData"
+        },
+        "failed_generation": {
+          "type": "string",
+          "nullable": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "param": {
+          "type": "string",
+          "nullable": true
+        },
+        "schema_code": {
+          "type": "string",
+          "nullable": true
+        },
+        "schema_kind": {
+          "type": "string",
+          "nullable": true
+        },
+        "schema_path": {
+          "type": "string",
+          "nullable": true
+        },
+        "schema_path_segments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Segments of the schema path relevant to validation errors."
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "required": [
+        "error"
+      ],
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/components/schemas/Error"
+        }
+      }
+    },
+    "FunctionParameters": {
+      "type": "object",
+      "description": "Function parameters defined as a JSON Schema object. Refer to https://json-schema.org/understanding-json-schema/ for schema documentation."
+    },
+    "ResponseEasyInputMessage": {
+      "title": "Easy input message",
+      "required": [
+        "role",
+        "content"
+      ],
+      "type": "object",
+      "properties": {
+        "content": {
+          "$ref": "#/components/schemas/ResponseEasyInputMessageContent"
+        },
+        "role": {
+          "$ref": "#/components/schemas/ResponseEasyInputMessageRole"
+        }
+      },
+      "description": "A message input to the model with a role indicating instruction following hierarchy.\n"
+    },
+    "ResponseFileCitation": {
+      "title": "File citation",
+      "required": [
+        "type",
+        "file_id"
+      ],
+      "type": "object",
+      "properties": {
+        "file_id": {
+          "type": "string",
+          "description": "The ID of the file."
+        },
+        "index": {
+          "type": "integer",
+          "description": "The index of the citation in the text."
+        },
+        "type": {
+          "$ref": "#/components/schemas/FileCitationType"
+        }
+      },
+      "description": "A citation to a file."
+    },
+    "ResponseFormatJsonSchemaSchema": {
+      "title": "JSON schema",
+      "type": "object",
+      "description": "The schema for the response format, described as a JSON Schema object.\nLearn how to build JSON schemas [here](https://json-schema.org/).\n"
+    },
+    "ResponseInputTextContent": {
+      "title": "Input text",
+      "required": [
+        "type",
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text input to the model."
+        },
+        "type": {
+          "$ref": "#/components/schemas/InputTextType"
+        }
+      },
+      "description": "A text input to the model."
+    },
+    "ResponseOutputFunctionCall": {
+      "title": "Function call",
+      "required": [
+        "type",
+        "id",
+        "call_id",
+        "name",
+        "arguments"
+      ],
+      "type": "object",
+      "properties": {
+        "arguments": {
+          "type": "string",
+          "description": "A JSON string of the arguments to pass to the function."
+        },
+        "call_id": {
+          "type": "string",
+          "description": "The unique ID of the function tool call generated by the model."
+        },
+        "id": {
+          "type": "string",
+          "description": "The unique ID of the function tool call."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the function to call."
+        },
+        "status": {
+          "$ref": "#/components/schemas/ResponseOutputFunctionCallStatus"
+        },
+        "type": {
+          "$ref": "#/components/schemas/FunctionCallType"
+        }
+      },
+      "description": "A function call generated by the model."
+    },
+    "ResponseOutputMessage": {
+      "title": "Output message",
+      "required": [
+        "type",
+        "id",
+        "role",
+        "content"
+      ],
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ResponseOutputContent"
+          },
+          "description": "The content of the output message."
+        },
+        "id": {
+          "type": "string",
+          "description": "The unique ID of the output message."
+        },
+        "role": {
+          "$ref": "#/components/schemas/AssistantRole"
+        },
+        "status": {
+          "$ref": "#/components/schemas/ResponseOutputMessageStatus"
+        },
+        "type": {
+          "$ref": "#/components/schemas/MessageType"
+        }
+      },
+      "description": "An output message from the model."
+    },
+    "ResponseOutputReasoning": {
+      "title": "Reasoning",
+      "required": [
+        "type",
+        "id",
+        "summary"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique ID of the reasoning output."
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ResponseOutputReasoningSummaryItemProperty"
+          },
+          "description": "Summary items (currently empty)."
+        },
+        "type": {
+          "$ref": "#/components/schemas/ReasoningType"
+        }
+      },
+      "description": "A reasoning output from the model. Available for [models that support reasoning](https://console.groq.com/docs/reasoning)."
+    },
+    "ResponseOutputTextContent": {
+      "title": "Output text",
+      "required": [
+        "type",
+        "text",
+        "annotations"
+      ],
+      "type": "object",
+      "properties": {
+        "annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ResponseAnnotation"
+          },
+          "description": "The annotations of the text output."
+        },
+        "logprobs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Log probability information for the output.",
+          "nullable": true
+        },
+        "text": {
+          "type": "string",
+          "description": "The text output from the model."
+        },
+        "type": {
+          "$ref": "#/components/schemas/OutputTextType"
+        }
+      },
+      "description": "A text output from the model."
+    },
+    "ResponseUrlCitation": {
+      "title": "URL citation",
+      "required": [
+        "type",
+        "url"
+      ],
+      "type": "object",
+      "properties": {
+        "end_index": {
+          "type": "integer",
+          "description": "The index of the last character of the URL citation in the message."
+        },
+        "start_index": {
+          "type": "integer",
+          "description": "The index of the first character of the URL citation in the message."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the web resource."
+        },
+        "type": {
+          "$ref": "#/components/schemas/UrlCitationType"
+        },
+        "url": {
+          "type": "string",
+          "description": "The URL of the web resource."
+        }
+      },
+      "description": "A citation for a web resource."
+    },
+    "TextResponseFormatJsonSchema": {
+      "title": "JSON schema",
+      "required": [
+        "type",
+        "name",
+        "schema"
+      ],
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A description of what the response format is for, used by the model to determine how to respond in the format.\n"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the response format. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.\n"
+        },
+        "schema": {
+          "$ref": "#/components/schemas/TextResponseFormatJsonSchemaSchemaProperty"
+        },
+        "strict": {
+          "type": "boolean",
+          "description": "Whether to enable strict schema adherence when generating the output.\n",
+          "default": false,
+          "nullable": true
+        },
+        "type": {
+          "$ref": "#/components/schemas/JsonSchemaType"
+        }
+      },
+      "description": "JSON Schema response format. Used to generate structured JSON responses.\n"
+    },
+    "TranscriptionSegment": {
+      "required": [
+        "id",
+        "seek",
+        "start",
+        "end",
+        "text",
+        "tokens"
+      ],
+      "type": "object",
+      "properties": {
+        "audio_text": {
+          "type": "string",
+          "description": "Transcribed text for the entire chunk"
+        },
+        "avg_logprob": {
+          "type": "number",
+          "description": "Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.",
+          "format": "float"
+        },
+        "chunk_end": {
+          "type": "integer",
+          "description": "End chunk timestamp."
+        },
+        "chunk_start": {
+          "type": "integer",
+          "description": "Start chunk timestamp."
+        },
+        "compression_ratio": {
+          "type": "number",
+          "description": "Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.",
+          "format": "float"
+        },
+        "end": {
+          "type": "number",
+          "description": "End time of the segment in seconds.",
+          "format": "float"
+        },
+        "id": {
+          "type": "integer",
+          "description": "Unique identifier of the segment."
+        },
+        "no_speech_prob": {
+          "type": "number",
+          "description": "Probability of no speech in the segment. If the value is higher than 1.0 and the \u0060avg_logprob\u0060 is below -1, consider this segment silent.",
+          "format": "float"
+        },
+        "seek": {
+          "type": "integer",
+          "description": "Seek offset of the segment."
+        },
+        "start": {
+          "type": "number",
+          "description": "Start time of the segment in seconds.",
+          "format": "float"
+        },
+        "temperature": {
+          "type": "number",
+          "description": "Temperature parameter used for generating the segment.",
+          "format": "float"
+        },
+        "text": {
+          "type": "string",
+          "description": "Text content of the segment."
+        },
+        "token_scores": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          },
+          "description": "Token-level scores."
+        },
+        "tokens": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Array of token IDs for the text content."
+        }
+      }
+    },
+    "TranscriptionWord": {
+      "required": [
+        "word",
+        "start",
+        "end"
+      ],
+      "type": "object",
+      "properties": {
+        "end": {
+          "type": "number",
+          "description": "End time of the word in seconds.",
+          "format": "float"
+        },
+        "start": {
+          "type": "number",
+          "description": "Start time of the word in seconds.",
+          "format": "float"
+        },
+        "word": {
+          "type": "string",
+          "description": "The text content of the word."
+        }
+      }
+    },
+    "XGroq": {
+      "type": "object",
+      "properties": {
+        "debug": {
+          "$ref": "#/components/schemas/XGroqDebug"
+        },
+        "error": {
+          "type": "string",
+          "description": "An error string indicating why a stream was stopped early.",
+          "nullable": true
+        },
+        "id": {
+          "type": "string",
+          "description": "A groq request ID which can be used to refer to a specific request to groq support.\nSent only in the first and final chunk.\n",
+          "nullable": true
+        },
+        "seed": {
+          "type": "integer",
+          "description": "The seed used for the request. Sent in the final chunk.",
+          "nullable": true
+        },
+        "usage": {
+          "$ref": "#/components/schemas/XGroqUsage"
+        },
+        "usage_breakdown": {
+          "$ref": "#/components/schemas/XGroqUsageBreakdown"
+        }
+      },
+      "description": "Groq-specific metadata for streaming responses. Different fields appear in different chunks."
+    },
+    "ChatCompletionToolType": {
+      "type": "string",
+      "x-client-inline-scalar": true
+    },
+    "CreateChatCompletionRequestModel": {
+      "type": "string",
+      "x-client-inline-scalar": true,
+      "description": "ID of the model to use. For details on which models are compatible with the Chat API, see available [models](https://console.groq.com/docs/models)",
+      "example": "meta-llama/llama-4-scout-17b-16e-instruct"
+    },
+    "CreateChatCompletionStreamResponseUsage": {
+      "required": [
+        "prompt_tokens",
+        "completion_tokens",
+        "total_tokens"
+      ],
+      "type": "object",
+      "properties": {
+        "completion_time": {
+          "type": "number",
+          "description": "Time spent generating tokens"
+        },
+        "completion_tokens": {
+          "type": "integer",
+          "description": "Number of tokens in the generated completion."
+        },
+        "completion_tokens_details": {
+          "$ref": "#/components/schemas/CompletionUsageCompletionTokensDetails"
+        },
+        "prompt_time": {
+          "type": "number",
+          "description": "Time spent processing input tokens"
+        },
+        "prompt_tokens": {
+          "type": "integer",
+          "description": "Number of tokens in the prompt."
+        },
+        "prompt_tokens_details": {
+          "$ref": "#/components/schemas/CompletionUsagePromptTokensDetails"
+        },
+        "queue_time": {
+          "type": "number",
+          "description": "Time the requests was spent queued"
+        },
+        "total_time": {
+          "type": "number",
+          "description": "completion time and prompt time combined"
+        },
+        "total_tokens": {
+          "type": "integer",
+          "description": "Total number of tokens used in the request (prompt \u002B completion)."
+        }
+      },
+      "description": "Present when \u0060stream_options.include_usage\u0060 is set - null on every chunk except the final usage chunk, which carries the totals for the request.",
+      "nullable": true
+    },
+    "CreateEmbeddingRequestModel": {
+      "type": "string",
+      "x-client-inline-scalar": true,
+      "description": "ID of the model to use.\n",
+      "example": "nomic-embed-text-v1_5"
+    },
+    "CreateResponseRequestModel": {
+      "type": "string",
+      "x-client-inline-scalar": true,
+      "description": "ID of the model to use. For details on which models are compatible with the Responses API, see available [models](https://console.groq.com/docs/models)",
+      "example": "llama-3.3-70b-versatile"
+    },
+    "CreateSpeechRequestModel": {
+      "type": "string",
+      "x-client-inline-scalar": true,
+      "description": "One of the [available TTS models](/docs/text-to-speech).\n",
+      "example": "playai-tts"
+    },
+    "CreateTranscriptionRequestLanguage": {
+      "type": "string",
+      "x-client-inline-scalar": true,
+      "description": "The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.\n"
+    },
+    "CreateTranscriptionRequestModel": {
+      "type": "string",
+      "x-client-inline-scalar": true,
+      "description": "ID of the model to use. \u0060whisper-large-v3\u0060 and \u0060whisper-large-v3-turbo\u0060 are currently available.\n",
+      "example": "whisper-large-v3-turbo"
+    },
+    "CreateTranslationRequestModel": {
+      "type": "string",
+      "x-client-inline-scalar": true,
+      "description": "ID of the model to use. \u0060whisper-large-v3\u0060 and \u0060whisper-large-v3-turbo\u0060 are currently available.\n",
+      "example": "whisper-large-v3-turbo"
+    },
+    "XGroqDebug": {
+      "type": "object",
+      "properties": {
+        "input_token_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Token IDs for the input."
+        },
+        "input_tokens": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Token strings for the input."
+        },
+        "output_token_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Token IDs for the output."
+        },
+        "output_tokens": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Token strings for the output."
+        }
+      },
+      "nullable": true
+    },
+    "XGroqUsage": {
+      "required": [
+        "prompt_tokens",
+        "completion_tokens",
+        "total_tokens"
+      ],
+      "type": "object",
+      "properties": {
+        "completion_time": {
+          "type": "number",
+          "description": "Time spent generating tokens"
+        },
+        "completion_tokens": {
+          "type": "integer",
+          "description": "Number of tokens in the generated completion."
+        },
+        "completion_tokens_details": {
+          "$ref": "#/components/schemas/CompletionUsageCompletionTokensDetails"
+        },
+        "prompt_time": {
+          "type": "number",
+          "description": "Time spent processing input tokens"
+        },
+        "prompt_tokens": {
+          "type": "integer",
+          "description": "Number of tokens in the prompt."
+        },
+        "prompt_tokens_details": {
+          "$ref": "#/components/schemas/CompletionUsagePromptTokensDetails"
+        },
+        "queue_time": {
+          "type": "number",
+          "description": "Time the requests was spent queued"
+        },
+        "total_time": {
+          "type": "number",
+          "description": "completion time and prompt time combined"
+        },
+        "total_tokens": {
+          "type": "integer",
+          "description": "Total number of tokens used in the request (prompt \u002B completion)."
+        }
+      },
+      "description": "Usage information for the stream. Only sent in the final chunk.",
+      "nullable": true
+    },
+    "XGroqUsageBreakdown": {
+      "required": [
+        "models"
+      ],
+      "type": "object",
+      "properties": {
+        "models": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ChatCompletionUsageBreakdownModelsItem"
+          },
+          "description": "List of models used in the request and their individual usage statistics"
+        }
+      },
+      "description": "Detailed usage breakdown by model when multiple models are used in the request for compound AI systems. Only sent in the final chunk.",
+      "nullable": true
+    },
+    "BatchMetadata": {
+      "type": "object",
+      "description": "Set of key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format.\n",
+      "nullable": true
+    },
+    "BatchRequestOutputError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "A machine-readable error code."
+        },
+        "message": {
+          "type": "string",
+          "description": "A human-readable error message."
+        }
+      },
+      "description": "For requests that failed with a non-HTTP error, this will contain more information on the cause of the failure.",
+      "nullable": true
+    },
+    "BatchRequestOutputResponse": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "$ref": "#/components/schemas/BatchRequestOutputResponseBodyProperty"
+        },
+        "request_id": {
+          "type": "string",
+          "description": "An unique identifier for the OpenAI API request. Please include this request ID when contacting support."
+        },
+        "status_code": {
+          "type": "integer",
+          "description": "The HTTP status code of the response"
+        }
+      },
+      "nullable": true
+    },
+    "ChatCompletionDocumentSourceJsonData": {
+      "type": "object",
+      "description": "The JSON payload associated with the document."
+    },
+    "ChatCompletionMessageToolCallChunkFunction": {
+      "type": "object",
+      "properties": {
+        "arguments": {
+          "type": "string",
+          "description": "The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the function to call."
+        }
+      }
+    },
+    "ChatCompletionStreamResponseDeltaFunctionCall": {
+      "type": "object",
+      "properties": {
+        "arguments": {
+          "type": "string",
+          "description": "The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the function to call."
+        }
+      },
+      "description": "Deprecated and replaced by \u0060tool_calls\u0060. The name and arguments of a function that should be called, as generated by the model.",
+      "deprecated": true
+    },
+    "ChatCompletionToolHeaders": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "HTTP headers to send with requests to the MCP server (optional for MCP tools).",
+      "x-groq-meta": {
+        "hidden": true
+      }
+    },
+    "CreateChatCompletionRequestChatTemplateArgs": {
+      "type": "object",
+      "description": "Chat-template parameters forwarded to Dynamo deployments unchanged.\nThe serving runtime validates parameter names, values, and model support.\nRejected for deployments that do not use Dynamo.\n",
+      "nullable": true,
+      "x-groq-meta": {
+        "hidden": true
+      }
+    },
+    "CreateChatCompletionRequestLogitBias": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "description": "This is not yet supported by any of our models.\nModify the likelihood of specified tokens appearing in the completion.\n",
+      "nullable": true
+    },
+    "CreateChatCompletionRequestMetadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "This parameter is not currently supported.\n",
+      "nullable": true
+    },
+    "CreateChatCompletionStreamResponseChoicesItem": {
+      "required": [
+        "delta",
+        "finish_reason",
+        "index"
+      ],
+      "type": "object",
+      "properties": {
+        "delta": {
+          "$ref": "#/components/schemas/ChatCompletionStreamResponseDelta"
+        },
+        "finish_reason": {
+          "$ref": "#/components/schemas/CreateChatCompletionStreamResponseChoicesItemFinishReason"
+        },
+        "index": {
+          "type": "integer",
+          "description": "The index of the choice in the list of choices."
+        },
+        "logprobs": {
+          "$ref": "#/components/schemas/CreateChatCompletionStreamResponseChoicesItemLogprobs"
+        }
+      }
+    },
+    "CreateResponseRequestMetadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Custom key-value pairs for storing additional information. Maximum of 16 pairs.\n",
+      "nullable": true
+    },
+    "CreateResponseResponseMetadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Metadata attached to the response.",
+      "nullable": true
+    },
+    "ResponseOutputReasoningSummaryItem": {
+      "type": "object"
+    },
+    "TextResponseFormatJsonSchemaSchema": {
+      "type": "object",
+      "description": "The schema for the response format, described as a JSON Schema object.\n"
+    },
+    "BatchRequestOutputResponseBody": {
+      "type": "object",
+      "description": "The JSON body of the response"
+    },
+    "ChatCompletionRequestMessageContentPartDocumentDocumentData": {
+      "type": "object",
+      "description": "The JSON document data."
+    },
+    "CreateChatCompletionStreamResponseChoicesItemLogprobs": {
+      "required": [
+        "content"
+      ],
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ChatCompletionTokenLogprob"
+          },
+          "description": "A list of message content tokens with log probability information.",
+          "nullable": true
+        }
+      },
+      "description": "Log probability information for the choice.",
+      "nullable": true
+    },
+    "CreateChatCompletionResponseMcpListToolsItemToolsItemInputSchema": {
+      "type": "object",
+      "description": "JSON Schema describing the tool\u0027s input parameters."
+    },
+    "CreateSpeech200WavResponse": {
+      "type": "string",
+      "format": "binary"
+    },
+    "CreateTranslation200PlainResponse": {
+      "type": "string"
+    },
+    "DownloadFile200OctetStreamResponse": {
+      "type": "string",
+      "format": "binary"
+    },
+    "ExamplePayload": {
+      "type": "object",
+      "description": "Placeholder schema for path example refs"
+    },
+    "CreateTranslation200PlainResponseSchema": {
+      "type": "string"
+    },
+    "BatchRequestOutputResponseBodyProperty": {
+      "type": "object",
+      "description": "The JSON body of the response"
+    },
+    "PostMethod": {
+      "enum": [
+        "POST"
+      ],
+      "type": "string",
+      "description": "The HTTP method to be used for the request. Currently only \u0060POST\u0060 is supported.",
+      "x-stainless-const": true,
+      "x-ms-enum": {
+        "name": "PostMethod",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "POST",
+            "name": "Post"
+          }
+        ]
+      }
+    },
+    "ChatCompletionStreamResponseDeltaRole": {
+      "enum": [
+        "system",
+        "user",
+        "assistant",
+        "tool"
+      ],
+      "type": "string",
+      "description": "The role of the author of this message.",
+      "x-ms-enum": {
+        "name": "ChatCompletionStreamResponseDeltaRole",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "system",
+            "name": "System"
+          },
+          {
+            "value": "user",
+            "name": "User"
+          },
+          {
+            "value": "assistant",
+            "name": "Assistant"
+          },
+          {
+            "value": "tool",
+            "name": "Tool"
+          }
+        ]
+      }
+    },
+    "ChatCompletionChunkObject": {
+      "enum": [
+        "chat.completion.chunk"
+      ],
+      "type": "string",
+      "description": "The object type, which is always \u0060chat.completion.chunk\u0060.",
+      "x-ms-enum": {
+        "name": "ChatCompletionChunkObject",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "chat.completion.chunk",
+            "name": "ChatCompletionChunk"
+          }
+        ]
+      }
+    },
+    "CreateChatCompletionStreamResponseServiceTier": {
+      "enum": [
+        "auto",
+        "on_demand",
+        "flex",
+        "performance",
+        "default"
+      ],
+      "type": "string",
+      "description": "The service tier used for the request. Deployments running in strict OpenAI compatibility report Groq-specific tiers as \u0060default\u0060.",
+      "nullable": true,
+      "x-ms-enum": {
+        "name": "CreateChatCompletionStreamResponseServiceTier",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "auto",
+            "name": "Auto"
+          },
+          {
+            "value": "on_demand",
+            "name": "OnDemand"
+          },
+          {
+            "value": "flex",
+            "name": "Flex"
+          },
+          {
+            "value": "performance",
+            "name": "Performance"
+          },
+          {
+            "value": "default",
+            "name": "DefaultValue"
+          }
+        ]
+      }
+    },
+    "ChatCompletionToolTypeAnyOf1": {
+      "enum": [
+        "function",
+        "browser_search",
+        "code_interpreter"
+      ],
+      "type": "string",
+      "description": "The type of the tool. \u0060function\u0060, \u0060browser_search\u0060, and \u0060code_interpreter\u0060 are supported.",
+      "x-ms-enum": {
+        "name": "ChatCompletionToolTypeAnyOf1",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "function",
+            "name": "Function"
+          },
+          {
+            "value": "browser_search",
+            "name": "BrowserSearch"
+          },
+          {
+            "value": "code_interpreter",
+            "name": "CodeInterpreter"
+          }
+        ]
+      }
+    },
+    "CreateChatCompletionRequestModelAnyOf2": {
+      "enum": [
+        "compound-beta",
+        "compound-beta-mini",
+        "gemma2-9b-it",
+        "llama-3.1-8b-instant",
+        "llama-3.3-70b-versatile",
+        "meta-llama/llama-4-maverick-17b-128e-instruct",
+        "meta-llama/llama-4-scout-17b-16e-instruct",
+        "meta-llama/llama-guard-4-12b",
+        "moonshotai/kimi-k2-instruct",
+        "openai/gpt-oss-120b",
+        "openai/gpt-oss-20b",
+        "qwen/qwen3-32b",
+        "qwen/qwen3.6-27b",
+        "qwen/qwen3.8-27b"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "CreateChatCompletionRequestModelAnyOf2",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "compound-beta",
+            "name": "CompoundBeta"
+          },
+          {
+            "value": "compound-beta-mini",
+            "name": "CompoundBetaMini"
+          },
+          {
+            "value": "gemma2-9b-it",
+            "name": "Gemma29BIt"
+          },
+          {
+            "value": "llama-3.1-8b-instant",
+            "name": "Llama318BInstant"
+          },
+          {
+            "value": "llama-3.3-70b-versatile",
+            "name": "Llama3370BVersatile"
+          },
+          {
+            "value": "meta-llama/llama-4-maverick-17b-128e-instruct",
+            "name": "MetaLlamaLlama4Maverick17B128EInstruct"
+          },
+          {
+            "value": "meta-llama/llama-4-scout-17b-16e-instruct",
+            "name": "MetaLlamaLlama4Scout17B16EInstruct"
+          },
+          {
+            "value": "meta-llama/llama-guard-4-12b",
+            "name": "MetaLlamaLlamaGuard412B"
+          },
+          {
+            "value": "moonshotai/kimi-k2-instruct",
+            "name": "MoonshotaiKimiK2Instruct"
+          },
+          {
+            "value": "openai/gpt-oss-120b",
+            "name": "OpenaiGptOss120B"
+          },
+          {
+            "value": "openai/gpt-oss-20b",
+            "name": "OpenaiGptOss20B"
+          },
+          {
+            "value": "qwen/qwen3-32b",
+            "name": "QwenQwen332B"
+          },
+          {
+            "value": "qwen/qwen3.6-27b",
+            "name": "QwenQwen3627B"
+          },
+          {
+            "value": "qwen/qwen3.8-27b",
+            "name": "QwenQwen3827B"
+          }
+        ]
+      }
+    },
+    "CreateEmbeddingRequestModelAnyOf2": {
+      "enum": [
+        "nomic-embed-text-v1_5"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "CreateEmbeddingRequestModelAnyOf2",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "nomic-embed-text-v1_5",
+            "name": "NomicEmbedTextV15"
+          }
+        ]
+      }
+    },
+    "CreateResponseRequestModelAnyOf2": {
+      "enum": [
+        "gemma2-9b-it",
+        "llama-3.3-70b-versatile",
+        "llama-3.1-8b-instant",
+        "llama-guard-3-8b",
+        "llama3-70b-8192",
+        "llama3-8b-8192"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "CreateResponseRequestModelAnyOf2",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "gemma2-9b-it",
+            "name": "Gemma29BIt"
+          },
+          {
+            "value": "llama-3.3-70b-versatile",
+            "name": "Llama3370BVersatile"
+          },
+          {
+            "value": "llama-3.1-8b-instant",
+            "name": "Llama318BInstant"
+          },
+          {
+            "value": "llama-guard-3-8b",
+            "name": "LlamaGuard38B"
+          },
+          {
+            "value": "llama3-70b-8192",
+            "name": "Llama370B8192"
+          },
+          {
+            "value": "llama3-8b-8192",
+            "name": "Llama38B8192"
+          }
+        ]
+      }
+    },
+    "CreateSpeechRequestModelAnyOf2": {
+      "enum": [
+        "playai-tts",
+        "playai-tts-arabic"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "CreateSpeechRequestModelAnyOf2",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "playai-tts",
+            "name": "PlayaiTts"
+          },
+          {
+            "value": "playai-tts-arabic",
+            "name": "PlayaiTtsArabic"
+          }
+        ]
+      }
+    },
+    "CreateTranscriptionRequestLanguageAnyOf2": {
+      "enum": [
+        "en",
+        "zh",
+        "de",
+        "es",
+        "ru",
+        "ko",
+        "fr",
+        "ja",
+        "pt",
+        "tr",
+        "pl",
+        "ca",
+        "nl",
+        "ar",
+        "sv",
+        "it",
+        "id",
+        "hi",
+        "fi",
+        "vi",
+        "he",
+        "uk",
+        "el",
+        "ms",
+        "cs",
+        "ro",
+        "da",
+        "hu",
+        "ta",
+        "no",
+        "th",
+        "ur",
+        "hr",
+        "bg",
+        "lt",
+        "la",
+        "mi",
+        "ml",
+        "cy",
+        "sk",
+        "te",
+        "fa",
+        "lv",
+        "bn",
+        "sr",
+        "az",
+        "sl",
+        "kn",
+        "et",
+        "mk",
+        "br",
+        "eu",
+        "is",
+        "hy",
+        "ne",
+        "mn",
+        "bs",
+        "kk",
+        "sq",
+        "sw",
+        "gl",
+        "mr",
+        "pa",
+        "si",
+        "km",
+        "sn",
+        "yo",
+        "so",
+        "af",
+        "oc",
+        "ka",
+        "be",
+        "tg",
+        "sd",
+        "gu",
+        "am",
+        "yi",
+        "lo",
+        "uz",
+        "fo",
+        "ht",
+        "ps",
+        "tk",
+        "nn",
+        "mt",
+        "sa",
+        "lb",
+        "my",
+        "bo",
+        "tl",
+        "mg",
+        "as",
+        "tt",
+        "haw",
+        "ln",
+        "ha",
+        "ba",
+        "jv",
+        "su",
+        "yue"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "CreateTranscriptionRequestLanguageAnyOf2",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "en",
+            "name": "En"
+          },
+          {
+            "value": "zh",
+            "name": "Zh"
+          },
+          {
+            "value": "de",
+            "name": "De"
+          },
+          {
+            "value": "es",
+            "name": "Es"
+          },
+          {
+            "value": "ru",
+            "name": "Ru"
+          },
+          {
+            "value": "ko",
+            "name": "Ko"
+          },
+          {
+            "value": "fr",
+            "name": "Fr"
+          },
+          {
+            "value": "ja",
+            "name": "Ja"
+          },
+          {
+            "value": "pt",
+            "name": "Pt"
+          },
+          {
+            "value": "tr",
+            "name": "Tr"
+          },
+          {
+            "value": "pl",
+            "name": "Pl"
+          },
+          {
+            "value": "ca",
+            "name": "Ca"
+          },
+          {
+            "value": "nl",
+            "name": "Nl"
+          },
+          {
+            "value": "ar",
+            "name": "Ar"
+          },
+          {
+            "value": "sv",
+            "name": "Sv"
+          },
+          {
+            "value": "it",
+            "name": "It"
+          },
+          {
+            "value": "id",
+            "name": "Id"
+          },
+          {
+            "value": "hi",
+            "name": "Hi"
+          },
+          {
+            "value": "fi",
+            "name": "Fi"
+          },
+          {
+            "value": "vi",
+            "name": "Vi"
+          },
+          {
+            "value": "he",
+            "name": "He"
+          },
+          {
+            "value": "uk",
+            "name": "Uk"
+          },
+          {
+            "value": "el",
+            "name": "El"
+          },
+          {
+            "value": "ms",
+            "name": "Ms"
+          },
+          {
+            "value": "cs",
+            "name": "Cs"
+          },
+          {
+            "value": "ro",
+            "name": "Ro"
+          },
+          {
+            "value": "da",
+            "name": "Da"
+          },
+          {
+            "value": "hu",
+            "name": "Hu"
+          },
+          {
+            "value": "ta",
+            "name": "Ta"
+          },
+          {
+            "value": "no",
+            "name": "No"
+          },
+          {
+            "value": "th",
+            "name": "Th"
+          },
+          {
+            "value": "ur",
+            "name": "Ur"
+          },
+          {
+            "value": "hr",
+            "name": "Hr"
+          },
+          {
+            "value": "bg",
+            "name": "Bg"
+          },
+          {
+            "value": "lt",
+            "name": "Lt"
+          },
+          {
+            "value": "la",
+            "name": "La"
+          },
+          {
+            "value": "mi",
+            "name": "Mi"
+          },
+          {
+            "value": "ml",
+            "name": "Ml"
+          },
+          {
+            "value": "cy",
+            "name": "Cy"
+          },
+          {
+            "value": "sk",
+            "name": "Sk"
+          },
+          {
+            "value": "te",
+            "name": "Te"
+          },
+          {
+            "value": "fa",
+            "name": "Fa"
+          },
+          {
+            "value": "lv",
+            "name": "Lv"
+          },
+          {
+            "value": "bn",
+            "name": "Bn"
+          },
+          {
+            "value": "sr",
+            "name": "Sr"
+          },
+          {
+            "value": "az",
+            "name": "Az"
+          },
+          {
+            "value": "sl",
+            "name": "Sl"
+          },
+          {
+            "value": "kn",
+            "name": "Kn"
+          },
+          {
+            "value": "et",
+            "name": "Et"
+          },
+          {
+            "value": "mk",
+            "name": "Mk"
+          },
+          {
+            "value": "br",
+            "name": "Br"
+          },
+          {
+            "value": "eu",
+            "name": "Eu"
+          },
+          {
+            "value": "is",
+            "name": "IsValue"
+          },
+          {
+            "value": "hy",
+            "name": "Hy"
+          },
+          {
+            "value": "ne",
+            "name": "Ne"
+          },
+          {
+            "value": "mn",
+            "name": "Mn"
+          },
+          {
+            "value": "bs",
+            "name": "Bs"
+          },
+          {
+            "value": "kk",
+            "name": "Kk"
+          },
+          {
+            "value": "sq",
+            "name": "Sq"
+          },
+          {
+            "value": "sw",
+            "name": "Sw"
+          },
+          {
+            "value": "gl",
+            "name": "Gl"
+          },
+          {
+            "value": "mr",
+            "name": "Mr"
+          },
+          {
+            "value": "pa",
+            "name": "Pa"
+          },
+          {
+            "value": "si",
+            "name": "Si"
+          },
+          {
+            "value": "km",
+            "name": "Km"
+          },
+          {
+            "value": "sn",
+            "name": "Sn"
+          },
+          {
+            "value": "yo",
+            "name": "Yo"
+          },
+          {
+            "value": "so",
+            "name": "So"
+          },
+          {
+            "value": "af",
+            "name": "Af"
+          },
+          {
+            "value": "oc",
+            "name": "Oc"
+          },
+          {
+            "value": "ka",
+            "name": "Ka"
+          },
+          {
+            "value": "be",
+            "name": "Be"
+          },
+          {
+            "value": "tg",
+            "name": "Tg"
+          },
+          {
+            "value": "sd",
+            "name": "Sd"
+          },
+          {
+            "value": "gu",
+            "name": "Gu"
+          },
+          {
+            "value": "am",
+            "name": "Am"
+          },
+          {
+            "value": "yi",
+            "name": "Yi"
+          },
+          {
+            "value": "lo",
+            "name": "Lo"
+          },
+          {
+            "value": "uz",
+            "name": "Uz"
+          },
+          {
+            "value": "fo",
+            "name": "Fo"
+          },
+          {
+            "value": "ht",
+            "name": "Ht"
+          },
+          {
+            "value": "ps",
+            "name": "Ps"
+          },
+          {
+            "value": "tk",
+            "name": "Tk"
+          },
+          {
+            "value": "nn",
+            "name": "Nn"
+          },
+          {
+            "value": "mt",
+            "name": "Mt"
+          },
+          {
+            "value": "sa",
+            "name": "Sa"
+          },
+          {
+            "value": "lb",
+            "name": "Lb"
+          },
+          {
+            "value": "my",
+            "name": "My"
+          },
+          {
+            "value": "bo",
+            "name": "Bo"
+          },
+          {
+            "value": "tl",
+            "name": "Tl"
+          },
+          {
+            "value": "mg",
+            "name": "Mg"
+          },
+          {
+            "value": "as",
+            "name": "AsValue"
+          },
+          {
+            "value": "tt",
+            "name": "Tt"
+          },
+          {
+            "value": "haw",
+            "name": "Haw"
+          },
+          {
+            "value": "ln",
+            "name": "Ln"
+          },
+          {
+            "value": "ha",
+            "name": "Ha"
+          },
+          {
+            "value": "ba",
+            "name": "Ba"
+          },
+          {
+            "value": "jv",
+            "name": "Jv"
+          },
+          {
+            "value": "su",
+            "name": "Su"
+          },
+          {
+            "value": "yue",
+            "name": "Yue"
+          }
+        ]
+      }
+    },
+    "CreateTranscriptionRequestModelAnyOf2": {
+      "enum": [
+        "whisper-large-v3",
+        "whisper-large-v3-turbo"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "CreateTranscriptionRequestModelAnyOf2",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "whisper-large-v3",
+            "name": "WhisperLargeV3"
+          },
+          {
+            "value": "whisper-large-v3-turbo",
+            "name": "WhisperLargeV3Turbo"
+          }
+        ]
+      }
+    },
+    "CreateTranslationRequestModelAnyOf2": {
+      "enum": [
+        "whisper-large-v3",
+        "whisper-large-v3-turbo"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "CreateTranslationRequestModelAnyOf2",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "whisper-large-v3",
+            "name": "WhisperLargeV3"
+          },
+          {
+            "value": "whisper-large-v3-turbo",
+            "name": "WhisperLargeV3Turbo"
+          }
+        ]
+      }
+    },
+    "CreateChatCompletionStreamResponseChoicesItemFinishReason": {
+      "enum": [
+        "stop",
+        "length",
+        "tool_calls",
+        "function_call"
+      ],
+      "type": "string",
+      "description": "The reason the model stopped generating tokens. This will be \u0060stop\u0060 if the model hit a natural stop point or a provided stop sequence,\n\u0060length\u0060 if the maximum number of tokens specified in the request was reached,\n\u0060tool_calls\u0060 if the model called a tool, or \u0060function_call\u0060 (deprecated) if the model called a function.\n",
+      "nullable": true,
+      "x-ms-enum": {
+        "name": "CreateChatCompletionStreamResponseChoicesItemFinishReason",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "stop",
+            "name": "Stop"
+          },
+          {
+            "value": "length",
+            "name": "Length"
+          },
+          {
+            "value": "tool_calls",
+            "name": "ToolCalls"
+          },
+          {
+            "value": "function_call",
+            "name": "FunctionCall"
+          }
+        ]
+      }
+    }
   }
 }

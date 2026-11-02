@@ -7,38 +7,36 @@ using System.IO;
 using System;
 namespace Soenneker.Groq.OpenApiClient.Models
 {
-    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ChatCompletionRequestFunctionMessage : IParsable
+    public partial class ChatCompletionRequestMessageChatCompletionRequestSystemMessage : global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessage, IParsable
     #pragma warning restore CS1591
-    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+    {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            base.CaptureExplicitNulls(parseNode);
             if (parseNode.GetChildNode("content") is null) { _explicitNullValueContent = default!; _explicitNullProperties?.Remove("content"); }
             else if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
             if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("role") is null) { _explicitNullValueRole = default!; _explicitNullProperties?.Remove("role"); }
-            else if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
             if (parseNode.GetChildNode("tool_call_id") is null) { _explicitNullValueToolCallId = default!; _explicitNullProperties?.Remove("tool_call_id"); }
             else if (parseNode.GetChildNode("tool_call_id") is { } nullNodeToolCallId && nullNodeToolCallId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolCallId = null;
         }
 
-        /// <summary>The contents of the function message.</summary>
+        /// <summary>The contents of the system message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
-        private string? _explicitNullValueContent = default!;
+        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestSystemMessageContent? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestSystemMessageContent? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public string Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
-        private string _explicitNullValueContent = default!;
+        public global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestSystemMessageContent Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestSystemMessageContent _explicitNullValueContent = default!;
 #endif
-        /// <summary>The name of the function to call.</summary>
+        /// <summary>An optional name for the participant. Provides the model information to differentiate between participants of the same role.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
@@ -48,9 +46,6 @@ namespace Soenneker.Groq.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>The role of the messages author, in this case `function`.</summary>
-        public global::Soenneker.Groq.OpenApiClient.Models.FunctionRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
-        private global::Soenneker.Groq.OpenApiClient.Models.FunctionRole? _explicitNullValueRole = default!;
         /// <summary>DO NOT USE.  This field is present because OpenAI allows it and users send it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,24 +59,23 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestFunctionMessage"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageChatCompletionRequestSystemMessage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestFunctionMessage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageChatCompletionRequestSystemMessage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestFunctionMessage(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestMessageChatCompletionRequestSystemMessage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "content", n => { Content = n.GetStringValue(); } },
+                { "content", n => { Content = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestSystemMessageContent>(global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestSystemMessageContent.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionRole>(); } },
                 { "tool_call_id", n => { ToolCallId = n.GetStringValue(); } },
             };
         }
@@ -89,12 +83,12 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer)
+        public override void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("content", Content);
+            base.Serialize(writer);
+            writer.WriteObjectValue<global::Soenneker.Groq.OpenApiClient.Models.ChatCompletionRequestSystemMessageContent>("content", Content);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Groq.OpenApiClient.Models.FunctionRole>("role", Role);
             writer.WriteStringValue("tool_call_id", ToolCallId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
