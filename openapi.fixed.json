@@ -1999,7 +1999,8 @@
         "description": "Controls which (if any) tool is called by the model.\n\u0060none\u0060 means the model will not call any tool and instead generates a message.\n\u0060auto\u0060 means the model can pick between generating a message or calling one or more tools.\n\u0060required\u0060 means the model must call one or more tools.\nSpecifying a particular tool via \u0060{\u0022type\u0022: \u0022function\u0022, \u0022function\u0022: {\u0022name\u0022: \u0022my_function\u0022}}\u0060 forces the model to call that tool.\n\n\u0060none\u0060 is the default when no tools are present. \u0060auto\u0060 is the default if tools are present.\n",
         "x-groq-meta": {
           "validator": "ChatCompletionToolChoiceOption"
-        }
+        },
+        "nullable": true
       },
       "ChatCompletionUsageBreakdown": {
         "required": [
@@ -4025,7 +4026,8 @@
             "$ref": "#/components/schemas/ResponseNamedToolChoice"
           }
         ],
-        "description": "Controls which (if any) tool is called by the model.\n\u0060none\u0060 means the model will not call any tool and instead generates a message.\n\u0060auto\u0060 means the model can pick between generating a message or calling one or more tools.\n\u0060required\u0060 means the model must call one or more tools.\nSpecifying a particular tool via \u0060{\u0022type\u0022: \u0022function\u0022, \u0022function\u0022: {\u0022name\u0022: \u0022my_function\u0022}}\u0060 forces the model to call that tool.\n\n\u0060none\u0060 is the default when no tools are present. \u0060auto\u0060 is the default if tools are present.\n"
+        "description": "Controls which (if any) tool is called by the model.\n\u0060none\u0060 means the model will not call any tool and instead generates a message.\n\u0060auto\u0060 means the model can pick between generating a message or calling one or more tools.\n\u0060required\u0060 means the model must call one or more tools.\nSpecifying a particular tool via \u0060{\u0022type\u0022: \u0022function\u0022, \u0022function\u0022: {\u0022name\u0022: \u0022my_function\u0022}}\u0060 forces the model to call that tool.\n\n\u0060none\u0060 is the default when no tools are present. \u0060auto\u0060 is the default if tools are present.\n",
+        "nullable": true
       },
       "ResponseUrlCitation": {
         "title": "URL citation",
@@ -4341,7 +4343,8 @@
             "description": "An array of content parts with a defined type, only \u0060text\u0060 is supported for this message type."
           }
         ],
-        "description": "The contents of the assistant message. Required unless \u0060tool_calls\u0060 or \u0060function_call\u0060 is specified.\n"
+        "description": "The contents of the assistant message. Required unless \u0060tool_calls\u0060 or \u0060function_call\u0060 is specified.\n",
+        "nullable": true
       },
       "ChatCompletionRequestSystemMessageContent": {
         "title": "System message content",
@@ -4417,7 +4420,8 @@
           }
         ],
         "description": "Deprecated in favor of \u0060tool_choice\u0060.\n\nControls which (if any) function is called by the model.\n\u0060none\u0060 means the model will not call a function and instead generates a message.\n\u0060auto\u0060 means the model can pick between generating a message or calling a function.\nSpecifying a particular function via \u0060{\u0022name\u0022: \u0022my_function\u0022}\u0060 forces the model to call that function.\n\n\u0060none\u0060 is the default when no functions are present. \u0060auto\u0060 is the default if functions are present.\n",
-        "deprecated": true
+        "deprecated": true,
+        "nullable": true
       },
       "CreateChatCompletionRequestModel": {
         "type": "string",
@@ -4438,6 +4442,7 @@
           }
         ],
         "description": "An object specifying the format that the model must output. Setting to \u0060{ \u0022type\u0022: \u0022json_schema\u0022, \u0022json_schema\u0022: {...} }\u0060 enables Structured Outputs which ensures the model will match your supplied JSON schema. \u0060json_schema\u0060 response format is only available on [supported models](https://console.groq.com/docs/structured-outputs#supported-models). Setting to \u0060{ \u0022type\u0022: \u0022json_object\u0022 }\u0060 enables the older JSON mode, which ensures the message the model generates is valid JSON. Using \u0060json_schema\u0060 is preferred for models that support it.\n",
+        "nullable": true,
         "discriminator": {
           "propertyName": "type",
           "mapping": {
@@ -4463,7 +4468,8 @@
             }
           }
         ],
-        "description": "Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.\n"
+        "description": "Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.\n",
+        "nullable": true
       },
       "CreateChatCompletionResponseUsageBreakdown": {
         "required": [
@@ -4524,7 +4530,8 @@
             "description": "Total number of tokens used in the request (prompt \u002B completion)."
           }
         },
-        "description": "Present when \u0060stream_options.include_usage\u0060 is set - null on every chunk except the final usage chunk, which carries the totals for the request."
+        "description": "Present when \u0060stream_options.include_usage\u0060 is set - null on every chunk except the final usage chunk, which carries the totals for the request.",
+        "nullable": true
       },
       "CreateEmbeddingRequestInput": {
         "oneOf": [
@@ -4671,7 +4678,8 @@
             },
             "description": "Token strings for the output."
           }
-        }
+        },
+        "nullable": true
       },
       "XGroqUsage": {
         "required": [
@@ -4716,7 +4724,8 @@
             "description": "Total number of tokens used in the request (prompt \u002B completion)."
           }
         },
-        "description": "Usage information for the stream. Only sent in the final chunk."
+        "description": "Usage information for the stream. Only sent in the final chunk.",
+        "nullable": true
       },
       "XGroqUsageBreakdown": {
         "required": [
@@ -4732,7 +4741,8 @@
             "description": "List of models used in the request and their individual usage statistics"
           }
         },
-        "description": "Detailed usage breakdown by model when multiple models are used in the request for compound AI systems. Only sent in the final chunk."
+        "description": "Detailed usage breakdown by model when multiple models are used in the request for compound AI systems. Only sent in the final chunk.",
+        "nullable": true
       },
       "XGroqNonStreamingDebug": {
         "type": "object",
@@ -4765,7 +4775,8 @@
             },
             "description": "Token strings for the output."
           }
-        }
+        },
+        "nullable": true
       },
       "BatchErrors": {
         "type": "object",
