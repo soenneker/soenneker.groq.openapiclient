@@ -85,7 +85,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "completion_window", n => { CompletionWindow = n.GetStringValue(); } },
                 { "endpoint", n => { var parsed = n.GetEnumValue<global::Soenneker.Groq.OpenApiClient.Models.V1ChatCompletionsEndpoint>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEndpoint = default; _explicitNullProperties?.Remove("endpoint"); AdditionalData["endpoint"] = unknown; } else { Endpoint = parsed; AdditionalData.Remove("endpoint"); } } },

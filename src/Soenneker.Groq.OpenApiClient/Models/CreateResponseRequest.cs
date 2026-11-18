@@ -194,7 +194,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(17)
             {
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestInput>(global::Soenneker.Groq.OpenApiClient.Models.CreateResponseRequestInput.CreateFromDiscriminatorValue); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },

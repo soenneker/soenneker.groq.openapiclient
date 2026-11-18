@@ -193,7 +193,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(13)
             {
                 { "elements", n => { Elements = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.ChartElement>(global::Soenneker.Groq.OpenApiClient.Models.ChartElement.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },

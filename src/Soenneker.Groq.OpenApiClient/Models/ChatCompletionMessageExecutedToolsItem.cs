@@ -121,7 +121,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "arguments", n => { Arguments = n.GetStringValue(); } },
                 { "browser_results", n => { BrowserResults = n.GetCollectionOfObjectValues<global::Soenneker.Groq.OpenApiClient.Models.BrowserResult>(global::Soenneker.Groq.OpenApiClient.Models.BrowserResult.CreateFromDiscriminatorValue)?.AsList(); } },

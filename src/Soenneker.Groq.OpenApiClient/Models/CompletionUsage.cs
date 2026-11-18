@@ -104,7 +104,7 @@ namespace Soenneker.Groq.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "completion_time", n => { CompletionTime = n.GetDoubleValue(); } },
                 { "completion_tokens", n => { CompletionTokens = n.GetIntValue(); } },
